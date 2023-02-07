@@ -30,7 +30,7 @@ export default function BoardWriteUI() {
         <Title>게시글 등록</Title>
         <WriterWrap>
           <WriterBox>
-            <Label>작성자.</Label>
+            <Label>작성자..</Label>
             <Writer type="text" placeholder="이름을 적어주세요." />
           </WriterBox>
           <WriterBox>
