@@ -23,7 +23,16 @@ import {
   Textarea,
   ZipCodeBtn,
 } from "@/styles/emition";
+import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
+
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+    }
+  }
+`;
 
 export default function BoardWriteUI() {
   const [name, setName] = useState();
@@ -34,6 +43,7 @@ export default function BoardWriteUI() {
   const [titleError, setTitleError] = useState();
   const [content, setContent] = useState();
   const [contentError, setContentError] = useState();
+  const [createBoard] = useMutation(CREATE_BOARD);
 
   const onChangeName = (event) => {
     setName(event.target.value);
@@ -60,7 +70,7 @@ export default function BoardWriteUI() {
       setContentError("");
     }
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!name) {
       setNameError("작성자를 입력해주세요.");
     }
@@ -74,7 +84,17 @@ export default function BoardWriteUI() {
       setContentError("내용을 입력해주세요.");
     }
     if (name && password && title && content) {
-      alert("등록 완료!");
+      const result = await createBoard({
+        variables: {
+          createBoardInput: {
+            writer: name,
+            password,
+            title,
+            contents: content,
+          },
+        },
+      });
+      console.log(result);
     }
   };
 
