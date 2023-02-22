@@ -1,0 +1,78 @@
+import * as S from "./BoardWrite.styles";
+export default function BoardWritePresenter(props) {
+  return (
+    <>
+      <S.Wrapper>
+        <S.Title>게시글 등록</S.Title>
+        <S.WriterWrap>
+          <S.WriterBox>
+            <S.Label>작성자</S.Label>
+            <S.Writer
+              type="text"
+              placeholder="이름을 적어주세요."
+              onChange={props.onChangeName}
+            />
+            <S.ErrorMessage>{props.nameError}</S.ErrorMessage>
+          </S.WriterBox>
+          <S.WriterBox>
+            <S.Label>비밀번호</S.Label>
+            <S.Password
+              type="password"
+              placeholder="비밀번호를 적어주세요."
+              onChange={props.onChangePassword}
+            />
+            <S.ErrorMessage>{props.passwordError}</S.ErrorMessage>
+          </S.WriterBox>
+        </S.WriterWrap>
+        <S.InputWrap>
+          <S.Label>제목</S.Label>
+          <S.Writer
+            type="text"
+            placeholder="제목을 작성해주세요."
+            onChange={props.onChangeTitle}
+          />
+          <S.ErrorMessage>{props.titleError}</S.ErrorMessage>
+        </S.InputWrap>
+        <S.InputWrap>
+          <S.Label>내용</S.Label>
+          <S.Textarea
+            placeholder="내용을 작성해주세요."
+            onChange={props.onChangeContent}
+          />
+          <S.ErrorMessage>{props.contentError}</S.ErrorMessage>
+        </S.InputWrap>
+        <S.InputWrap>
+          <S.Label>주소</S.Label>
+          <S.ZipWrap>
+            <S.ZipCode type="text" placeholder="07250" />
+            <S.ZipCodeBtn>우편번호 검색</S.ZipCodeBtn>
+          </S.ZipWrap>
+          <S.InputBox />
+          <S.InputBox />
+        </S.InputWrap>
+        <S.InputWrapTop>
+          <S.Label>유튜브</S.Label>
+          <S.Writer type="text" placeholder="링크를 복사해주세요." />
+        </S.InputWrapTop>
+        <S.InputWrapTop>
+          <S.Label>사진첨부</S.Label>
+          <S.UploadWrap>
+            <S.UploadBox>+</S.UploadBox>
+            <S.UploadBox>+</S.UploadBox>
+            <S.UploadBox>+</S.UploadBox>
+          </S.UploadWrap>
+        </S.InputWrapTop>
+        <S.RadioWrap>
+          <S.Label>메인설정</S.Label>
+          <S.RadioBtn type="radio" name="radio-button" />
+          <S.RadioLabel>유튜브</S.RadioLabel>
+          <S.RadioBtn type="radio" name="radio-button" />
+          <S.RadioLabel>사진</S.RadioLabel>
+        </S.RadioWrap>
+        <S.SubmitWrap>
+          <S.SubmitBtn onClick={props.handleSubmit}>등록하기</S.SubmitBtn>
+        </S.SubmitWrap>
+      </S.Wrapper>
+    </>
+  );
+}
