@@ -1,3 +1,4 @@
+import { getDate } from "@/src/commons/utils/utils";
 import * as S from "./BoardDetail.styles";
 export default function BoardDetailPresenter(props) {
   return (
@@ -9,7 +10,9 @@ export default function BoardDetailPresenter(props) {
               <S.Avatar src="/images/avatar.png" />
               <S.AvatarInfo>
                 <S.Writer>{props.data?.fetchBoard.writer}</S.Writer>
-                <S.AvatarDate>{props.data?.fetchBoard.createdAt}</S.AvatarDate>
+                <S.AvatarDate>
+                  {getDate(props.data?.fetchBoard.createdAt)}
+                </S.AvatarDate>
               </S.AvatarInfo>
             </S.HeaderLeft>
             <S.HeaderRight>
@@ -23,7 +26,7 @@ export default function BoardDetailPresenter(props) {
           </S.Body>
         </S.Card>
         <S.BtnWrap>
-          <S.Button>목록으로</S.Button>
+          <S.Button onClick={props.onClickBoardsList}>목록으로</S.Button>
           <S.Button>수정하기</S.Button>
           <S.Button>삭제하기</S.Button>
         </S.BtnWrap>

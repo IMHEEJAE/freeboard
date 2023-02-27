@@ -14,12 +14,18 @@ export default function BoardWriteContainer() {
   const [content, setContent] = useState();
   const [contentError, setContentError] = useState();
   const [createBoard] = useMutation(CREATE_BOARD);
+  const [isActive, setIsActive] = useState(false);
   const router = useRouter();
 
   const onChangeName = (event) => {
     setName(event.target.value);
     if (event.target.value !== "") {
       setNameError("");
+    }
+    if (event.target.value && password && title && content) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
     }
   };
 
@@ -28,17 +34,32 @@ export default function BoardWriteContainer() {
     if (event.target.value !== "") {
       setPasswordError("");
     }
+    if (name && event.target.value && title && content) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
   const onChangeTitle = (event) => {
     setTitle(event.target.value);
     if (event.target.value !== "") {
       setTitleError("");
     }
+    if (name && password && event.target.value && content) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
   const onChangeContent = (event) => {
     setContent(event.target.value);
     if (event.target.value !== "") {
       setContentError("");
+    }
+    if (name && password && title && event.target.value) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
     }
   };
   const handleSubmit = async () => {
@@ -75,6 +96,7 @@ export default function BoardWriteContainer() {
   };
   return (
     <BoardWritePresenter
+      isActive={isActive}
       nameError={nameError}
       passwordError={passwordError}
       titleError={titleError}

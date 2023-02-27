@@ -2,9 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 1200px;
-  border: 1px solid black;
   margin: 100px;
-  border: none;
 `;
 export const Card = styled.div`
   padding: 80px 100px 100px 100px;
@@ -47,7 +45,6 @@ export const Body = styled.div`
 `;
 
 export const Title = styled.h1`
-  padding-top: 80px;
   font-size: 36px;
   font-weight: bold;
 `;

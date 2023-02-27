@@ -137,6 +137,7 @@ export const SubmitBtn = styled.button`
   color: #000;
   font-size: 16px;
   cursor: pointer;
+  background-color: ${(props) => (props.isActive ? "#ffd600" : "#eee")};
 `;
 export const ErrorMessage = styled.div`
   padding-top: 5px;

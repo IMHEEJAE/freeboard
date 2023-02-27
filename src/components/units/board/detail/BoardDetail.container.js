@@ -9,5 +9,10 @@ export default function BoardDetailContainer() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
-  return <BoardDetailPresenter data={data} />;
+  const onClickBoardsList = () => {
+    router.push(`/boards`);
+  };
+  return (
+    <BoardDetailPresenter data={data} onClickBoardsList={onClickBoardsList} />
+  );
 }

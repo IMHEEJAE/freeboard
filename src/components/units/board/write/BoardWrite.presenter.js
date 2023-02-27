@@ -70,7 +70,12 @@ export default function BoardWritePresenter(props) {
           <S.RadioLabel>사진</S.RadioLabel>
         </S.RadioWrap>
         <S.SubmitWrap>
-          <S.SubmitBtn onClick={props.handleSubmit}>등록하기</S.SubmitBtn>
+          <S.SubmitBtn
+            onClick={props.handleSubmit}
+            isActive={props.isEdit ? true : props.isActive}
+          >
+            등록하기
+          </S.SubmitBtn>
         </S.SubmitWrap>
       </S.Wrapper>
     </>
