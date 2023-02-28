@@ -3,7 +3,7 @@ export default function BoardWritePresenter(props) {
   return (
     <>
       <S.Wrapper>
-        <S.Title>게시글 등록</S.Title>
+        <S.Title>게시글 {props.isEdit ? "수정" : "등록"}</S.Title>
         <S.WriterWrap>
           <S.WriterBox>
             <S.Label>작성자</S.Label>
@@ -71,10 +71,10 @@ export default function BoardWritePresenter(props) {
         </S.RadioWrap>
         <S.SubmitWrap>
           <S.SubmitBtn
-            onClick={props.handleSubmit}
+            onClick={props.isEdit ? props.hanldeUpdate : props.handleSubmit}
             isActive={props.isEdit ? true : props.isActive}
           >
-            등록하기
+            {props.isEdit ? "수정하기" : "등록하기"}
           </S.SubmitBtn>
         </S.SubmitWrap>
       </S.Wrapper>

@@ -3,7 +3,7 @@ import BoardWriteContainer from "@/src/components/units/board/write/BoardWrite.c
 export default function BoardWriteUI() {
   return (
     <>
-      <BoardWriteContainer />
+      <BoardWriteContainer isEdit={false} />
     </>
   );
 }

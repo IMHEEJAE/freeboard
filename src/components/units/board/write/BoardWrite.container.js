@@ -2,9 +2,9 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import BoardWritePresenter from "./BoardWrite.presenter";
-import { CREATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 
-export default function BoardWriteContainer() {
+export default function BoardWriteContainer(props) {
   const [name, setName] = useState();
   const [nameError, setNameError] = useState();
   const [password, setPassword] = useState();
@@ -14,6 +14,8 @@ export default function BoardWriteContainer() {
   const [content, setContent] = useState();
   const [contentError, setContentError] = useState();
   const [createBoard] = useMutation(CREATE_BOARD);
+  const [updateBoard] = useMutation(UPDATE_BOARD);
+
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
 
@@ -87,11 +89,29 @@ export default function BoardWriteContainer() {
             },
           },
         });
-        console.log(result.data.createBoard._id);
+        // console.log(result.data.createBoard._id);
         router.push(`/boards/${result.data.createBoard._id}`);
       } catch (error) {
         alert(error.message);
       }
+    }
+  };
+  const hanldeUpdate = async (event) => {
+    try {
+      const result = await updateBoard({
+        variables: {
+          boardId: router.query.boardId,
+          password,
+          updateBoardInput: {
+            title,
+            contents: content,
+          },
+        },
+      });
+      // console.log(result);
+      router.push(`/boards/${result.data.updateBoard._id}`);
+    } catch (error) {
+      alert(error.message);
     }
   };
   return (
@@ -106,6 +126,8 @@ export default function BoardWriteContainer() {
       onChangeTitle={onChangeTitle}
       onChangeContent={onChangeContent}
       handleSubmit={handleSubmit}
+      hanldeUpdate={hanldeUpdate}
+      isEdit={props.isEdit}
     />
   );
 }
