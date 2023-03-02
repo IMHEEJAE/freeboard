@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 export default function BoardDetailContainer() {
   const router = useRouter();
-  const [deleteBoard] = useMutation(DELETE_BOARD);
+  // const [deleteBoard] = useMutation(DELETE_BOARD);
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });

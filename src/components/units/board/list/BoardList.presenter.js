@@ -1,4 +1,4 @@
-import { getDate } from "@/src/commons/utils/utils";
+import { getDate } from "/src/commons/utils/utils";
 import * as S from "./BoardList.styles";
 
 export default function BoardListPresenter(props) {
