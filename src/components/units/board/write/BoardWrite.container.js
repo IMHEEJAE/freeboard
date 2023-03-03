@@ -97,18 +97,19 @@ export default function BoardWriteContainer(props) {
     }
   };
   const hanldeUpdate = async (event) => {
+    const updateBoardInput = {};
+    if (title) updateBoardInput.title = title;
+    if (content) updateBoardInput.contents = content;
+
     try {
       const result = await updateBoard({
         variables: {
           boardId: router.query.boardId,
           password,
-          updateBoardInput: {
-            title,
-            contents: content,
-          },
+          updateBoardInput: updateBoardInput,
         },
       });
-      // console.log(result);
+      console.log(result);
       router.push(`/boards/${result.data.updateBoard._id}`);
     } catch (error) {
       alert(error.message);
@@ -128,6 +129,7 @@ export default function BoardWriteContainer(props) {
       handleSubmit={handleSubmit}
       hanldeUpdate={hanldeUpdate}
       isEdit={props.isEdit}
+      data={props.data}
     />
   );
 }
