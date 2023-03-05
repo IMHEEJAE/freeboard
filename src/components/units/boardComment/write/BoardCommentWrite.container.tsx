@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { CREATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
 import { useRouter } from "next/router";
+import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
 
 export default function BoardCommentWriteContainer() {
   const router = useRouter();
@@ -32,6 +33,14 @@ export default function BoardCommentWriteContainer() {
           },
           boardId: router.query.boardId,
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: {
+              boardId: router.query.boardId,
+            },
+          },
+        ],
       });
       console.log(result);
     } catch (error) {
