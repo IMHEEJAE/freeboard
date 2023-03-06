@@ -1,14 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -22,9 +18,11 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/units/boardComment/list/BoardCommentList.container.js", "src/components/units/boardComment/list/BoardCommentList.presenter.tsx", "src/components/units/boardComment/list/BoardCommentList.queries.js", "src/components/units/boardComment/list/BoardCommentList.styles.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "**/*.tsx",
+    "src/components/units/boardComment/list/BoardCommentList.container.js",
+    "src/components/units/boardComment/list/BoardCommentList.presenter.tsx",
+    "src/components/units/boardComment/list/BoardCommentList.queries.js",
+    "src/components/units/boardComment/list/BoardCommentList.styles.js"
+  ],
+  "exclude": ["node_modules"]
 }

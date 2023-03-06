@@ -14,7 +14,7 @@ export default function BoardCommentListPresenter(props) {
               <S.Contents>{el.contents}</S.Contents>
             </S.MainWrapper>
             <S.OptionWrapper>
-              <S.UpdateIcon src="/images/icon/icon_update.png" />
+              {/* <S.UpdateIcon src="/images/icon/icon_update.png" /> */}
               <S.DeleteIcon
                 id={el._id}
                 src="/images/icon/icon_delete.png"
