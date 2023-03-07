@@ -1,5 +1,5 @@
 import BoardCommentWritePresenter from "./BoardCommentWrite.presenter";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { CREATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
 import { useRouter } from "next/router";
@@ -8,17 +8,17 @@ import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
 export default function BoardCommentWriteContainer() {
   const router = useRouter();
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
-  const [writer, setWriter] = useState();
-  const [password, setPassword] = useState();
-  const [contents, setContents] = useState();
+  const [writer, setWriter] = useState("");
+  const [password, setPassword] = useState("");
+  const [contents, setContents] = useState("");
 
-  const onChangeWriter = (event) => {
+  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
   };
-  const onChangePassword = (event) => {
+  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
-  const onChangeContents = (event) => {
+  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
     setContents(event.target.value);
   };
   const onClickSubmitComment = async () => {
@@ -44,7 +44,9 @@ export default function BoardCommentWriteContainer() {
       });
       console.log(result);
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) {
+        alert(error.message);
+      }
     }
   };
   return (

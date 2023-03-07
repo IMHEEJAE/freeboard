@@ -1,5 +1,6 @@
 import * as S from "./BoardWrite.styles";
-export default function BoardWritePresenter(props) {
+import { BoardWritePresenterProps } from "./BoardWrite.types";
+export default function BoardWritePresenter(props: BoardWritePresenterProps) {
   return (
     <>
       <S.Wrapper>

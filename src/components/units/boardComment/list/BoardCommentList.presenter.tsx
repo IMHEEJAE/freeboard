@@ -1,6 +1,9 @@
 import * as S from "./BoardCommentList.styles";
 import { getDate } from "../../../../commons/utils/utils";
-export default function BoardCommentListPresenter(props) {
+import { BoardCommentListPresenterProps } from "./BoardCommentList.type";
+export default function BoardCommentListPresenter(
+  props: BoardCommentListPresenterProps
+) {
   return (
     <>
       {props.data?.fetchBoardComments.map((el) => (

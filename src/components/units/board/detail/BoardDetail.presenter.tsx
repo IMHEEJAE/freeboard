@@ -1,6 +1,7 @@
-import { getDate } from "/src/commons/utils/utils";
+import { getDate } from "../../../../commons/utils/utils";
 import * as S from "./BoardDetail.styles";
-export default function BoardDetailPresenter(props) {
+import { BoardDetailPresenterProps } from "./BoardDetail.types";
+export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
   return (
     <>
       <S.Wrapper>

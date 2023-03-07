@@ -1,7 +1,8 @@
-import { getDate } from "/src/commons/utils/utils";
+import { getDate } from "../../../../commons/utils/utils";
 import * as S from "./BoardList.styles";
+import { BoardListPresenterProps } from "./BoardList.types";
 
-export default function BoardListPresenter(props) {
+export default function BoardListPresenter(props: BoardListPresenterProps) {
   return (
     <>
       <S.Wrapper>

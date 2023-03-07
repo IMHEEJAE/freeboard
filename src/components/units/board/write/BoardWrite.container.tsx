@@ -1,25 +1,37 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+import {
+  IMutation,
+  IMutationCreateBoardArgs,
+  IUpdateBoardInput,
+} from "../../../../commons/types/generated/types";
 import BoardWritePresenter from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { BoardWritePresenterProps } from "./BoardWrite.types";
 
-export default function BoardWriteContainer(props) {
-  const [name, setName] = useState();
-  const [nameError, setNameError] = useState();
-  const [password, setPassword] = useState();
-  const [passwordError, setPasswordError] = useState();
-  const [title, setTitle] = useState();
-  const [titleError, setTitleError] = useState();
-  const [content, setContent] = useState();
-  const [contentError, setContentError] = useState();
-  const [createBoard] = useMutation(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
+export default function BoardWriteContainer(props: BoardWritePresenterProps) {
+  const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [title, setTitle] = useState("");
+  const [titleError, setTitleError] = useState("");
+  const [content, setContent] = useState("");
+  const [contentError, setContentError] = useState("");
+  const [createBoard] = useMutation<
+    Pick<IMutation, "createBoard">,
+    IMutationCreateBoardArgs
+  >(CREATE_BOARD);
+  const [updateBoard] = useMutation<
+    Pick<IMutation, "updateBoard">,
+    IMutationCreateBoardArgs
+  >(UPDATE_BOARD);
 
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
 
-  const onChangeName = (event) => {
+  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
     if (event.target.value !== "") {
       setNameError("");
@@ -31,7 +43,7 @@ export default function BoardWriteContainer(props) {
     }
   };
 
-  const onChangePassword = (event) => {
+  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
     if (event.target.value !== "") {
       setPasswordError("");
@@ -42,7 +54,7 @@ export default function BoardWriteContainer(props) {
       setIsActive(false);
     }
   };
-  const onChangeTitle = (event) => {
+  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
     if (event.target.value !== "") {
       setTitleError("");
@@ -53,7 +65,7 @@ export default function BoardWriteContainer(props) {
       setIsActive(false);
     }
   };
-  const onChangeContent = (event) => {
+  const onChangeContent = (event: ChangeEvent<HTMLInputElement>) => {
     setContent(event.target.value);
     if (event.target.value !== "") {
       setContentError("");
@@ -90,14 +102,16 @@ export default function BoardWriteContainer(props) {
           },
         });
         // console.log(result.data.createBoard._id);
-        router.push(`/boards/${result.data.createBoard._id}`);
+        router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error) {
-        alert(error.message);
+        if (error instanceof Error) {
+          alert(error.message);
+        }
       }
     }
   };
-  const hanldeUpdate = async (event) => {
-    const updateBoardInput = {};
+  const hanldeUpdate = async () => {
+    const updateBoardInput: IUpdateBoardInput = {};
     if (title) updateBoardInput.title = title;
     if (content) updateBoardInput.contents = content;
 
@@ -110,9 +124,11 @@ export default function BoardWriteContainer(props) {
         },
       });
       console.log(result);
-      router.push(`/boards/${result.data.updateBoard._id}`);
+      router.push(`/boards/${result.data?.updateBoard._id}`);
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) {
+        alert(error.message);
+      }
     }
   };
   return (

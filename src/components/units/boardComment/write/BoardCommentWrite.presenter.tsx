@@ -1,5 +1,8 @@
 import * as S from "./BoardCommentWrite.styles";
-export default function BoardCommentWritePresenter(props) {
+import { BoardCommentWritePresenterProps } from "./BoardCommentWrite.type";
+export default function BoardCommentWritePresenter(
+  props: BoardCommentWritePresenterProps
+) {
   return (
     <>
       <S.Wrapper>
