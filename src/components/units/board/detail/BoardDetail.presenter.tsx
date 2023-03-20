@@ -24,6 +24,16 @@ export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
           <S.Body>
             <S.Title>{props.data?.fetchBoard.title}</S.Title>
             <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
+            <S.CountWrap>
+              <S.LikeWrap>
+                <S.LikeIcon onClick={props.onClickLikeCount} />
+                <S.LikeCount>{props.likeCount}</S.LikeCount>
+              </S.LikeWrap>
+              <S.LikeWrap>
+                <S.DisLikeIcon onClick={props.onClickDislikeCount} />
+                <S.DisLikeCount>{props.dislikeCount}</S.DisLikeCount>
+              </S.LikeWrap>
+            </S.CountWrap>
           </S.Body>
         </S.Card>
         <S.BtnWrap>

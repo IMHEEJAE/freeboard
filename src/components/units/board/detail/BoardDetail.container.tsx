@@ -6,8 +6,11 @@ import {
   IQuery,
   IQueryFetchBoardsArgs,
 } from "../../../../commons/types/generated/types";
+import { useState } from "react";
 
 export default function BoardDetailContainer() {
+  const [likeCount, setLikeCount] = useState(0);
+  const [dislikeCount, setDislikeCount] = useState(0);
   const router = useRouter();
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardsArgs>(
     FETCH_BOARD,
@@ -21,12 +24,21 @@ export default function BoardDetailContainer() {
   const onClickBoardEdit = () => {
     router.push(`/boards/${router.query.boardId}/edit`);
   };
-
+  const onClickLikeCount = () => {
+    setLikeCount(likeCount + 1);
+  };
+  const onClickDislikeCount = () => {
+    setDislikeCount(dislikeCount + 1);
+  };
   return (
     <BoardDetailPresenter
       data={data}
       onClickBoardsList={onClickBoardsList}
       onClickBoardEdit={onClickBoardEdit}
+      onClickLikeCount={onClickLikeCount}
+      onClickDislikeCount={onClickDislikeCount}
+      likeCount={likeCount}
+      dislikeCount={dislikeCount}
     />
   );
 }

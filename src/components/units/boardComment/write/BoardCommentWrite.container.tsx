@@ -4,13 +4,22 @@ import { useMutation } from "@apollo/client/react";
 import { CREATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
 import { useRouter } from "next/router";
 import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
+import {
+  IMutation,
+  IMutationCreateBoardCommentArgs,
+} from "../../../../commons/types/generated/types";
 
 export default function BoardCommentWriteContainer() {
   const router = useRouter();
-  const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [contents, setContents] = useState("");
+  const [star, setStar] = useState(0);
+
+  const [createBoardComment] = useMutation<
+    Pick<IMutation, "createBoardComment">,
+    IMutationCreateBoardCommentArgs
+  >(CREATE_BOARD_COMMENT);
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
@@ -22,32 +31,35 @@ export default function BoardCommentWriteContainer() {
     setContents(event.target.value);
   };
   const onClickSubmitComment = async () => {
+    if (typeof router.query.boardId !== "string") return;
+    if(!writer || !password || !contents){
+      alert('입력해주세요.')
+    }
+    if(writer && password && contents){
     try {
-      const result = await createBoardComment({
+      await createBoardComment({
         variables: {
           createBoardCommentInput: {
             writer,
             password,
             contents,
-            rating: 0,
+            rating: star,
           },
           boardId: router.query.boardId,
         },
         refetchQueries: [
           {
             query: FETCH_BOARD_COMMENTS,
-            variables: {
-              boardId: router.query.boardId,
-            },
+            variables: { boardId: router.query.boardId },
           },
         ],
       });
-      console.log(result);
     } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-      }
-    }
+      if (error instanceof Error) alert(error.message);
+    }}
+    setWriter("")
+    setPassword("")
+    setContents("")
   };
   return (
     <>
@@ -56,6 +68,10 @@ export default function BoardCommentWriteContainer() {
         onChangePassword={onChangePassword}
         onChangeContents={onChangeContents}
         onClickSubmitComment={onClickSubmitComment}
+        writer={writer}
+        password={password}
+        contents={contents}
+        setStar={setStar}
       />
     </>
   );

@@ -13,6 +13,7 @@ export default function BoardCommentListPresenter(
             <S.MainWrapper>
               <S.WriterWrapper>
                 <S.Writer>{el.writer}</S.Writer>
+                <S.Star value={el.rating} disabled />
               </S.WriterWrapper>
               <S.Contents>{el.contents}</S.Contents>
             </S.MainWrapper>
@@ -28,6 +29,9 @@ export default function BoardCommentListPresenter(
           <S.DateString>{getDate(el.createdAt)}</S.DateString>
         </S.ItemWrapper>
       ))}
+      <S.Modal>
+        <input type="text" />
+      </S.Modal>
     </>
   );
 }

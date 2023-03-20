@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { MouseEvent } from "react";
 import {
   IQuery,
-  IQueryFetchBoardsArgs,
+  IQueryFetchBoardCommentsArgs,
 } from "../../../../commons/types/generated/types";
 import BoardCommentListPresenter from "./BoardCommentList.presenter";
 import {
@@ -14,14 +14,21 @@ import {
 export default function BoardCommentListContainer() {
   const router = useRouter();
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
+
   const { data } = useQuery<
     Pick<IQuery, "fetchBoardComments">,
-    IQueryFetchBoardsArgs
+    IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, {
     variables: {
       boardId: router.query.boardId,
     },
   });
+
+  if (typeof router.query.boardId !== "string") {
+    alert("올바르지 않은 게시글 아이디입니다.");
+    void router.push("/");
+    return <></>;
+  }
 
   const onClickDelete = async (event: MouseEvent<HTMLImageElement>) => {
     const myPassword = prompt("비밀번호를 입력하세요오!!!");

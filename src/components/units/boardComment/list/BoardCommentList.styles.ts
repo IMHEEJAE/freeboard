@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate, Modal } from "antd";
 
 export const ItemWrapper = styled.div`
   width: 1200px;
@@ -52,4 +53,13 @@ export const DateString = styled.div`
   color: #999;
   font-size: 14px;
   padding: 10px 0 0 68px;
+`;
+export const Star = styled(Rate)`
+  padding-left: 20px;
+`;
+export const PasswordModal = styled(Modal)``;
+
+export const PasswordInput = styled.input`
+  width: 100%;
+  margin-top: 10px;
 `;
