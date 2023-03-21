@@ -1,4 +1,5 @@
 import { getDate } from "../../../../commons/utils/utils";
+import { Tooltip } from "antd";
 import * as S from "./BoardDetail.styles";
 import { BoardDetailPresenterProps } from "./BoardDetail.types";
 export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
@@ -17,8 +18,18 @@ export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
               </S.AvatarInfo>
             </S.HeaderLeft>
             <S.HeaderRight>
-              <S.IconClip src="/images/icon/icon_clip.svg" />
-              <S.IconLocation src="/images/icon/icon_location.svg" />
+              <Tooltip
+                placement="topRight"
+                title={`${props.data?.fetchBoard.youtubeUrl}`}
+              >
+                <S.IconClip src="/images/icon/icon_clip.svg" />
+              </Tooltip>
+              <Tooltip
+                placement="topRight"
+                title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
+              >
+                <S.IconLocation src="/images/icon/icon_location.svg" />
+              </Tooltip>
             </S.HeaderRight>
           </S.Header>
           <S.Body>
@@ -26,12 +37,14 @@ export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
             <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
             <S.CountWrap>
               <S.LikeWrap>
-                <S.LikeIcon onClick={props.onClickLikeCount} />
-                <S.LikeCount>{props.likeCount}</S.LikeCount>
+                <S.LikeIcon onClick={props.onClickLike} />
+                <S.LikeCount>{props.data?.fetchBoard.likeCount}</S.LikeCount>
               </S.LikeWrap>
               <S.LikeWrap>
-                <S.DisLikeIcon onClick={props.onClickDislikeCount} />
-                <S.DisLikeCount>{props.dislikeCount}</S.DisLikeCount>
+                <S.DisLikeIcon onClick={props.onClickDislike} />
+                <S.DisLikeCount>
+                  {props.data?.fetchBoard.dislikeCount}
+                </S.DisLikeCount>
               </S.LikeWrap>
             </S.CountWrap>
           </S.Body>

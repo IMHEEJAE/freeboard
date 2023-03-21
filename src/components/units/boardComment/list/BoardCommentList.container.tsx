@@ -14,7 +14,7 @@ import {
 export default function BoardCommentListContainer() {
   const router = useRouter();
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
-
+  // const [open, setOpen] = useState(false);
   const { data } = useQuery<
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
@@ -23,12 +23,17 @@ export default function BoardCommentListContainer() {
       boardId: router.query.boardId,
     },
   });
-
-  if (typeof router.query.boardId !== "string") {
-    alert("올바르지 않은 게시글 아이디입니다.");
-    void router.push("/");
-    return <></>;
-  }
+  const handleCancel = () => {
+    console.log("Clicked cancel button");
+    setOpen(false);
+  };
+  // if (typeof router.query.boardId !== "string") {
+  //   useEffect(() => {
+  //     alert("올바르지 않은 게시글 아이디입니다.");
+  //   }, []);
+  //   void router.push("/");
+  //   return <></>;
+  // }
 
   const onClickDelete = async (event: MouseEvent<HTMLImageElement>) => {
     const myPassword = prompt("비밀번호를 입력하세요오!!!");
@@ -55,7 +60,12 @@ export default function BoardCommentListContainer() {
   };
   return (
     <>
-      <BoardCommentListPresenter data={data} onClickDelete={onClickDelete} />
+      <BoardCommentListPresenter
+        data={data}
+        onClickDelete={onClickDelete}
+        // open={open}
+        handleCancel={handleCancel}
+      />
     </>
   );
 }

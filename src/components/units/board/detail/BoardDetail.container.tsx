@@ -1,44 +1,70 @@
 import BoardDetailPresenter from "./BoardDetail.presenter";
-import { FETCH_BOARD } from "./BoardDetail.queries";
-import { useQuery } from "@apollo/client";
+import { FETCH_BOARD, LIKE_BOARD, DISLIKE_BOARD } from "./BoardDetail.queries";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
+  IMutation,
+  IMutationDislikeBoardArgs,
+  IMutationLikeBoardArgs,
   IQuery,
-  IQueryFetchBoardsArgs,
+  IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
-import { useState } from "react";
 
 export default function BoardDetailContainer() {
-  const [likeCount, setLikeCount] = useState(0);
-  const [dislikeCount, setDislikeCount] = useState(0);
+  const [likeBoard] = useMutation<
+    Pick<IMutation, "likeBoard">,
+    IMutationLikeBoardArgs
+  >(LIKE_BOARD);
+  const [dislikeBoard] = useMutation<
+    Pick<IMutation, "dislikeBoard">,
+    IMutationDislikeBoardArgs
+  >(DISLIKE_BOARD);
   const router = useRouter();
-  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardsArgs>(
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARD,
     {
       variables: { boardId: router.query.boardId },
     }
   );
   const onClickBoardsList = () => {
-    router.push(`/boards`);
+    void router.push(`/boards`);
   };
   const onClickBoardEdit = () => {
-    router.push(`/boards/${router.query.boardId}/edit`);
+    void router.push(`/boards/${router.query.boardId}/edit`);
   };
-  const onClickLikeCount = () => {
-    setLikeCount(likeCount + 1);
+  const onClickLike = () => {
+    if (typeof router.query.boardId !== "string") return;
+    likeBoard({
+      variables: { boardId: router.query.boardId },
+      refetchQueries: [
+        {
+          query: FETCH_BOARD,
+          variables: { boardId: router.query.boardId },
+        },
+      ],
+    });
   };
-  const onClickDislikeCount = () => {
-    setDislikeCount(dislikeCount + 1);
+
+  const onClickDislike = () => {
+    if (typeof router.query.boardId !== "string") return;
+    dislikeBoard({
+      variables: { boardId: router.query.boardId },
+      refetchQueries: [
+        {
+          query: FETCH_BOARD,
+          variables: { boardId: router.query.boardId },
+        },
+      ],
+    });
   };
+
   return (
     <BoardDetailPresenter
       data={data}
       onClickBoardsList={onClickBoardsList}
       onClickBoardEdit={onClickBoardEdit}
-      onClickLikeCount={onClickLikeCount}
-      onClickDislikeCount={onClickDislikeCount}
-      likeCount={likeCount}
-      dislikeCount={dislikeCount}
+      onClickLike={onClickLike}
+      onClickDislike={onClickDislike}
     />
   );
 }

@@ -32,34 +32,35 @@ export default function BoardCommentWriteContainer() {
   };
   const onClickSubmitComment = async () => {
     if (typeof router.query.boardId !== "string") return;
-    if(!writer || !password || !contents){
-      alert('입력해주세요.')
+    if (!writer || !password || !contents) {
+      alert("입력해주세요.");
     }
-    if(writer && password && contents){
-    try {
-      await createBoardComment({
-        variables: {
-          createBoardCommentInput: {
-            writer,
-            password,
-            contents,
-            rating: star,
+    if (writer && password && contents) {
+      try {
+        await createBoardComment({
+          variables: {
+            createBoardCommentInput: {
+              writer,
+              password,
+              contents,
+              rating: star,
+            },
+            boardId: router.query.boardId,
           },
-          boardId: router.query.boardId,
-        },
-        refetchQueries: [
-          {
-            query: FETCH_BOARD_COMMENTS,
-            variables: { boardId: router.query.boardId },
-          },
-        ],
-      });
-    } catch (error) {
-      if (error instanceof Error) alert(error.message);
-    }}
-    setWriter("")
-    setPassword("")
-    setContents("")
+          refetchQueries: [
+            {
+              query: FETCH_BOARD_COMMENTS,
+              variables: { boardId: router.query.boardId },
+            },
+          ],
+        });
+      } catch (error) {
+        if (error instanceof Error) alert(error.message);
+      }
+    }
+    setWriter("");
+    setPassword("");
+    setContents("");
   };
   return (
     <>

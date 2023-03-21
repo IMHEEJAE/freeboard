@@ -29,9 +29,14 @@ export default function BoardCommentListPresenter(
           <S.DateString>{getDate(el.createdAt)}</S.DateString>
         </S.ItemWrapper>
       ))}
-      <S.Modal>
-        <input type="text" />
-      </S.Modal>
+      {/* <S.PasswordModal
+        title="Title"
+        open={props.open}
+        onOk={handleOk}
+        handleCancel={props.handleCancel}
+      >
+        <p>zzz</p>
+      </S.PasswordModal> */}
     </>
   );
 }

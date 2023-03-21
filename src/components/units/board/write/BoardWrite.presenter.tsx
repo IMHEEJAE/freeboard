@@ -12,7 +12,7 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
               type="text"
               placeholder="이름을 적어주세요."
               onChange={props.onChangeName}
-              defaultValue={props.data?.fetchBoard.writer || ""}
+              defaultValue={props.data?.fetchBoard.writer ?? ""}
             />
             <S.ErrorMessage>{props.nameError}</S.ErrorMessage>
           </S.WriterBox>
@@ -48,15 +48,41 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
         <S.InputWrap>
           <S.Label>주소</S.Label>
           <S.ZipWrap>
-            <S.ZipCode type="text" placeholder="07250" />
-            <S.ZipCodeBtn>우편번호 검색</S.ZipCodeBtn>
+            <S.ZipCode
+              type="text"
+              placeholder="07250"
+              readOnly
+              value={
+                props.zipcode ||
+                (props.data?.fetchBoard.boardAddress?.zipcode ?? "")
+              }
+            />
+            <S.ZipCodeBtn onClick={props.onClickAddressSearch}>
+              우편번호 검색
+            </S.ZipCodeBtn>
           </S.ZipWrap>
-          <S.InputBox />
-          <S.InputBox />
+          <S.InputBox
+            readOnly
+            value={
+              props.address ||
+              (props.data?.fetchBoard.boardAddress?.address ?? "")
+            }
+          />
+          <S.InputBox
+            onChange={props.onChangeAddressDetail}
+            defaultValue={
+              props.data?.fetchBoard.boardAddress?.addressDetail ?? ""
+            }
+          />
         </S.InputWrap>
         <S.InputWrapTop>
           <S.Label>유튜브</S.Label>
-          <S.Writer type="text" placeholder="링크를 복사해주세요." />
+          <S.Writer
+            type="text"
+            placeholder="링크를 복사해주세요."
+            onChange={props.onChangeYoutubeUrl}
+            defaultValue={props.data?.fetchBoard.youtubeUrl ?? ""}
+          />
         </S.InputWrapTop>
         <S.InputWrapTop>
           <S.Label>사진첨부</S.Label>
@@ -82,6 +108,11 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
           </S.SubmitBtn>
         </S.SubmitWrap>
       </S.Wrapper>
+      {props.isOpen && (
+        <S.ZipModal visible={true}>
+          <S.PostcodeEmbed onComplete={props.onCompleteAddressSearch} />
+        </S.ZipModal>
+      )}
     </>
   );
 }
