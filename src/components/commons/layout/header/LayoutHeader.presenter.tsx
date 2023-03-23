@@ -1,8 +1,17 @@
 import * as S from "./LayoutHeader.styles";
-export default function LayoutHeaderPresenter() {
+import { ILayoutHeaderProps } from "./LayoutHeader.types";
+export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
   return (
     <>
-      <S.Wrapper>여기는 헤더입니다.</S.Wrapper>
+      <S.Wrapper>
+        <S.InnerWrapper>
+          <S.InnerLogo onClick={props.onClickLogo}>Logo</S.InnerLogo>
+          <div>
+            <S.InnerButton onClick={props.onClickLogin}>로그인</S.InnerButton>
+            <S.InnerButton>회원가입</S.InnerButton>
+          </div>
+        </S.InnerWrapper>
+      </S.Wrapper>
     </>
   );
 }

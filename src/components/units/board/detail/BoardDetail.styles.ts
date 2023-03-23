@@ -47,11 +47,14 @@ export const Body = styled.div`
 `;
 
 export const Title = styled.h1`
+  margin-top: 30px;
   font-size: 36px;
   font-weight: bold;
 `;
 
-export const Contents = styled.div``;
+export const Contents = styled.div`
+  margin-top: 30px;
+`;
 export const BtnWrap = styled.div`
   display: flex;
   flex-direction: row;

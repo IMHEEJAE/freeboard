@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
 
 import styled from "@emotion/styled";
-import LayoutHeader from "./header/LayoutHeader.container";
-import LayoutBanner from "./banner/LayoutBanner.container";
-import LayoutNavigation from "./navigation/LayoutNavigation.container";
+import LayoutFooterContainer from "./footer/LayoutFooter.container";
+import LayoutNavigationContainer from "./navigation/LayoutNavigation.container";
+import LayoutBannerContainer from "./banner/LayoutBanner.container";
+import LayoutHeaderContainer from "./header/LayoutHeader.container";
 
 // const HIDDEN_HEADERS = ["/PATH"];
 const Body = styled.div`
-  height: 500px;
+  // height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,11 +27,11 @@ export default function Layout(props: ILayoutProps) {
   return (
     <>
       {/* {isHiddenHeader && <LayoutHeader />} */}
-      <LayoutHeader />
-      <LayoutBanner />
-      <LayoutNavigation />
+      <LayoutHeaderContainer />
+      <LayoutBannerContainer />
+      <LayoutNavigationContainer />
       <Body>{props.children}</Body>
-      {/* <LayoutFooter /> */}
+      <LayoutFooterContainer />
     </>
   );
 }
