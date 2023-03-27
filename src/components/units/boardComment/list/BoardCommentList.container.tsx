@@ -15,6 +15,7 @@ export default function BoardCommentListContainer() {
   const router = useRouter();
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
   // const [open, setOpen] = useState(false);
+  if (typeof router.query.boardId !== "string") return;
   const { data } = useQuery<
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
@@ -25,7 +26,7 @@ export default function BoardCommentListContainer() {
   });
   const handleCancel = () => {
     console.log("Clicked cancel button");
-    setOpen(false);
+    // setOpen(false);
   };
   // if (typeof router.query.boardId !== "string") {
   //   useEffect(() => {

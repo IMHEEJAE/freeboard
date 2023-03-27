@@ -14,21 +14,15 @@ export default function LayoutBannerPresenter() {
   return (
     <>
       <S.Wrapper>
-        <Slider
-          dots={settings.dots}
-          infinite={settings.infinite}
-          speed={settings.speed}
-          slidesToShow={settings.slidesToShow}
-          slidesToScroll={settings.slidesToScroll}
-        >
+        <Slider {...settings}>
           <div>
-            {/* <S.SliderItem src="/images/layout/banner01.png" /> */}123
+            <S.SliderItem src="/images/layout/banner01.png" />
+          </div>
+          <div> 
+            <S.SliderItem src="/images/layout/banner01.png" />
           </div>
           <div>
-            {/* <S.SliderItem src="/images/layout/banner01.png" /> */}456
-          </div>
-          <div>
-            {/* <S.SliderItem src="/images/layout/banner01.png" /> */}789
+            <S.SliderItem src="/images/layout/banner01.png" />
           </div>
         </Slider>
       </S.Wrapper>
