@@ -1,4 +1,5 @@
 import { getDate } from "../../../../commons/utils/utils";
+import Paginations01Container from "../../../commons/paginations/01/Paginations01.container";
 import * as S from "./BoardList.styles";
 import { BoardListPresenterProps } from "./BoardList.types";
 
@@ -32,6 +33,10 @@ export default function BoardListPresenter(props: BoardListPresenterProps) {
             </S.BoardTable>
           </S.BoardList>
           <S.BoardFooter>
+            <Paginations01Container
+              refetch={props.refetch}
+              count={props.count}
+            />
             <S.EditBtn onClick={props.onClickBoardNew}>
               <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
             </S.EditBtn>

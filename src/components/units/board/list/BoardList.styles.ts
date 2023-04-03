@@ -49,8 +49,10 @@ export const ThHeaderDate = styled.th`
 export const TBody = styled.tbody``;
 export const BoardFooter = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin-top: 40px;
+  margin-top: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const EditBtn = styled.button`
