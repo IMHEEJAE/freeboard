@@ -34,7 +34,7 @@ export default function BoardDetailContainer() {
   };
   const onClickLike = () => {
     if (typeof router.query.boardId !== "string") return;
-    likeBoard({
+    void likeBoard({
       variables: { boardId: router.query.boardId },
       refetchQueries: [
         {
@@ -47,7 +47,7 @@ export default function BoardDetailContainer() {
 
   const onClickDislike = () => {
     if (typeof router.query.boardId !== "string") return;
-    dislikeBoard({
+    void dislikeBoard({
       variables: { boardId: router.query.boardId },
       refetchQueries: [
         {

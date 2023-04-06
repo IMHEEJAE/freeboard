@@ -1,9 +1,8 @@
-import { MouseEvent } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
-
 export interface BoardCommentListPresenterProps {
-  data?: Pick<IQuery, "fetchBoardComments">;
-  onClickDelete: (event: MouseEvent<HTMLImageElement>) => void;
-  open: boolean;
-  handleCancel: (event: MouseEvent<HTMLImageElement>) => void;
+  data: Pick<IQuery, "fetchBoardComments"> | undefined;
+  onLoadMore: () => void;
+}
+export interface BoardCommentListItemPresenterProps {
+  el: any;
 }

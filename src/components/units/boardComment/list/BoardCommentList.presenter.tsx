@@ -1,42 +1,16 @@
-import * as S from "./BoardCommentList.styles";
-import { getDate } from "../../../../commons/utils/utils";
 import { BoardCommentListPresenterProps } from "./BoardCommentList.type";
+import BoardCommentListItemPresenter from "./BoardCommentListItem.presenter";
+import InfiniteScroll from "react-infinite-scroller";
 export default function BoardCommentListPresenter(
   props: BoardCommentListPresenterProps
 ) {
   return (
     <>
-      {props.data?.fetchBoardComments.map((el) => (
-        <S.ItemWrapper key={el._id}>
-          <S.FlexWrapper>
-            <S.Avatar src="/images/avatar.png" />
-            <S.MainWrapper>
-              <S.WriterWrapper>
-                <S.Writer>{el.writer}</S.Writer>
-                <S.Star value={el.rating} disabled />
-              </S.WriterWrapper>
-              <S.Contents>{el.contents}</S.Contents>
-            </S.MainWrapper>
-            <S.OptionWrapper>
-              {/* <S.UpdateIcon src="/images/icon/icon_update.png" /> */}
-              <S.DeleteIcon
-                id={el._id}
-                src="/images/icon/icon_delete.png"
-                onClick={props.onClickDelete}
-              />
-            </S.OptionWrapper>
-          </S.FlexWrapper>
-          <S.DateString>{getDate(el.createdAt)}</S.DateString>
-        </S.ItemWrapper>
-      ))}
-      {/* <S.PasswordModal
-        title="Title"
-        open={props.open}
-        onOk={handleOk}
-        handleCancel={props.handleCancel}
-      >
-        <p>zzz</p>
-      </S.PasswordModal> */}
+      <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
+        {props.data?.fetchBoardComments.map((el) => (
+          <BoardCommentListItemPresenter key={el._id} el={el} />
+        ))}
+      </InfiniteScroll>
     </>
   );
 }
