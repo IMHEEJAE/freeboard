@@ -1,8 +1,9 @@
 import { IQuery } from "../../../../commons/types/generated/types";
 export interface BoardCommentListPresenterProps {
-  data: Pick<IQuery, "fetchBoardComments"> | undefined;
+  data?: Pick<IQuery, "fetchBoardComments">;
   onLoadMore: () => void;
 }
-export interface BoardCommentListItemPresenterProps {
+
+export interface BoardCommentListPresenterItemProps {
   el: any;
 }
