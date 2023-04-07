@@ -12,6 +12,7 @@ import {
 import * as S from "./BoardCommentList.styles";
 import { getDate } from "../../../../commons/utils/utils";
 import { BoardCommentListPresenterItemProps } from "./BoardCommentList.type";
+import BoardCommentWriteContainer from "../write/BoardCommentWrite.container";
 export default function BoardCommentListItemPresenter(
   props: BoardCommentListPresenterItemProps
 ) {
@@ -19,6 +20,7 @@ export default function BoardCommentListItemPresenter(
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [myPassword, setMyPassword] = useState("");
   const [myBoardCommentId, setMyBoardCommentId] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
   const [deleteBoardComment] = useMutation<
     Pick<IMutation, "deleteBoardComment">,
     IMutationDeleteBoardCommentArgs
@@ -59,6 +61,9 @@ export default function BoardCommentListItemPresenter(
     setMyPassword(event.target.value);
   };
 
+  const onClickUpdate = () => {
+    setIsEdit(true);
+  };
   return (
     <>
       {isOpenDeleteModal && (
@@ -71,28 +76,40 @@ export default function BoardCommentListItemPresenter(
           <S.PasswordInput type="password" onChange={onChangeDeletePassword} />
         </S.PasswordModal>
       )}
+      {!isEdit && (
+        <S.ItemWrapper>
+          <S.FlexWrapper>
+            <S.Avatar src="/images/avatar.png" />
+            <S.MainWrapper>
+              <S.WriterWrapper>
+                <S.Writer>{props.el?.writer}</S.Writer>
+                <S.Star value={props.el?.rating} disabled />
+              </S.WriterWrapper>
+              <S.Contents>{props.el?.contents}</S.Contents>
+            </S.MainWrapper>
+            <S.OptionWrapper>
+              <S.UpdateIcon
+                src="/images/icon/icon_update.png"
+                onClick={onClickUpdate}
+              />
+              <S.DeleteIcon
+                id={props.el?._id}
+                src="/images/icon/icon_delete.png"
+                onClick={onClickDeleteModal}
+              />
+            </S.OptionWrapper>
+          </S.FlexWrapper>
+          <S.DateString>{getDate(props.el?.createdAt)}</S.DateString>
+        </S.ItemWrapper>
+      )}
 
-      <S.ItemWrapper>
-        <S.FlexWrapper>
-          <S.Avatar src="/images/avatar.png" />
-          <S.MainWrapper>
-            <S.WriterWrapper>
-              <S.Writer>{props.el?.writer}</S.Writer>
-              <S.Star value={props.el?.rating} disabled />
-            </S.WriterWrapper>
-            <S.Contents>{props.el?.contents}</S.Contents>
-          </S.MainWrapper>
-          <S.OptionWrapper>
-            {/* <S.UpdateIcon src="/images/icon/icon_update.png" /> */}
-            <S.DeleteIcon
-              id={props.el?._id}
-              src="/images/icon/icon_delete.png"
-              onClick={onClickDeleteModal}
-            />
-          </S.OptionWrapper>
-        </S.FlexWrapper>
-        <S.DateString>{getDate(props.el?.createdAt)}</S.DateString>
-      </S.ItemWrapper>
+      {isEdit && (
+        <BoardCommentWriteContainer
+          isEdit={true}
+          setIsEdit={setIsEdit}
+          el={props.el}
+        />
+      )}
     </>
   );
 }
