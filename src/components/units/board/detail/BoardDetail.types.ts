@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface BoardDetailPresenterProps {
@@ -6,4 +7,5 @@ export interface BoardDetailPresenterProps {
   onClickBoardEdit: () => void;
   onClickLike: () => void;
   onClickDislike: () => void;
+  onClickDelete: (event: MouseEvent<HTMLButtonElement>) => void;
 }

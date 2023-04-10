@@ -20,13 +20,15 @@ export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
             <S.HeaderRight>
               <Tooltip
                 placement="topRight"
-                title={`${props.data?.fetchBoard.youtubeUrl}`}
+                title={`${props.data?.fetchBoard.youtubeUrl ?? ""}`}
               >
                 <S.IconClip src="/images/icon/icon_clip.svg" />
               </Tooltip>
               <Tooltip
                 placement="topRight"
-                title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
+                title={`${props.data?.fetchBoard.boardAddress?.address ?? ""} ${
+                  props.data?.fetchBoard.boardAddress?.addressDetail ?? ""
+                }`}
               >
                 <S.IconLocation src="/images/icon/icon_location.svg" />
               </Tooltip>
@@ -52,8 +54,8 @@ export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
         <S.BtnWrap>
           <S.Button onClick={props.onClickBoardsList}>목록으로</S.Button>
           <S.Button onClick={props.onClickBoardEdit}>수정하기</S.Button>
-          {/* <S.Button onClick={props.onClickDelete}>삭제하기</S.Button> */}
-          <S.Button>삭제하기</S.Button>
+          <S.Button onClick={props.onClickDelete}>삭제하기</S.Button>
+          {/* <S.Button>삭제하기</S.Button> */}
         </S.BtnWrap>
       </S.Wrapper>
     </>

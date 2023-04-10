@@ -26,6 +26,7 @@ export const WriterWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 5px;
 `;
 export const Writer = styled.div`
   font-size: 20px;

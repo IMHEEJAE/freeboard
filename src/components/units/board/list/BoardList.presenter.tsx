@@ -8,6 +8,7 @@ export default function BoardListPresenter(props: BoardListPresenterProps) {
     <>
       <S.Wrapper>
         <S.Card>
+          <S.Header>graphql-api 게시판</S.Header>
           <S.BoardList>
             <S.BoardTable>
               <S.Thead>

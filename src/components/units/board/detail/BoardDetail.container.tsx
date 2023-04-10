@@ -1,9 +1,16 @@
 import BoardDetailPresenter from "./BoardDetail.presenter";
-import { FETCH_BOARD, LIKE_BOARD, DISLIKE_BOARD } from "./BoardDetail.queries";
+import {
+  FETCH_BOARD,
+  LIKE_BOARD,
+  DISLIKE_BOARD,
+  DELETE_BOARD,
+} from "./BoardDetail.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { MouseEvent } from "react";
 import {
   IMutation,
+  IMutationDeleteBoardArgs,
   IMutationDislikeBoardArgs,
   IMutationLikeBoardArgs,
   IQuery,
@@ -19,18 +26,41 @@ export default function BoardDetailContainer() {
     Pick<IMutation, "dislikeBoard">,
     IMutationDislikeBoardArgs
   >(DISLIKE_BOARD);
+  const [deleteBoard] = useMutation<
+    Pick<IMutation, "deleteBoard">,
+    IMutationDeleteBoardArgs
+  >(DELETE_BOARD);
   const router = useRouter();
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARD,
     {
-      variables: { boardId: router.query.boardId },
+      variables: { boardId: String(router.query.boardId) },
     }
   );
   const onClickBoardsList = () => {
     void router.push(`/boards`);
   };
   const onClickBoardEdit = () => {
+    if (typeof router.query.boardId !== "string") return;
     void router.push(`/boards/${router.query.boardId}/edit`);
+  };
+  const onClickDelete = async (event: MouseEvent<HTMLButtonElement>) => {
+    try {
+      await deleteBoard({
+        variables: { boardId: String(router.query.boardId) },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD,
+            variables: { boardId: router.query.boardId },
+          },
+        ],
+      });
+      void router.push(`/boards`);
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
+    }
   };
   const onClickLike = () => {
     if (typeof router.query.boardId !== "string") return;
@@ -65,6 +95,7 @@ export default function BoardDetailContainer() {
       onClickBoardEdit={onClickBoardEdit}
       onClickLike={onClickLike}
       onClickDislike={onClickDislike}
+      onClickDelete={onClickDelete}
     />
   );
 }

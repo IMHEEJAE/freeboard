@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Button } from "antd";
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -7,6 +8,11 @@ export const Wrapper = styled.div`
 export const Card = styled.div`
   padding: 80px 100px 100px 100px;
   box-shadow: 0px 0px 10px gray;
+`;
+export const Header = styled.h1`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 `;
 export const BoardList = styled.div``;
 export const BoardTable = styled.table`
@@ -55,18 +61,18 @@ export const BoardFooter = styled.div`
   align-items: center;
 `;
 
-export const EditBtn = styled.button`
+export const EditBtn = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #f2f2f2;
-  background: transparent;
+  height: 100%;
   padding: 10px 16px;
-  cursor: pointer;
   :hover {
-    background: #eee;
+    border-color: #5729ff !important;
+    color: #5729ff !important;
   }
 `;
+
 export const EditIcon = styled.img`
   width: 24px;
   height: 24px;

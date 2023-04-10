@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  height: 152px;
-  background-color: #f5f2fc;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 40px 0;
+  background-color: #f5f2fc;
 `;
 
 export const InnerWrapper = styled.div`
