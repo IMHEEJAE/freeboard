@@ -25,8 +25,8 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
   const [passwordError, setPasswordError] = useState("");
   const [title, setTitle] = useState("");
   const [titleError, setTitleError] = useState("");
-  const [content, setContent] = useState("");
-  const [contentError, setContentError] = useState("");
+  const [contents, setContents] = useState("");
+  const [contentsError, setContentsError] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
 
   const [zipcode, setZipcode] = useState("");
@@ -47,7 +47,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
     if (event.target.value !== "") {
       setNameError("");
     }
-    if (event.target.value && password && title && content) {
+    if (event.target.value && password && title && contents) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -59,7 +59,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
     if (event.target.value !== "") {
       setPasswordError("");
     }
-    if (name && event.target.value && title && content) {
+    if (name && event.target.value && title && contents) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -70,22 +70,36 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
     if (event.target.value !== "") {
       setTitleError("");
     }
-    if (name && password && event.target.value && content) {
+    if (name && password && event.target.value && contents) {
       setIsActive(true);
     } else {
       setIsActive(false);
     }
   };
-  const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(event.target.value);
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setContents(event.target.value);
     if (event.target.value !== "") {
-      setContentError("");
+      setContentsError("");
     }
     if (name && password && title && event.target.value) {
       setIsActive(true);
     } else {
       setIsActive(false);
     }
+  };
+  const onClickAddressSearch = () => {
+    setIsOpen((prev) => !prev);
+  };
+  const onCompleteAddressSearch = (data: any) => {
+    setAddress(data.address);
+    setZipcode(data.zonecode);
+    setIsOpen((prev) => !prev);
+  };
+  const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
+    setYoutubeUrl(event.target.value);
+  };
+  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddressDetail(event.target.value);
   };
   const handleSubmit = async () => {
     if (!name) {
@@ -97,10 +111,10 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
     if (!title) {
       setTitleError("제목을 입력해주세요.");
     }
-    if (!content) {
-      setContentError("내용을 입력해주세요.");
+    if (!contents) {
+      setContentsError("내용을 입력해주세요.");
     }
-    if (name && password && title && content) {
+    if (name && password && title && contents) {
       try {
         const result = await createBoard({
           variables: {
@@ -108,7 +122,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
               writer: name,
               password,
               title,
-              contents: content,
+              contents,
               youtubeUrl,
               boardAddress: {
                 zipcode,
@@ -134,7 +148,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
   const hanldeUpdate = async () => {
     if (
       !title &&
-      !content &&
+      !contents &&
       !youtubeUrl &&
       !address &&
       !addressDetail &&
@@ -150,7 +164,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
 
     const updateBoardInput: IUpdateBoardInput = {};
     if (title) updateBoardInput.title = title;
-    if (content) updateBoardInput.content = content;
+    if (contents) updateBoardInput.contents = contents;
     if (youtubeUrl) updateBoardInput.youtubeUrl = youtubeUrl;
     if (zipcode || address || addressDetail) {
       updateBoardInput.boardAddress = {};
@@ -160,10 +174,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
         updateBoardInput.boardAddress.addressDetail = addressDetail;
     }
     try {
-      if (typeof router.query.boardId !== "string") {
-        alert("주소없다아아");
-        return;
-      }
+      if (typeof router.query.boardId !== "string") return;
       const result = await updateBoard({
         variables: {
           boardId: router.query.boardId,
@@ -183,31 +194,18 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
       }
     }
   };
-  const onClickAddressSearch = () => {
-    setIsOpen(true);
-  };
-  const onCompleteAddressSearch = (data: any) => {
-    setAddress(data.address);
-    setZipcode(data.zonecode);
-    setIsOpen(false);
-  };
-  const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
-    setYoutubeUrl(event.target.value);
-  };
-  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
-    setAddressDetail(event.target.value);
-  };
+
   return (
     <BoardWritePresenter
       isActive={isActive}
       nameError={nameError}
       passwordError={passwordError}
       titleError={titleError}
-      contentError={contentError}
+      contentsError={contentsError}
       onChangeName={onChangeName}
       onChangePassword={onChangePassword}
       onChangeTitle={onChangeTitle}
-      onChangeContent={onChangeContent}
+      onChangeContents={onChangeContents}
       handleSubmit={handleSubmit}
       hanldeUpdate={hanldeUpdate}
       isEdit={props.isEdit}

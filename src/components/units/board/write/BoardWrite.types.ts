@@ -6,11 +6,11 @@ export interface BoardWritePresenterProps {
   nameError: string;
   passwordError: string;
   titleError: string;
-  contentError: string;
+  contentsError: string;
   onChangeName: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeContent: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   handleSubmit: () => void;
   onChangeYoutubeUrl: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -27,7 +27,7 @@ export interface BoardWritePresenterProps {
 }
 export interface IUpdateBoardInput {
   title?: string;
-  content?: string;
+  contents?: string;
   youtubeUrl?: string;
   boardAddress?: {
     zipcode?: string;

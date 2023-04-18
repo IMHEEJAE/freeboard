@@ -13,6 +13,7 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
               placeholder="이름을 적어주세요."
               onChange={props.onChangeName}
               defaultValue={props.data?.fetchBoard.writer ?? ""}
+              readOnly={!!props.data?.fetchBoard.writer}
             />
             <S.ErrorMessage>{props.nameError}</S.ErrorMessage>
           </S.WriterBox>
@@ -40,10 +41,10 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
           <S.Label>내용</S.Label>
           <S.Textarea
             placeholder="내용을 작성해주세요."
-            onChange={props.onChangeContent}
+            onChange={props.onChangeContents}
             defaultValue={props.data?.fetchBoard.contents}
           />
-          <S.ErrorMessage>{props.contentError}</S.ErrorMessage>
+          <S.ErrorMessage>{props.contentsError}</S.ErrorMessage>
         </S.InputWrap>
         <S.InputWrap>
           <S.Label>주소</S.Label>
