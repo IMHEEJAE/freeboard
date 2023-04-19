@@ -14,16 +14,18 @@ export interface BoardWritePresenterProps {
   handleSubmit: () => void;
   onChangeYoutubeUrl: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeFileUrls: (fileUrls: string, index: number) => void;
   hanldeUpdate: () => void;
+  // handleCancel: () => void;
   isEdit: boolean;
   data?: Pick<IQuery, "fetchBoard">;
   onClickAddressSearch: () => void;
   isOpen: boolean;
   onCompleteAddressSearch: (data: any) => void;
-
   zipcode: string;
   address: string;
   addressDetail: string;
+  fileUrls: string[];
 }
 export interface IUpdateBoardInput {
   title?: string;
@@ -34,6 +36,7 @@ export interface IUpdateBoardInput {
     address?: string;
     addressDetail?: string;
   };
+  images?: string[];
 }
 export interface ISubmitBtnProps {
   isActive: boolean;

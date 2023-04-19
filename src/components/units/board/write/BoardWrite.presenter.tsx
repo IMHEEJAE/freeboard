@@ -1,5 +1,7 @@
+import Upload01Container from "../../../commons/uploads/Upload01.container";
 import * as S from "./BoardWrite.styles";
 import { BoardWritePresenterProps } from "./BoardWrite.types";
+import { v4 as uuidv4 } from "uuid";
 export default function BoardWritePresenter(props: BoardWritePresenterProps) {
   return (
     <>
@@ -53,10 +55,7 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
               type="text"
               placeholder="07250"
               readOnly
-              value={
-                props.zipcode ||
-                (props.data?.fetchBoard.boardAddress?.zipcode ?? "")
-              }
+              value={props.zipcode}
             />
             <S.ZipCodeBtn onClick={props.onClickAddressSearch}>
               우편번호 검색
@@ -88,9 +87,14 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
         <S.InputWrapTop>
           <S.Label>사진첨부</S.Label>
           <S.UploadWrap>
-            <S.UploadBox>+</S.UploadBox>
-            <S.UploadBox>+</S.UploadBox>
-            <S.UploadBox>+</S.UploadBox>
+            {props.fileUrls.map((el, index) => (
+              <Upload01Container
+                key={uuidv4()}
+                index={index}
+                fileUrl={el}
+                onChangeFileUrls={props.onChangeFileUrls}
+              />
+            ))}
           </S.UploadWrap>
         </S.InputWrapTop>
         <S.RadioWrap>
@@ -110,7 +114,7 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
         </S.SubmitWrap>
       </S.Wrapper>
       {props.isOpen && (
-        <S.ZipModal visible={true}>
+        <S.ZipModal visible={true} onCancel={props.onClickAddressSearch}>
           <S.PostcodeEmbed onComplete={props.onCompleteAddressSearch} />
         </S.ZipModal>
       )}

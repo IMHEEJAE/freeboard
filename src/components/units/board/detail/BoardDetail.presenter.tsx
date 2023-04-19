@@ -37,6 +37,16 @@ export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
           <S.Body>
             <S.Title>{props.data?.fetchBoard.title}</S.Title>
             <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
+            <S.ImageWrapper>
+              {props.data?.fetchBoard.images
+                ?.filter((el: string) => el)
+                .map((el: string) => (
+                  <S.Image
+                    key={el}
+                    src={`https://storage.googleapis.com/${el}`}
+                  />
+                ))}
+            </S.ImageWrapper>
             <S.CountWrap>
               <S.LikeWrap>
                 <S.LikeIcon onClick={props.onClickLike} />

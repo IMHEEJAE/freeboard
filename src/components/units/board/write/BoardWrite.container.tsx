@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import {
   IMutation,
   IMutationCreateBoardArgs,
@@ -32,6 +32,8 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
+
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
   const [createBoard] = useMutation<
     Pick<IMutation, "createBoard">,
@@ -90,6 +92,9 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
   const onClickAddressSearch = () => {
     setIsOpen((prev) => !prev);
   };
+  // const handleCancel = () => {
+  //   setIsOpen((prev) => !prev);
+  // };
   const onCompleteAddressSearch = (data: any) => {
     setAddress(data.address);
     setZipcode(data.zonecode);
@@ -101,6 +106,18 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
   const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
     setAddressDetail(event.target.value);
   };
+
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  };
+  useEffect(() => {
+    if (props.data?.fetchBoard.images?.length) {
+      setFileUrls([...props.data?.fetchBoard.images]);
+    }
+  }, [props.data]);
+
   const handleSubmit = async () => {
     if (!name) {
       setNameError("작성자를 입력해주세요.");
@@ -129,30 +146,34 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
                 address,
                 addressDetail,
               },
+              images: [...fileUrls],
             },
           },
         });
         if (typeof result.data?.createBoard._id !== "string") {
-          alert("주소없음.");
+          alert("오류오류!!");
           return;
         }
         console.log(result.data?.createBoard._id);
         void router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error) {
-        if (error instanceof Error) {
-          Modal.error({ content: error.message });
-        }
+        if (error instanceof Error) Modal.error({ content: error.message });
       }
     }
   };
   const hanldeUpdate = async () => {
+    const currentFiles = JSON.stringify(fileUrls);
+    const defaultFiles = JSON.stringify(props.data?.fetchBoard.images);
+    const isChangedFiles = currentFiles !== defaultFiles;
+
     if (
       !title &&
       !contents &&
       !youtubeUrl &&
       !address &&
       !addressDetail &&
-      !zipcode
+      !zipcode &&
+      !isChangedFiles
     ) {
       alert("수정한 내용이 없습니다.");
       return;
@@ -173,6 +194,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
       if (addressDetail)
         updateBoardInput.boardAddress.addressDetail = addressDetail;
     }
+    if (isChangedFiles) updateBoardInput.images = fileUrls;
     try {
       if (typeof router.query.boardId !== "string") return;
       const result = await updateBoard({
@@ -183,15 +205,12 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
         },
       });
       if (typeof result.data?.updateBoard._id !== "string") {
-        alert("주소없음");
+        alert("일시적인 오류가 있습니다. 다시 시도해 주세요.");
         return;
       }
-      console.log(result);
       void router.push(`/boards/${result.data?.updateBoard._id}`);
     } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-      }
+      if (error instanceof Error) alert(error.message);
     }
   };
 
@@ -208,17 +227,19 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
       onChangeContents={onChangeContents}
       handleSubmit={handleSubmit}
       hanldeUpdate={hanldeUpdate}
+      // handleCancel={handleCancel}
       isEdit={props.isEdit}
       data={props.data}
-      // 모달
       onClickAddressSearch={onClickAddressSearch}
       isOpen={isOpen}
       onCompleteAddressSearch={onCompleteAddressSearch}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
       onChangeAddressDetail={onChangeAddressDetail}
+      onChangeFileUrls={onChangeFileUrls}
       zipcode={zipcode}
       address={address}
       addressDetail={addressDetail}
+      fileUrls={fileUrls}
     />
   );
 }

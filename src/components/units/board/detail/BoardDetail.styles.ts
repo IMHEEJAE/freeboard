@@ -102,3 +102,13 @@ export const DisLikeCount = styled.div`
   font-weight: bold;
   color: #828282;
 `;
+export const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Image = styled.img`
+  width: 996px;
+  height: 480px;
+  margin-bottom: 30px;
+`;

@@ -101,14 +101,14 @@ export const UploadWrap = styled.div`
   display: flex;
 `;
 export const UploadBox = styled.div`
-  width: 78px;
-  height: 78px;
-  background-color: #bdbdbd;
-  margin-right: 24px;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // width: 78px;
+  // height: 78px;
+  // background-color: #bdbdbd;
+  // margin-right: 24px;
+  // border: none;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
 `;
 export const RadioWrap = styled.div`
   width: 100%;
