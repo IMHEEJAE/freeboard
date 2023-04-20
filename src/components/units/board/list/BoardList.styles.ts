@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button } from "antd";
+import { Button, Input } from "antd";
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -77,4 +77,17 @@ export const EditIcon = styled.img`
   width: 24px;
   height: 24px;
   margin-right: 4px;
+`;
+export const SearchWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+`;
+export const SearchBar = styled(Input)`
+  width: 200px;
+  :hover,
+  :focus {
+    border-color: #5729ff !important;
+    box-shadow: none !important;
+  }
 `;
