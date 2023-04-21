@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { Button, Input } from "antd";
+import { Button } from "antd";
+import { IMatched } from "./BoardList.types";
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -78,16 +79,8 @@ export const EditIcon = styled.img`
   height: 24px;
   margin-right: 4px;
 `;
-export const SearchWrap = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-`;
-export const SearchBar = styled(Input)`
-  width: 200px;
-  :hover,
-  :focus {
-    border-color: #5729ff !important;
-    box-shadow: none !important;
-  }
+
+export const StrongText = styled.span`
+  color: ${(props: IMatched) => (props.isMatched ? "#5729ff" : "#000")};
+  font-weight: ${(props: IMatched) => (props.isMatched ? "bold" : "normal")};
 `;

@@ -1,21 +1,21 @@
 import { getDate } from "../../../../commons/utils/utils";
 import Paginations01Container from "../../../commons/paginations/01/Paginations01.container";
+import Search01Container from "../../../commons/search/01/Search01.container";
 import * as S from "./BoardList.styles";
-import { BoardListPresenterProps } from "./BoardList.types";
+import { IBoardListPresenterProps } from "./BoardList.types";
 import { v4 as uuidv4 } from "uuid";
 
-export default function BoardListPresenter(props: BoardListPresenterProps) {
+export default function BoardListPresenter(props: IBoardListPresenterProps) {
   return (
     <>
       <S.Wrapper>
         <S.Card>
           <S.Header>graphql-api 게시판</S.Header>
-          <S.SearchWrap>
-            <S.SearchBar
-              onChange={props.onChangeSearch}
-              placeholder="제목 검색"
-            />
-          </S.SearchWrap>
+          <Search01Container
+            refetch={props.refetch}
+            refetchBoardsCount={props.refetchBoardsCount}
+            onChangeKeyword={props.onChangeKeyword}
+          />
           <S.BoardList>
             <S.BoardTable>
               <S.Thead>
@@ -36,16 +36,12 @@ export default function BoardListPresenter(props: BoardListPresenterProps) {
                         .replaceAll(props.keyword, `!@#$%${props.keyword}!@#$%`)
                         .split("!@#$%")
                         .map((el: any) => (
-                          <span
+                          <S.StrongText
                             key={uuidv4()}
-                            style={{
-                              color: el === props.keyword ? "#5729ff" : "#000",
-                              fontWeight:
-                                el === props.keyword ? "bold" : "normal",
-                            }}
+                            isMatched={props.keyword === el}
                           >
                             {el}
-                          </span>
+                          </S.StrongText>
                         ))}
                     </S.ThTitle>
                     <S.Th>{el.writer}</S.Th>

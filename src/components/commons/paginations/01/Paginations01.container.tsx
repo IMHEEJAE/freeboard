@@ -27,6 +27,7 @@ export default function Paginations01Container(props: IPaginations01Props) {
       void props.refetch({ page: startPage + 10 });
     }
   };
+  
   return (
     <>
       <Paginations01Presenter
