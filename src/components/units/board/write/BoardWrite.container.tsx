@@ -18,7 +18,7 @@ export default function BoardWriteContainer(props: BoardWriteContainerProps) {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+ 
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
   const [password, setPassword] = useState("");

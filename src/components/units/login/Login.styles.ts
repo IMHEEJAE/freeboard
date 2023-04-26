@@ -83,7 +83,7 @@ export const CheckBoxLogin = styled(Checkbox)`
   color: #fff;
   cursor: initial;
   user-select: none;
-  margin: 20px 0 40px;
+  margin: 20px 0;
   .ant-checkbox-inner {
     border-radius: 50%;
     background-color: transparent;
@@ -106,6 +106,7 @@ export const SubmitButton = styled(Button)`
   height: 64px;
   border-radius: 16px;
   border: none;
+  margin-top: 20px;
   :hover {
     background: #291473 !important;
     border-color: #291473 !important;
@@ -177,7 +178,7 @@ export const RegistInputs = styled(Input)`
   height: 64px;
   background: transparent;
   color: #fff;
-  margin: 20px 0;
+  margin: 20px 0 10px;
   :hover,
   :focus {
     border-color: #5729ff !important;
@@ -190,4 +191,9 @@ export const RegistInputs = styled(Input)`
 export const RegistLabel = styled.label`
   color: #fff;
   font-size: 14px;
+`;
+export const ErrorMessage = styled.div`
+  font-size: 12px;
+  color: red;
+  margin-bottom: 10px;
 `;
