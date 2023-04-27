@@ -10,10 +10,23 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
             <S.LoginInnerWrap>
               <S.HomeIcon onClick={props.onClickHome} />
               <S.Logo>로그인</S.Logo>
-              <S.LoginEmail placeholder="이메일을 입력해주세요." />
-              <S.LoginPassword placeholder="비밀번호를 입력해주세요." />
+              <S.LoginEmail
+                id="email"
+                type="text"
+                onChange={props.onChangeInputs}
+                placeholder="이메일을 입력해주세요."
+                autoComplete="off"
+              />
+              <S.LoginPassword
+                id="password"
+                type="password"
+                onChange={props.onChangeInputs}
+                placeholder="비밀번호를 입력해주세요."
+              />
               <S.CheckBoxLogin>자동로그인</S.CheckBoxLogin>
-              <S.SubmitButton>로그인하기</S.SubmitButton>
+              <S.SubmitButton onClick={props.onClickSubmit}>
+                로그인하기
+              </S.SubmitButton>
               <S.BottomWrap>
                 <S.Line></S.Line>
                 <S.FindWrap>
@@ -27,7 +40,7 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
             </S.LoginInnerWrap>
           ) : (
             <S.RegistInnerWrap>
-              <S.LoginButton onClick={props.onClickScreen} />
+              <S.LoginButton />
               <S.Logo>회원가입</S.Logo>
               <S.RegistForm>
                 <S.RegistLabel>이메일 </S.RegistLabel>
@@ -36,6 +49,7 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
                   type="text"
                   placeholder="이메일을 입력해주세요."
                   onChange={props.onChangeInputs}
+                  autoComplete="off"
                 />
                 <S.ErrorMessage>{props.errorEmail}</S.ErrorMessage>
                 <S.RegistLabel>이름 </S.RegistLabel>
@@ -44,6 +58,7 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
                   type="text"
                   placeholder="이름을 입력해주세요."
                   onChange={props.onChangeInputs}
+                  autoComplete="off"
                 />
                 <S.ErrorMessage>{props.errorName}</S.ErrorMessage>
                 <S.RegistLabel>비밀번호 </S.RegistLabel>

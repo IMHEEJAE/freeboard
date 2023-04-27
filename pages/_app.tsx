@@ -5,27 +5,35 @@ import { AppProps } from "next/app";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import ApolloSetting from "../src/components/commons/apollo";
 import Layout from "../src/components/commons/layout";
-import { useRouter } from "next/router";
-import Login from "./login";
-const IS_LOGIN = ["/login"];
-function App({ Component }: AppProps) {
-  const router = useRouter();
+// import { useRouter } from "next/router";
+// import Login from "./login";
+import { RecoilRoot } from "recoil";
 
-  const isLogin = IS_LOGIN.includes(router.asPath);
+// const IS_LOGIN = ["/login"];
+
+function App({ Component }: AppProps) {
+  // const router = useRouter();
+
+  // const isLogin = IS_LOGIN.includes(router.asPath);
 
   return (
-    <ApolloSetting>
-      <>
-        <Global styles={globalStyles} />
-        {isLogin ? (
-          <Login />
-        ) : (
+    <RecoilRoot>
+      <ApolloSetting>
+        <>
+          <Global styles={globalStyles} />
+          {/* {isLogin ? (
+            <Login />
+          ) : (
+            <Layout>
+              <Component />
+            </Layout>
+          )} */}
           <Layout>
             <Component />
           </Layout>
-        )}
-      </>
-    </ApolloSetting>
+        </>
+      </ApolloSetting>
+    </RecoilRoot>
   );
 }
 

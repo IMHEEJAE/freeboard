@@ -5,9 +5,14 @@ export interface ILoginPresenterProps {
   onClickRegist: () => void;
   onChangePasswordConfirm: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeInputs: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClickSubmit: () => void;
   isRegist: boolean;
   errorEmail: String;
   errorName: String;
   errorPassword: String;
   errorPasswordConfirm: String;
+}
+
+export interface ILoginBtnProps {
+  isActive: boolean;
 }

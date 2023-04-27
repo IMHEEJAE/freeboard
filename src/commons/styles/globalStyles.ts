@@ -5,7 +5,12 @@ export const globalStyles = css`
     box-sizing: border-box;
     // font-family: myfont;
   }
-
+  ul,
+  li,
+  ol {
+    margin: 0;
+    list-style: none;
+  }
   // @font-face {
   //   font-family: "myfont";
   //   src: url("/fonts/scifibit.ttf");

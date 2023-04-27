@@ -109,7 +109,7 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
             onClick={props.isEdit ? props.hanldeUpdate : props.handleSubmit}
             isActive={props.isEdit ? true : props.isActive}
           >
-            {props.isEdit ? "수정하기" : "등록하기"}
+            {props.isEdit ? "수정하기" : "등록하기"} 
           </S.SubmitBtn>
         </S.SubmitWrap>
       </S.Wrapper>
