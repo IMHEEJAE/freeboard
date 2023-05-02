@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   background-position: center;
   margin: 0 auto;
 `;
-
+ 
 export const Inner = styled.div`
   background: #000;
   width: 100%;
