@@ -1,5 +1,12 @@
 import { ChangeEvent } from "react";
+
+export interface ILoginContainerProps {
+  isEdit: boolean;
+}
+
 export interface ILoginPresenterProps {
+  isActive: boolean;
+  isEdit: boolean;
   onClickHome: () => void;
   onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;

@@ -23,7 +23,10 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
               placeholder="비밀번호를 입력해주세요."
             />
             <S.CheckBoxLogin>자동로그인</S.CheckBoxLogin>
-            <S.SubmitButton onClick={props.onClickSubmit}>
+            <S.SubmitButton
+              onClick={props.onClickSubmit}
+              isActive={props.isEdit ? true : props.isActive}
+            >
               로그인하기
             </S.SubmitButton>
             <S.BottomWrap>

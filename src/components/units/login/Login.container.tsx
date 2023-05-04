@@ -10,10 +10,11 @@ import {
 import { Modal } from "antd";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
+import { ILoginContainerProps } from "./Login.types";
 
-export default function LoginContainer() {
+export default function LoginContainer(props: ILoginContainerProps) {
   const router = useRouter();
-
+  const [isActive, setIsActive] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
@@ -38,15 +39,29 @@ export default function LoginContainer() {
     if (event.target.value !== "") {
       setErrorEmail("");
     }
+
+    if (event.target.value && password) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
     if (event.target.value !== "") {
       setErrorPassword("");
     }
+    if (email && event.target.value) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
 
   const onClickSubmit = async () => {
+    if (!email || !password) {
+      return Modal.error({ content: "정보를 입력해주세요." });
+    }
     try {
       const loginResult = await loginUser({
         variables: {
@@ -60,7 +75,7 @@ export default function LoginContainer() {
         return;
       }
       setAccessToken(accessToken);
-      void router.push("/test");
+      void router.push("/");
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
@@ -69,6 +84,8 @@ export default function LoginContainer() {
   return (
     <>
       <LoginPresenter
+        isActive={isActive}
+        isEdit={props.isEdit}
         onClickHome={onClickHome}
         onChangeEmail={onChangeEmail}
         onChangePassword={onChangePassword}

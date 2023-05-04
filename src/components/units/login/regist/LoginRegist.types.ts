@@ -1,6 +1,11 @@
 import { ChangeEvent } from "react";
 
+export interface ILoginRegistContainerProps {
+  isEdit: boolean;
+}
 export interface ILoginRegistPresenterProps {
+  isActive: boolean;
+  isEdit: boolean;
   errorEmail: String;
   errorName: String;
   errorPassword: String;
@@ -11,4 +16,7 @@ export interface ILoginRegistPresenterProps {
   onChangePasswordConfirm: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickLoginPage: () => void;
   onClickRegist: () => void;
+}
+export interface ILoginRegistBtnProps {
+  isActive: boolean;
 }

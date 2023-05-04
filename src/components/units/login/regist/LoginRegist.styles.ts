@@ -1,6 +1,7 @@
 import { CloseOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Button, Input } from "antd";
+import { ILoginRegistBtnProps } from "./LoginRegist.types";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -30,14 +31,18 @@ export const Logo = styled.h2`
 `;
 
 export const SubmitButton = styled(Button)`
-  background: #4f4f4f;
+  // background: #4f4f4f;
+  background: ${(props: ILoginRegistBtnProps) =>
+    props.isActive ? "#291473" : "#4f4f4f"};
   height: 64px;
   border-radius: 16px;
   border: none;
   margin-top: 20px;
   :hover {
-    background: #291473 !important;
-    border-color: #291473 !important;
+    background: ${(props: ILoginRegistBtnProps) =>
+      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
+    border-color: ${(props: ILoginRegistBtnProps) =>
+      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
   }
   span {
     color: #bdbdbd;

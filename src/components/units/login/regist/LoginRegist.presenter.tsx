@@ -47,7 +47,10 @@ export default function LoginRegistPresenter(
               <S.ErrorMessage>{props.errorPasswordConfirm}</S.ErrorMessage>
             </S.RegistForm>
 
-            <S.SubmitButton onClick={props.onClickRegist}>
+            <S.SubmitButton
+              onClick={props.onClickRegist}
+              isActive={props.isEdit ? true : props.isActive}
+            >
               회원가입하기
             </S.SubmitButton>
           </S.RegistInnerWrap>

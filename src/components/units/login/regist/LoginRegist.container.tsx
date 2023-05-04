@@ -9,8 +9,12 @@ import {
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 
-export default function LoginRegistContainer() {
+import { ILoginRegistContainerProps } from "./LoginRegist.types";
+export default function LoginRegistContainer(
+  props: ILoginRegistContainerProps
+) {
   const router = useRouter();
+  const [isActive, setIsActive] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -32,21 +36,33 @@ export default function LoginRegistContainer() {
 
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-
     if (event.target.value !== "") {
       setErrorEmail("");
     }
+    // 이메일 유효성 검사
+    const emailRegex =
+      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    setEmail(event.target.value);
+    if (!emailRegex.test(event.target.value)) {
+      setErrorEmail("이메일 형식이 틀렸습니다.");
+    }
+
     // 회원가입 버튼 active
-    // if (event.target.value && name && password && passwordConfirm) {
-    //   setIsActive(true);/
-    // } else {
-    //   setIsActive(false);
-    // }
+    if (event.target.value && name && password && passwordConfirm) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
     if (event.target.value !== "") {
       setErrorName("");
+    }
+    if (email && event.target.value && password && passwordConfirm) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
     }
   };
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
@@ -54,11 +70,21 @@ export default function LoginRegistContainer() {
     if (event.target.value !== "") {
       setErrorPassword("");
     }
+    if (email && name && event.target.value && passwordConfirm) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
   const onChangePasswordConfirm = (event: ChangeEvent<HTMLInputElement>) => {
     setPasswordConfirm(event.target.value);
     if (event.target.value !== "") {
       setErrorPasswordConfirm("");
+    }
+    if (email && name && password && event.target.value) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
     }
   };
 
@@ -104,6 +130,8 @@ export default function LoginRegistContainer() {
   return (
     <>
       <LoginRegistPresenter
+        isActive={isActive}
+        isEdit={props.isEdit}
         errorEmail={errorEmail}
         errorName={errorName}
         errorPassword={errorPassword}
