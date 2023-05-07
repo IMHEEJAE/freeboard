@@ -5,8 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function LayoutBannerPresenter() {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
+    navigation: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -15,15 +16,19 @@ export default function LayoutBannerPresenter() {
     <>
       <S.Wrapper>
         <Slider {...settings}>
-          <div>
-            <S.SliderItem src="/images/layout/banner01.png" />
-          </div>
-          <div> 
-            <S.SliderItem src="/images/layout/banner01.png" />
-          </div>
-          <div>
-            <S.SliderItem src="/images/layout/banner01.png" />
-          </div>
+          <S.SliderItem>
+            <S.SliderFilter>
+              <S.SliderTitle>타이틀 테스트111</S.SliderTitle>
+              <S.SliderDesc>설명 테스트 설명 테스트111</S.SliderDesc>
+            </S.SliderFilter>
+          </S.SliderItem>
+
+          <S.SliderItem>
+            <S.SliderFilter>
+              <S.SliderTitle>타이틀 테스트22222</S.SliderTitle>
+              <S.SliderDesc>설명 테스트 설명 테스트222222</S.SliderDesc>
+            </S.SliderFilter>
+          </S.SliderItem>
         </Slider>
       </S.Wrapper>
     </>

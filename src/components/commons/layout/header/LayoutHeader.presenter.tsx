@@ -2,7 +2,8 @@ import { gql, useQuery } from "@apollo/client";
 import * as S from "./LayoutHeader.styles";
 import { ILayoutHeaderProps } from "./LayoutHeader.types";
 import { IQuery } from "../../../../commons/types/generated/types";
-import { UserOutlined } from "@ant-design/icons";
+import { CaretDownOutlined, UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
 const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
     fetchUserLoggedIn {
@@ -22,9 +23,11 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
         <S.InnerWrapper>
           <S.InnerLogo onClick={props.onClickLogo}>Logo</S.InnerLogo>
           {data?.fetchUserLoggedIn.name ? (
-            <>
-              <UserOutlined /> <>{data?.fetchUserLoggedIn.name}</>
-            </>
+            <S.ProfileWrap>
+              <Avatar icon={<UserOutlined />} />
+              {/* <S.ProfileName>{data?.fetchUserLoggedIn.name}</S.ProfileName> */}
+              <S.IconDown />
+            </S.ProfileWrap>
           ) : (
             <div>
               <S.InnerButton onClick={props.onClickLogin}>로그인</S.InnerButton>

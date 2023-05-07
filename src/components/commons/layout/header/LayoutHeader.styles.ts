@@ -1,3 +1,4 @@
+import { CaretDownOutlined, UserOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -10,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const InnerWrapper = styled.div`
-  width: 1200px;
+  width: 1000px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -31,4 +32,12 @@ export const InnerButton = styled.span`
   margin: 10px;
   color: #5729ff;
   cursor: pointer;
+`;
+export const ProfileWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const IconDown = styled(CaretDownOutlined)`
+  padding-left: 20px;
 `;
