@@ -6,12 +6,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyATxbuGOwmi0pmsthc40DQwOyiq7haaLeI",
-  authDomain: "heejae-react-class.firebaseapp.com",
-  projectId: "heejae-react-class",
-  storageBucket: "heejae-react-class.appspot.com",
-  messagingSenderId: "946565987804",
-  appId: "1:946565987804:web:8d936566eaedce40bfe319",
+  apiKey: "AIzaSyDwHmihzFh6c2u1UurVxphxu3oXFcHGcOI",
+  authDomain: "heejae-firebase.firebaseapp.com",
+  projectId: "heejae-firebase",
+  storageBucket: "heejae-firebase.appspot.com",
+  messagingSenderId: "959611404194",
+  appId: "1:959611404194:web:98ce2083434cdfa2a1fcfb",
 };
 
 // Initialize Firebase

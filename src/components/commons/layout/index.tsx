@@ -36,7 +36,7 @@ export default function Layout(props: ILayoutProps) {
       {!isHiddenBanner && <LayoutBannerContainer />}
       {!isHiddenNavigation && <LayoutNavigationContainer />}
       <Body>{props.children}</Body>
-      {!isHiddenFooter && <LayoutFooterContainer />}
+      {/* {!isHiddenFooter && <LayoutFooterContainer />} */}
     </>
   );
 }

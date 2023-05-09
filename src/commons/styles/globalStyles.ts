@@ -15,4 +15,9 @@ export const globalStyles = css`
   //   font-family: "myfont";
   //   src: url("/fonts/scifibit.ttf");
   // }
+  .ant-dropdown-menu {
+    .ant-dropdown-menu-item {
+      padding: 0 !important;
+    }
+  }
 `;
