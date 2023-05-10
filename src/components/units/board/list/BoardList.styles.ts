@@ -10,7 +10,7 @@ export const Card = styled.div`
   padding: 80px 100px 100px 100px;
   box-shadow: 0px 0px 10px gray;
 `;
-export const Header = styled.h1`
+export const Header = styled.h2`
   display: flex;
   justify-content: center;
   margin-bottom: 30px;

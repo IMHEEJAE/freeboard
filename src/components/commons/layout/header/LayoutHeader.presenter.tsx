@@ -61,7 +61,6 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
       <S.Wrapper>
         <S.InnerWrapper>
           <S.InnerLogo onClick={props.onClickLogo}>Logo</S.InnerLogo>
-          {/* 작업중임시 */}
           {data?.fetchUserLoggedIn.name ? (
             <S.ProfileWrap>
               <S.ProfileAvatar icon={<S.UserProfile />} />
