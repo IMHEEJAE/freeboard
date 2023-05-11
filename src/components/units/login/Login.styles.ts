@@ -48,9 +48,9 @@ export const Logo = styled.h2`
 `;
 export const LoginEmail = styled(Input)`
   width: 100%;
+  height: 64px;
   border: 1px solid #ffffff;
   border-radius: 16px;
-  height: 64px;
   background: transparent;
   color: #fff;
   :hover,
@@ -63,23 +63,6 @@ export const LoginEmail = styled(Input)`
   }
 `;
 
-export const LoginPassword = styled(Input)`
-  width: 100%;
-  border: 1px solid #ffffff;
-  border-radius: 16px;
-  height: 64px;
-  background: transparent;
-  color: #fff;
-  margin-top: 20px;
-  :hover,
-  :focus {
-    border-color: #5729ff !important;
-    box-shadow: none !important;
-  }
-  ::-webkit-input-placeholder {
-    color: #fff;
-  }
-`;
 export const CheckBoxLogin = styled(Checkbox)`
   color: #fff;
   cursor: initial;
