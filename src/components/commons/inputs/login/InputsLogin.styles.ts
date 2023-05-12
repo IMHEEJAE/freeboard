@@ -1,4 +1,4 @@
-// import { Input } from "antd";
+import { Input } from "antd";
 import styled from "@emotion/styled";
 
 // export const InputsLogin = styled(Input)`
@@ -20,7 +20,6 @@ import styled from "@emotion/styled";
 //     margin-top: 20px;
 //   }
 // `;
-
 export const InputsLogin = styled.input`
   width: 100%;
   height: 64px;
@@ -39,5 +38,8 @@ export const InputsLogin = styled.input`
   }
   ::-webkit-input-placeholder {
     color: #fff;
+  }
+  & + input {
+    margin-top: 20px;
   }
 `;

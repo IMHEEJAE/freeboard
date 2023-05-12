@@ -1,19 +1,21 @@
-import { ChangeEvent } from "react";
-
 export interface ILoginContainerProps {
   isEdit: boolean;
 }
-
+export interface IFormData {
+  email: string;
+  password: string;
+}
 export interface ILoginPresenterProps {
-  isActive: boolean;
+  [x: string]: any;
+  // isActive: boolean;
   isEdit: boolean;
   onClickHome: () => void;
-  onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
+  // onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
+  // onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickRegistPage: () => void;
-  onClickSubmit: () => void;
-  errorEmail: String;
-  errorPassword: String;
+  onClickSubmit: (data: IFormData) => Promise<void>;
+  // errorEmail: String;
+  // errorPassword: String;
 }
 
 export interface ILoginBtnProps {

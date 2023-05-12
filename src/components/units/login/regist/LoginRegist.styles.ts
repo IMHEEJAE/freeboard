@@ -75,7 +75,7 @@ export const RegistInputs = styled(Input)`
   height: 64px;
   background: transparent;
   color: #fff;
-  margin: 20px 0 10px;
+  // margin: 20px 0 10px;
   :hover,
   :focus {
     border-color: #5729ff !important;
@@ -88,6 +88,8 @@ export const RegistInputs = styled(Input)`
 export const RegistLabel = styled.label`
   color: #fff;
   font-size: 14px;
+  padding: 20px 0 10px;
+  display: block;
 `;
 export const ErrorMessage = styled.div`
   font-size: 12px;

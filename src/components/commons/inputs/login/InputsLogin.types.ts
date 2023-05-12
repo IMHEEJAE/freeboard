@@ -1,8 +1,8 @@
-export interface IButtonsLoginProps {
-  title: string;
-  isActive: boolean;
-}
+import { UseFormRegisterReturn } from "react-hook-form";
 
-export interface IButtonLoginStyleProps {
-  isActive: boolean;
+export interface IInputsLoginProps {
+  type: "text" | "password";
+  register: UseFormRegisterReturn;
+  placeholder: string;
+  autoComplete?: "on" | "off";
 }
