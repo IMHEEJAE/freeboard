@@ -7,9 +7,15 @@ export default function BoardCommentListPresenter(
   return (
     <>
       <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
-        {props.data?.fetchBoardComments.map((el) => (
-          <BoardCommentListItemPresenter key={el._id} el={el} />
-        ))}
+        {}
+
+        {props?.data ? (
+          props.data?.fetchBoardComments.map((el) => (
+            <BoardCommentListItemPresenter key={el._id} el={el} />
+          ))
+        ) : (
+          <></>
+        )}
       </InfiniteScroll>
     </>
   );

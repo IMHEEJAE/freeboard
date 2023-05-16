@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { ISubmitBtnProps } from "./BoardWrite.types";
 import { Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
 export const Wrapper = styled.div`
@@ -17,6 +16,9 @@ export const Title = styled.div`
   font-size: 36px;
   font-weight: bold;
   line-height: 52px;
+`;
+export const FormWrap = styled.div`
+  width: 100%;
 `;
 export const WriterWrap = styled.div`
   display: flex;
@@ -125,23 +127,11 @@ export const RadioLabel = styled.label`
 `;
 
 export const SubmitWrap = styled.div`
-  margin-top: 80px;
-`;
-export const SubmitBtn = styled.button`
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 180px;
-  height: 52px;
-  box-sizing: border-box;
-  border: none;
-  background: #ffd600;
-  color: #000;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: ${(props: ISubmitBtnProps) =>
-    props.isActive ? "#ffd600" : "#eee"};
+  margin-top: 80px;
 `;
+
 export const ErrorMessage = styled.div`
   padding-top: 5px;
   font-size: 12px;

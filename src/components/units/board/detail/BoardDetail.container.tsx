@@ -16,6 +16,7 @@ import {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
+import { FETCH_BOARDS } from "../list/BoardList.queries";
 
 export default function BoardDetailContainer() {
   const [likeBoard] = useMutation<
@@ -50,7 +51,7 @@ export default function BoardDetailContainer() {
         variables: { boardId: String(router.query.boardId) },
         refetchQueries: [
           {
-            query: FETCH_BOARD,
+            query: FETCH_BOARDS,
             variables: { boardId: router.query.boardId },
           },
         ],

@@ -10,7 +10,7 @@ export default function Uploads01Presenter(props: IUpload01PresenterProps) {
           src={`https://storage.googleapis.com/${props.fileUrl}`}
         />
       ) : (
-        <UploadButton onClick={props.onClickUpload}>
+        <UploadButton type="button" onClick={props.onClickUpload}>
           <span>+ Upload</span>
         </UploadButton>
       )}

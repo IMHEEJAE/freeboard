@@ -2,31 +2,29 @@ import { ChangeEvent } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface BoardWritePresenterProps {
-  isActive: boolean;
-  nameError: string;
-  passwordError: string;
-  titleError: string;
-  contentsError: string;
-  onChangeName: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  handleSubmit: () => void;
-  onChangeYoutubeUrl: (event: ChangeEvent<HTMLInputElement>) => void;
+  [x: string]: any;
+  onClickSubmit: (data: IFormData) => Promise<void>;
+  onClickUpdate: (data: IFormData) => Promise<void>;
   onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeFileUrls: (fileUrls: string, index: number) => void;
-  hanldeUpdate: () => void;
-  // handleCancel: () => void;
   isEdit: boolean;
   data?: Pick<IQuery, "fetchBoard">;
-  onClickAddressSearch: () => void;
   isOpen: boolean;
+  onClickAddressSearch: () => void;
   onCompleteAddressSearch: (data: any) => void;
   zipcode: string;
   address: string;
   addressDetail: string;
   fileUrls: string[];
 }
+export interface IFormData {
+  writer: string;
+  password: string;
+  title: string;
+  contents: string;
+  youtubeUrl?: string;
+}
+
 export interface IUpdateBoardInput {
   title?: string;
   contents?: string;
