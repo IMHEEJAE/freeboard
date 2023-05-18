@@ -1,17 +1,17 @@
 import BoardListPresenter from "./BoardList.presenter";
-import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardList.queries";
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
+import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 
 export default function BoardListContainer() {
   const [keyword, setKeyword] = useState("");
-  const router = useRouter();
+  const { onClickMoveToPage } = useMoveToPage();
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
     IQueryFetchBoardsArgs
@@ -22,12 +22,6 @@ export default function BoardListContainer() {
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARDS_COUNT);
 
-  const onClickBoardNew = () => {
-    void router.push("./boards/new");
-  };
-  const onClickDetail = (event: MouseEvent<HTMLDivElement>) => {
-    void router.push(`./boards/${event.currentTarget.id}`);
-  };
   const onChangeKeyword = (value: string) => {
     setKeyword(value);
   };
@@ -37,8 +31,7 @@ export default function BoardListContainer() {
         data={data}
         refetch={refetch}
         refetchBoardsCount={refetchBoardsCount}
-        onClickBoardNew={onClickBoardNew}
-        onClickDetail={onClickDetail}
+        onClickMoveToPage={onClickMoveToPage}
         count={dataBoardsCount?.fetchBoardsCount}
         onChangeKeyword={onChangeKeyword}
         keyword={keyword}

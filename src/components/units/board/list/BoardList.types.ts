@@ -1,5 +1,4 @@
 import { ApolloQueryResult } from "@apollo/client";
-import { MouseEvent } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
@@ -8,8 +7,7 @@ import {
 
 export interface IBoardListPresenterProps {
   data?: any;
-  onClickBoardNew: () => void;
-  onClickDetail: (event: MouseEvent<HTMLDivElement>) => void;
+  onClickMoveToPage: (path: string) => () => void;
   refetch: (
     variables?: Partial<IQueryFetchBoardsArgs> | undefined
   ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;

@@ -7,17 +7,19 @@ import {
 import { createUploadLink } from "apollo-upload-client";
 import { accessTokenState } from "../../../commons/store";
 import { useRecoilState } from "recoil";
+import { withAuth } from "../hoc";
 
 interface IApolloSettingProps {
   children: JSX.Element;
 }
 const GLOBAL_STATE = new InMemoryCache();
 
-export default function ApolloSetting(props: IApolloSettingProps) {
+function ApolloSetting(props: IApolloSettingProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
   const uploadLink = createUploadLink({
-    uri: "http://backendonline.codebootcamp.co.kr/graphql",
+    // uri: "http://backendonline.codebootcamp.co.kr/graphql",
+    uri: "https://backend-practice.codebootcamp.co.kr/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
@@ -31,3 +33,4 @@ export default function ApolloSetting(props: IApolloSettingProps) {
     </>
   );
 }
+export default withAuth(ApolloSetting);

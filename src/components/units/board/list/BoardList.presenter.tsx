@@ -30,9 +30,11 @@ export default function BoardListPresenter(props: IBoardListPresenterProps) {
                 <S.TBody key={el._id}>
                   <S.Tr>
                     <S.Th>{String(el._id).slice(-4)}</S.Th>
-                    <S.ThTitle id={el._id} onClick={props.onClickDetail}>
+                    <S.ThTitle
+                      id={el._id}
+                      onClick={props.onClickMoveToPage(`/boards/${el._id}`)}
+                    >
                       {el.title
-                        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                         .replaceAll(props.keyword, `!@#$%${props.keyword}!@#$%`)
                         .split("!@#$%")
                         .map((el: any) => (
@@ -56,7 +58,7 @@ export default function BoardListPresenter(props: IBoardListPresenterProps) {
               refetch={props.refetch}
               count={props.count}
             />
-            <S.EditBtn onClick={props.onClickBoardNew}>
+            <S.EditBtn onClick={props.onClickMoveToPage(`./boards/new`)}>
               <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
             </S.EditBtn>
           </S.BoardFooter>
