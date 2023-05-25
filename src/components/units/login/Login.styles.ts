@@ -55,7 +55,7 @@ export const LoginEmail = styled(Input)`
   color: #fff;
   :hover,
   :focus {
-    border-color: #5729ff !important;
+    border-color: #d4adfc !important;
     box-shadow: none !important;
   }
   ::-webkit-input-placeholder {
@@ -74,8 +74,8 @@ export const CheckBoxLogin = styled(Checkbox)`
   }
   .ant-checkbox-checked {
     .ant-checkbox-inner {
-      background-color: #5729ff !important;
-      border-color: #5729ff;
+      background-color: #d4adfc !important;
+      border-color: #d4adfc;
     }
   }
 

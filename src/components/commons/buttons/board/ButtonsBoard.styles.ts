@@ -9,10 +9,10 @@ export const ButtonsBoard = styled.button`
   height: 52px;
   box-sizing: border-box;
   border: none;
-  background: #ffd600;
+  background: #d4adfc;
   color: #000;
   font-size: 16px;
   cursor: pointer;
   background: ${(props: IButtonBoardStyleProps) =>
-    props.isActive ? "#ffd600" : "#eee"};
+    props.isActive ? "#D4ADFC" : "#eee"};
 `;

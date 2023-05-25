@@ -9,6 +9,7 @@ export const globalStyles = css`
   li,
   ol {
     margin: 0;
+    padding: 0;
     list-style: none;
   }
   // @font-face {

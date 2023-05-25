@@ -74,5 +74,5 @@ export const UserProfile = styled(UserOutlined)``;
 export const CardProfileLikeIcon = styled(LikeOutlined)`
   display: flex;
   font-size: 24px;
-  color: #ffd600;
+  color: #d4adfc;
 `;

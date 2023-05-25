@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 40px 0;
-  background-color: #999;
+  background-color: #0c134f;
+  background-color: #090909;
 `;
 
 export const InnerWrapper = styled.div`
@@ -25,13 +26,13 @@ export const InnerLogo = styled.div`
   font-weight: bold;
   font-family: "live";
   font-style: italic;
-  color: #5729ff;
+  color: #d4adfc;
   cursor: pointer;
 `;
 
 export const InnerButton = styled.span`
   margin: 10px;
-  color: #5729ff;
+  color: #d4adfc;
   cursor: pointer;
 `;
 export const ProfileWrap = styled.div`
@@ -46,7 +47,10 @@ export const IconDown = styled(CaretDownOutlined)`
   padding-left: 20px;
 `;
 
-export const ProfileAvatar = styled(Avatar)``;
+export const ProfileAvatar = styled(Avatar)`
+  color: #fff;
+  background: #5c469c;
+`;
 export const UserProfile = styled(UserOutlined)``;
 
 export const ProfileMenuHeader = styled.div`
@@ -112,4 +116,6 @@ export const ProfileDesc = styled.span`
   font-size: 14px;
   font-weight: bold;
 `;
-export const ProfileDropdown = styled(Dropdown)``;
+export const ProfileDropdown = styled(Dropdown)`
+  color: #5c469c;
+`;

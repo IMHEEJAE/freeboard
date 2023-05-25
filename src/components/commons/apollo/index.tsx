@@ -14,7 +14,8 @@ interface IApolloSettingProps {
 }
 const GLOBAL_STATE = new InMemoryCache();
 
-function ApolloSetting(props: IApolloSettingProps) {
+// function ApolloSetting(props: IApolloSettingProps) {
+export default function ApolloSetting(props: IApolloSettingProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
   const uploadLink = createUploadLink({
@@ -33,4 +34,4 @@ function ApolloSetting(props: IApolloSettingProps) {
     </>
   );
 }
-export default withAuth(ApolloSetting);
+// export default withAuth(ApolloSetting);

@@ -9,7 +9,7 @@ export const SearchBar = styled(Input)`
   width: 200px;
   :hover,
   :focus {
-    border-color: #5729ff !important;
+    border-color: #d4adfc !important;
     box-shadow: none !important;
   }
 `;

@@ -17,17 +17,23 @@ export default function LayoutBannerPresenter() {
       <S.Wrapper>
         <Slider {...settings}>
           <S.SliderItem>
-            <S.SliderFilter>
+            <S.SliderImage01>
+              <S.SliderShadow />
+            </S.SliderImage01>
+            <S.SliderContent>
               <S.SliderTitle>타이틀 테스트111</S.SliderTitle>
               <S.SliderDesc>설명 테스트 설명 테스트111</S.SliderDesc>
-            </S.SliderFilter>
+            </S.SliderContent>
           </S.SliderItem>
 
           <S.SliderItem>
-            <S.SliderFilter>
-              <S.SliderTitle>타이틀 테스트22222</S.SliderTitle>
-              <S.SliderDesc>설명 테스트 설명 테스트222222</S.SliderDesc>
-            </S.SliderFilter>
+            <S.SliderImage02>
+              <S.SliderShadow />
+            </S.SliderImage02>
+            <S.SliderContent>
+              <S.SliderTitle>TEST 02</S.SliderTitle>
+              <S.SliderDesc>CONTENTS 02</S.SliderDesc>
+            </S.SliderContent>
           </S.SliderItem>
         </Slider>
       </S.Wrapper>

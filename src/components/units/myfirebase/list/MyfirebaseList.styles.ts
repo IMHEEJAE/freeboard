@@ -65,8 +65,8 @@ export const EditBtn = styled(Button)`
   height: 100%;
   padding: 10px 16px;
   :hover {
-    border-color: #5729ff !important;
-    color: #5729ff !important;
+    border-color: #d4adfc !important;
+    color: #d4adfc !important;
   }
 `;
 export const EditIcon = styled.img`

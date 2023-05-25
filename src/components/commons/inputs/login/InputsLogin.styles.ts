@@ -10,7 +10,7 @@ import styled from "@emotion/styled";
 //   color: #fff;
 //   :hover,
 //   :focus {
-//     border-color: #5729ff !important;
+//     border-color: #D4ADFC !important;
 //     box-shadow: none !important;
 //   }
 //   ::-webkit-input-placeholder {
@@ -31,7 +31,7 @@ export const InputsLogin = styled.input`
   color: #fff;
   :hover,
   :focus {
-    border-color: #5729ff !important;
+    border-color: #d4adfc !important;
     box-shadow: none !important;
     border-inline-end-width: 1px;
     outline: 0;

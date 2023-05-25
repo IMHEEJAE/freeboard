@@ -22,23 +22,24 @@ export const Wrapper = styled.div`
 `;
 export const SlickSlider = styled.div``;
 export const SliderItem = styled.div`
+  position: relative;
+`;
+export const SliderItem02 = styled.div`
   height: 400px;
   margin: auto;
-  background: url(../../../../images/layout/main_banner01.png) no-repeat 50%
+  background: url(../../../../images/layout/main_banner02.png) no-repeat 50%
     100%;
   background-size: cover;
 `;
+
 export const SliderFilter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  width: 100%;
   height: 100%;
-  background: #000;
-  opacity: 0.8;
 `;
+
 export const SliderTitle = styled.h5`
   color: #fff;
   font-size: 30px;
@@ -46,4 +47,36 @@ export const SliderTitle = styled.h5`
 `;
 export const SliderDesc = styled.span`
   color: #fff;
+`;
+
+export const SliderImage01 = styled.div`
+  height: 400px;
+  margin: auto;
+  background: url(../../../../images/layout/main_banner01.png) no-repeat 50%
+    100%;
+  background-size: cover;
+`;
+export const SliderImage02 = styled.div`
+  height: 400px;
+  margin: auto;
+  background: url(../../../../images/layout/main_banner02.png) no-repeat 50%
+    100%;
+  background-size: cover;
+`;
+export const SliderShadow = styled.div`
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+`;
+export const SliderContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;

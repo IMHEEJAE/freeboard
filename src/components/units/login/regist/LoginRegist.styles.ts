@@ -78,7 +78,7 @@ export const RegistInputs = styled(Input)`
   // margin: 20px 0 10px;
   :hover,
   :focus {
-    border-color: #5729ff !important;
+    border-color: #d4adfc !important;
     box-shadow: none !important;
   }
   ::-webkit-input-placeholder {

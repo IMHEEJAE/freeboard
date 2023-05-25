@@ -85,7 +85,7 @@ export const LikeWrap = styled.div`
 export const LikeIcon = styled(LikeOutlined)`
   display: flex;
   font-size: 30px;
-  color: #ffd600;
+  color: #d4adfc;
 `;
 export const DisLikeIcon = styled(DislikeOutlined)`
   display: flex;
@@ -95,7 +95,7 @@ export const DisLikeIcon = styled(DislikeOutlined)`
 export const LikeCount = styled.div`
   margin-top: 10px;
   font-weight: bold;
-  color: #ffd600;
+  color: #d4adfc;
 `;
 export const DisLikeCount = styled.div`
   margin-top: 10px;
