@@ -6,6 +6,7 @@ import { IBoardListPresenterProps } from "./BoardList.types";
 import { v4 as uuidv4 } from "uuid";
 
 export default function BoardListPresenter(props: IBoardListPresenterProps) {
+  console.log("asf", props.refetch);
   return (
     <>
       <S.Wrapper>
