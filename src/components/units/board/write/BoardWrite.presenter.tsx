@@ -1,6 +1,6 @@
 import ButtonsBoard from "../../../commons/buttons/board/ButtonsBoard";
 import InputsBoard from "../../../commons/inputs/board/InputsBoard";
-import Upload01Container from "../../../commons/uploads/Upload01.container";
+import Upload01Container from "../../../commons/uploads/01/Upload01.container";
 import Validation01 from "../../../commons/validations/01/Validation01";
 import * as S from "./BoardWrite.styles";
 import { BoardWritePresenterProps } from "./BoardWrite.types";

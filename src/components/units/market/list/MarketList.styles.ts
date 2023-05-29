@@ -1,7 +1,8 @@
 import { HeartFilled, UserOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { Avatar } from "antd";
+import { Avatar, Tabs } from "antd";
 import { IMatched } from "./MarketList.types";
+import InfiniteScroll from "react-infinite-scroller";
 export const Title = styled.h2`
   padding: 80px 0 40px;
 `;
@@ -9,8 +10,9 @@ export const List = styled.ul`
   border-top: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
   min-width: 1200px;
-  /* height: 100%; */
   margin: 0 auto;
+  // height: 1000px;
+  // overflow-y: auto;
 `;
 export const ListItem = styled.li`
   display: flex;
@@ -92,3 +94,5 @@ export const StrongText = styled.span`
   color: ${(props: IMatched) => (props.isMatched ? "#D4ADFC" : "#000")};
   font-weight: ${(props: IMatched) => (props.isMatched ? "bold" : "normal")};
 `;
+export const Tabss = styled(Tabs)``;
+export const InfiniScroll = styled(InfiniteScroll)``;

@@ -6,7 +6,7 @@ export const SearchWrap = styled.div`
 `;
 export const SearchBar = styled(Input)`
   position: absolute;
-  top: -50px;
+  top: -40px;
   right: 0;
   width: 200px;
   :hover,
