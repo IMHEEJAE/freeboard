@@ -54,7 +54,6 @@ export default function MarketsListContainer() {
       },
     });
   };
-UseScrollMode = (args:)
   return (
     <>
       <MarketsListPresenter
