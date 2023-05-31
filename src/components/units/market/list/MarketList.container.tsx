@@ -6,7 +6,6 @@ import {
 import { FETCH_USEDITEMS } from "./MarketList.queries";
 import MarketsListPresenter from "./MarketList.presenter";
 import { useState } from "react";
-import { UseScrollMode } from "../../../commons/InfiniteScroll/InfiniteScroll.cotainer";
 
 export default function MarketsListContainer() {
   const [keyword, setKeyword] = useState("");

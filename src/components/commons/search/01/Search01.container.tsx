@@ -13,6 +13,7 @@ export default function Search01Container(props: ISearch01ContainerProps) {
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     getDebounce(event.target.value);
   };
+  
   return (
     <>
       <Search01Presenter onChangeSearch={onChangeSearch} />
