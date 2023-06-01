@@ -28,10 +28,11 @@ interface IArgs {
 }
 
 // 무한 스크롤 함수
-export const useScrollMode = (
+export const useInfiniteScroll = (
   args: IArgs
 ): {
   onLoadMore: () => Promise<void>;
+  fetchKey: string;
 } => {
   const { fetchKey, data, fetchMore } = args;
   const onLoadMore = async (): Promise<void> => {
@@ -56,5 +57,6 @@ export const useScrollMode = (
 
   return {
     onLoadMore,
+    fetchKey,
   };
 };

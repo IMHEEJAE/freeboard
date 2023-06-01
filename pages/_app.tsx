@@ -20,7 +20,6 @@ function App({ Component }: AppProps) {
       <ApolloSetting>
         <>
           <Global styles={globalStyles} />
-          {/* {isLogin ? ( <Login /> ) : (  <Layout> <Component /> </Layout> )} */}
           <Layout>
             <Component />
           </Layout>
