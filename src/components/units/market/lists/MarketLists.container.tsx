@@ -1,11 +1,20 @@
 import { useQuery } from "@apollo/client";
-import { FETCH_USEDITEMS } from "./MarketLists.queries";
+import {
+  FETCH_USEDITEMS,
+  FETCH_USEDITEMS_OF_THE_BEST,
+} from "./MarketLists.queries";
 import { useSearch } from "../../../commons/hooks/useSearch";
 import MarketsListsPresenter from "./MarketLists.presenter";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export default function MarketsListsContainer() {
   const { onClickMoveToPage } = useMoveToPage();
+
+  const { data: BestItemData } = useQuery<
+    Pick<IQuery, "fetchUseditemsOfTheBest">
+  >(FETCH_USEDITEMS_OF_THE_BEST);
+
   const {
     data: SoldOutTrueData,
     refetch: SoldOutTrueRefetch,
@@ -78,6 +87,7 @@ export default function MarketsListsContainer() {
   return (
     <>
       <MarketsListsPresenter
+        BestItemData={BestItemData}
         SoldOutTrueData={SoldOutTrueData}
         SoldOutTrueRefetch={SoldOutTrueRefetch}
         SoldOutTrueRetchMore={SoldOutTrueRetchMore}

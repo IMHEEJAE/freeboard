@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 
 export interface IMarketPresenterProps {
+  BestItemData: any;
   SoldOutTrueData?: any;
   SoldOutTrueRefetch: any;
   SoldOutTrueRetchMore: any;

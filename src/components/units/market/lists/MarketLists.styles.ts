@@ -1,12 +1,76 @@
 import { HeartFilled, UserOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { Avatar, Button, Tabs } from "antd";
+import { Avatar, Button, Card, Tabs } from "antd";
 import { IMatched } from "./MarketLists.types";
 import InfiniteScroll from "react-infinite-scroller";
-export const BestWrap = styled.div``;
+export const BestWrap = styled.div`
+  padding: 40px 0 80px;
+`;
+
+export const BestCard = styled.div`
+  display: flex;
+`;
+export const CardBox = styled(Card)`
+  width: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 12px;
+  padding: 20px;
+  .ant-card-body {
+    padding: 0;
+  }
+`;
+export const CardImgWrap = styled.div``;
+export const CardImg = styled.img`
+  width: 240px;
+  height: 240px;
+  margin-bottom: 20px;
+`;
+
+export const CardContent = styled.div``;
+export const TopWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const Title = styled.span`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`;
+export const Remark = styled.span`
+  font-size: 12px;
+  color: #828282;
+`;
+export const BottomWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+`;
+export const Price = styled.span`
+  font-size: 18px;
+  font-weight: bold;
+`;
+export const LickBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const LickIcon = styled(HeartFilled)`
+  color: red;
+`;
+export const LickCountBest = styled.span`
+  font-size: 12px;
+  color: #828282;
+`;
+
 export const ListWrap = styled.div``;
-export const Title = styled.h2`
-  padding: 80px 0 40px;
+export const MainTitle = styled.h2`
+  margin: 40px auto;
+  text-align: center;
 `;
 export const List = styled.div`
   border-top: 1px solid #bdbdbd;
@@ -15,11 +79,10 @@ export const List = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column-reverse;
-  height: 700px;
+  height: 500px;
   overflow: auto;
 `;
 export const ScrollWrap = styled.div`
-  height: 700px;
   overflow: auto;
   ::-webkit-scrollbar {
     width: 10px;
@@ -40,7 +103,7 @@ export const ListItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px;
   border-bottom: 1px solid #bdbdbd;
   :last-child {
     border-bottom: none;

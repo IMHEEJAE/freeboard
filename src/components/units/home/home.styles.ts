@@ -10,7 +10,6 @@ export const CardWrap = styled.div`
 `;
 export const CardBox = styled(Card)`
   width: 280px;
-  height: 260px;
   border-radius: 20px;
   overflow: hidden;
   margin: 0 12px;
@@ -64,9 +63,7 @@ export const CardProfileDate = styled.div`
   font-size: 12px;
   color: #828282;
 `;
-export const CardProfileLike = styled.div`
-  margin-right: 5px;
-`;
+export const CardProfileLike = styled.div``;
 export const ProfileAvatar = styled(Avatar)`
   margin-right: 6px;
 `;
