@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/test/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/test/index.js", "src/components/commons/map/index.tsx"],
   "exclude": ["node_modules"]
 }

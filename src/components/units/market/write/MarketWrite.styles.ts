@@ -48,8 +48,32 @@ export const MapWrap = styled.div`
 export const MapBox = styled.div``;
 export const MapImg = styled.div`
   width: 360px;
-  height: 252px;
-  background: #999;
+  height: 230px;
   margin-right: 26px;
 `;
-export const MapDesc = styled.div``;
+export const MapDesc = styled.div`
+  width: 100%;
+`;
+export const ImgWrap = styled.div``;
+export const ImgBox = styled.div`
+  display: flex;
+`;
+export const Gps = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const GpsLat = styled.input`
+  width: 150px;
+  height: 52px;
+  border: 1px solid #bdbdbd;
+  padding-left: 16px;
+  box-sizing: border-box;
+`;
+export const GpsIcon = styled.img``;
+export const Address = styled.div`
+  width: 100%;
+`;
+export const PT20 = styled.div`
+  display: block;
+  padding-top: 20px;
+`;
