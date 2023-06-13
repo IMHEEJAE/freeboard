@@ -13,7 +13,6 @@ import { Modal } from "antd";
 import { FETCH_USEDITEMS } from "../list/MarketList.queries";
 import { useRouter } from "next/router";
 import "react-quill/dist/quill.snow.css";
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 const schema = yup.object({
