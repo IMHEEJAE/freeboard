@@ -64,13 +64,7 @@ export const Gps = styled.div`
   display: flex;
   align-items: center;
 `;
-export const GpsLat = styled.input`
-  width: 100%;
-  height: 52px;
-  border: 1px solid #bdbdbd;
-  padding-left: 16px;
-  box-sizing: border-box;
-`;
+
 export const GpsIcon = styled.img`
   margin: 0 10px;
 `;
@@ -80,4 +74,9 @@ export const Address = styled.div`
 export const PT20 = styled.div`
   display: block;
   padding-top: 20px;
+`;
+export const SubmitWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
 `;

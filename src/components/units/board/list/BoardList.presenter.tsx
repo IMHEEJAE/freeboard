@@ -4,9 +4,8 @@ import Search01Container from "../../../commons/search/01/Search01.container";
 import * as S from "./BoardList.styles";
 import { IBoardListPresenterProps } from "./BoardList.types";
 import { v4 as uuidv4 } from "uuid";
-
+import Link from "next/link";
 export default function BoardListPresenter(props: IBoardListPresenterProps) {
-  console.log("asf", props.refetch);
   return (
     <>
       <S.Wrapper>
@@ -59,9 +58,11 @@ export default function BoardListPresenter(props: IBoardListPresenterProps) {
               refetch={props.refetch}
               count={props.count}
             />
-            <S.EditBtn onClick={props.onClickMoveToPage(`./boards/new`)}>
-              <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
-            </S.EditBtn>
+            <Link href="./boards/new">
+              <S.EditBtn>
+                <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
+              </S.EditBtn>
+            </Link>
           </S.BoardFooter>
         </S.Card>
       </S.Wrapper>

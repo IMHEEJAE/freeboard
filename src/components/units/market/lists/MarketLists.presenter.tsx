@@ -11,10 +11,10 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
       label: `판매중상품`,
       children: (
         <>
-          {/* <SearchBar
+          <SearchBar
             onChangeSearch={props.onChangeSearch}
             placeholder="판매중상품 검색"
-          /> */}
+          />
           <S.List>
             <S.ScrollWrap>
               <S.InfiniScroll

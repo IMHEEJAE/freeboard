@@ -31,7 +31,7 @@ export default function MarketsListsContainer() {
   });
 
   const { onChangeSearch, keyword } = useSearch({
-    refetch: SoldOutTrueRefetch || SoldOutFalseRefetch,
+    refetch: SoldOutTrueRefetch ,
   });
 
   const onLoadMoreSoldOutTrue = () => {

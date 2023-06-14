@@ -5,6 +5,8 @@ import { IMarketWritePresenterProps } from "./MarketWrite.types";
 import Upload01Container from "../../../commons/uploads/01/Upload01.container";
 import { v4 as uuidv4 } from "uuid";
 import KakaomapPage from "../../../commons/map";
+import ButtonsBoard from "../../../commons/buttons/board/ButtonsBoard";
+import Validation01 from "../../../commons/validations/01/Validation01";
 export default function MarketWritePresenter(
   props: IMarketWritePresenterProps
 ) {
@@ -23,29 +25,46 @@ export default function MarketWritePresenter(
                 //   defaultValue={props.data?.fetchBoard.writer ?? ""}
                 //   readOnly={!!props.data?.fetchBoard.writer}
               />
+              {props.formState.errors.name && (
+                <Validation01 title={props.formState.errors.name?.message} />
+              )}
               <S.Label>한줄요약</S.Label>
               <InputsBoard
                 type="text"
                 register={props.register("remark")}
                 placeholder="한줄요약을 작성해주세요."
               />
+              {props.formState.errors.remark && (
+                <Validation01 title={props.formState.errors.remark?.message} />
+              )}
               <S.Label>상품설명</S.Label>
               <S.Quill
                 onChange={props.onChangeContents}
-                value={props.contents || props.data?.fetchUseditem.contents}
+                // value={props.contents || props.data?.fetchUseditem.contents}
               />
+              {props.formState.errors.contents && (
+                <Validation01
+                  title={props.formState.errors.contents?.message}
+                />
+              )}
               <S.Label>판매가격</S.Label>
               <InputsBoard
                 type="text"
-                register={props.register("remark")}
+                register={props.register("price")}
                 placeholder="판매 가격을 작성해주세요."
               />
+              {props.formState.errors.price && (
+                <Validation01 title={props.formState.errors.price?.message} />
+              )}
               <S.Label>태그입력</S.Label>
               <InputsBoard
                 type="text"
-                register={props.register("remark")}
+                register={props.register("tags")}
                 placeholder="#태그 #태그 #태그"
-              />
+              />{" "}
+              {props.formState.errors.tags && (
+                <Validation01 title={props.formState.errors.tags?.message} />
+              )}
             </S.InputWrap>
             <S.MapWrap>
               <S.MapBox>
@@ -57,20 +76,28 @@ export default function MarketWritePresenter(
               <S.MapDesc>
                 <S.Label>GPS</S.Label>
                 <S.Gps>
-                  <S.GpsLat type="text" defaultValue="위도(LAT)" />
+                  <InputsBoard
+                    type="text"
+                    register={props.register("useditemAddress.lat")}
+                    placeholder="위도(LAT)"
+                  />
                   <S.GpsIcon src="/images/icon/icon_location.svg" />
-                  <S.GpsLat type="text" defaultValue="경도(LNG)" />
+                  <InputsBoard
+                    type="text"
+                    register={props.register("useditemAddress.lng")}
+                    placeholder="경도(LNG)"
+                  />
                 </S.Gps>
                 <S.Address>
                   <S.Label>주소</S.Label>
                   <InputsBoard
                     type="text"
-                    register={props.register("remark")}
+                    register={props.register("useditemAddress.address")}
                   />
                   <S.PT20 />
                   <InputsBoard
                     type="text"
-                    register={props.register("remark")}
+                    register={props.register("useditemAddress.addressDetail")}
                   />
                 </S.Address>
               </S.MapDesc>
@@ -88,6 +115,13 @@ export default function MarketWritePresenter(
                 ))}
               </S.ImgBox>
             </S.ImgWrap>
+            <S.SubmitWrap>
+              <ButtonsBoard
+                // title={props.isEdit ? "수정하기" : "등록하기"}
+                title="등록하기"
+                isActive={props.formState.isValid}
+              />
+            </S.SubmitWrap>
           </form>
         </S.FormWrap>
       </S.Wrapper>

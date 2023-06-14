@@ -1,11 +1,15 @@
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IFormData {
-  contents: string;
   name: string;
   remarks: string;
-  //   contents: string;
+  contents: string;
   price: number;
+  tags: string;
+  address: string;
+  addressDetail: string;
+  lat: number;
+  lng: number;
 }
 
 export interface IMarketWriteContainerProps {

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable no-undef */
 import React, { useEffect } from "react";
-import Head from "next/head";
 
 // eslint-disable-next-line react/prop-types
 const MapContainer = ({ searchPlace }) => {
@@ -60,12 +59,6 @@ const MapContainer = ({ searchPlace }) => {
   }, [searchPlace]);
   return (
     <>
-      <Head>
-        <script
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9bbd257bacbf7b1e0519291e4f771ef5&libraries=services"
-        ></script>
-      </Head>
       <>
         <div
           id="myMap"

@@ -78,7 +78,7 @@ export const List = styled.div`
   min-width: 1200px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   height: 500px;
   overflow: auto;
 `;

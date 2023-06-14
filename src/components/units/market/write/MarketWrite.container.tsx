@@ -17,9 +17,10 @@ import { useEffect, useState } from "react";
 
 const schema = yup.object({
   name: yup.string().required("작성자를 입력해주세요"),
-  remarks: yup.string().required("제목을 입력해주세요"),
-  contents: yup.string().required("제목을 입력해주세요"),
-  price: yup.string().required("내용을 입력해주세요"),
+  remarks: yup.string().required("작성자를 입력해주세요"),
+  contents: yup.string().required("작성자를 입력해주세요"),
+  price: yup.string().required("작성자를 입력해주세요"),
+  tags: yup.string().required("작성자를 입력해주세요"),
 });
 
 export default function MarketWriteContainer(
@@ -30,6 +31,7 @@ export default function MarketWriteContainer(
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
   >(CREATE_USEDITEM);
+  const [contents, setContents] = useState("");
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
   const { register, handleSubmit, formState, setValue, trigger } =
     useForm<IFormData>({
@@ -39,6 +41,9 @@ export default function MarketWriteContainer(
   const onChangeContents = (value: string) => {
     console.log(value);
     setValue("contents", value === "<p><br></p>" ? "" : value);
+    setContents(
+      value === "<p><br>p>" ? props.data?.fetchUseditem.contents ?? "" : value
+    );
     void trigger("contents");
   };
   const onChangeFileUrls = (fileUrl: string, index: number) => {
@@ -59,18 +64,32 @@ export default function MarketWriteContainer(
           createUseditemInput: {
             name: data.name,
             remarks: data.remarks,
-            contents: data.contents,
+            contents,
             price: data.price,
+            tags: data.tags
+              .replaceAll(" ", "")
+              .split("#")
+              .filter((el: string) => el !== "")
+              .map((el) => "#" + el),
+            useditemAddress: {
+              address: data.address,
+              addressDetail: data.addressDetail,
+              lat: data.lat,
+              lng: data.lng,
+            },
+            images: [...fileUrls],
           },
         },
         refetchQueries: [
           {
             query: FETCH_USEDITEMS,
-            variables: { useditemId: router.query.boardId },
+            variables: { useditemId: router.query.page },
           },
         ],
       });
       console.log("result", result);
+      alert("성공!!");
+      void router.push(`/markets`);
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
