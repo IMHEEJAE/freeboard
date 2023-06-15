@@ -3,6 +3,7 @@ import { Tooltip } from "antd";
 import * as S from "./BoardDetail.styles";
 import { BoardDetailPresenterProps } from "./BoardDetail.types";
 export default function BoardDetailPresenter(props: BoardDetailPresenterProps) {
+  console.log("제발", props);
   return (
     <>
       <S.Wrapper>

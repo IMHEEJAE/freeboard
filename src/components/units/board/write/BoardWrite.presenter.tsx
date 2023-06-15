@@ -33,7 +33,7 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
                 )}
               </S.WriterBox>
               <S.WriterBox>
-                <S.Label>비밀번호ㅊ   ㅍ      ㅜ ㅠㅍ</S.Label>
+                <S.Label>비밀번호</S.Label>
 
                 <InputsBoard
                   type="password"

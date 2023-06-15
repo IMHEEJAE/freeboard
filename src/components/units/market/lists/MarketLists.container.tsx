@@ -7,6 +7,7 @@ import { useSearch } from "../../../commons/hooks/useSearch";
 import MarketsListsPresenter from "./MarketLists.presenter";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { IQuery } from "../../../../commons/types/generated/types";
+import { useSearch02 } from "../../../commons/hooks/useSearch02";
 
 export default function MarketsListsContainer() {
   const { onClickMoveToPage } = useMoveToPage();
@@ -31,9 +32,11 @@ export default function MarketsListsContainer() {
   });
 
   const { onChangeSearch, keyword } = useSearch({
-    refetch: SoldOutTrueRefetch ,
+    refetch: SoldOutTrueRefetch,
   });
-
+  const { onChangeSearch02, keyword02 } = useSearch02({
+    refetch: SoldOutFalseRefetch,
+  });
   const onLoadMoreSoldOutTrue = () => {
     if (SoldOutTrueData === undefined) return;
     void SoldOutTrueRetchMore({
@@ -99,9 +102,11 @@ export default function MarketsListsContainer() {
         // fetchMore={fetchMore}
         onChangeImageError={onChangeImageError}
         onChangeSearch={onChangeSearch}
+        onChangeSearch02={onChangeSearch02}
         onLoadMoreSoldOutTrue={onLoadMoreSoldOutTrue}
         onLoadMoreSoldOutFalse={onLoadMoreSoldOutFalse}
         keyword={keyword}
+        keyword02={keyword02}
         onClickMoveToPage={onClickMoveToPage}
         fetchMore={undefined}
       />

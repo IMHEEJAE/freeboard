@@ -3,8 +3,8 @@ import type { TabsProps } from "antd";
 import SearchBar from "../../../commons/search/searchBar/SearchBar";
 import { IMarketPresenterProps } from "./MarketLists.types";
 import { v4 as uuidv4 } from "uuid";
+import SearchBar02 from "../../../commons/search/searchBar02/SearchBar02";
 export default function MarketsListsPresenter(props: IMarketPresenterProps) {
-  console.log("짜잔", props.BestItemData);
   const items: TabsProps["items"] = [
     {
       key: "1",
@@ -26,7 +26,10 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
                 {props.SoldOutTrueData ? (
                   props.SoldOutTrueData?.fetchUseditems.map(
                     (el: any, index: any) => (
-                      <S.ListItem key={el._id}>
+                      <S.ListItem
+                        key={el._id}
+                        onClick={props.onClickMoveToPage(`/markets/${el._id}`)}
+                      >
                         <S.ListLeft>
                           <S.ImageWrap>
                             {el.images
@@ -73,10 +76,7 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
                             </S.SellerWrap>
                           </S.Content>
                         </S.ListLeft>
-                        <S.ListRight>
-                          {/* <S.IconMoney src="/images/icon/icon_money.svg" /> */}
-                          {el.price.toLocaleString()}원
-                        </S.ListRight>
+                        <S.ListRight>{el.price.toLocaleString()}원</S.ListRight>
                       </S.ListItem>
                     )
                   )
@@ -94,10 +94,10 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
       label: `판매된상품`,
       children: (
         <>
-          {/* <SearchBar
-            onChangeSearch={props.onChangeSearch}
+          <SearchBar02
+            onChangeSearch02={props.onChangeSearch02}
             placeholder="판매된상품 검색"
-          /> */}
+          />
           <S.List>
             <S.ScrollWrap>
               <S.InfiniScroll
@@ -109,7 +109,10 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
                 {props.SoldOutFalseData ? (
                   props.SoldOutFalseData?.fetchUseditems.map(
                     (el: any, index: any) => (
-                      <S.ListItem key={el._id}>
+                      <S.ListItem
+                        key={el._id}
+                        onClick={props.onClickMoveToPage(`/markets/${el._id}`)}
+                      >
                         <S.ListLeft>
                           <S.ImageWrap>
                             {el.images
@@ -126,14 +129,14 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
                             <S.ItemTitle>
                               {el.name
                                 .replaceAll(
-                                  props.keyword,
-                                  `!@#$%${props.keyword}!@#$%`
+                                  props.keyword02,
+                                  `!@#$%${props.keyword02}!@#$%`
                                 )
                                 .split("!@#$%")
                                 .map((el: any) => (
                                   <S.StrongText
                                     key={uuidv4()}
-                                    isMatched={props.keyword === el}
+                                    isMatched={props.keyword02 === el}
                                   >
                                     {el}
                                   </S.StrongText>

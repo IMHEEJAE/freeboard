@@ -10,7 +10,7 @@ import {
   IMutationCreateUseditemArgs,
 } from "../../../../commons/types/generated/types";
 import { Modal } from "antd";
-import { FETCH_USEDITEMS } from "../list/MarketList.queries";
+// import { FETCH_USEDITEMS } from "../list/MarketList.queries";
 import { useRouter } from "next/router";
 import "react-quill/dist/quill.snow.css";
 import { useEffect, useState } from "react";
@@ -80,12 +80,12 @@ export default function MarketWriteContainer(
             images: [...fileUrls],
           },
         },
-        refetchQueries: [
-          {
-            query: FETCH_USEDITEMS,
-            variables: { useditemId: router.query.page },
-          },
-        ],
+        // refetchQueries: [
+        //   {
+        //     query: FETCH_USEDITEMS,
+        //     variables: { useditemId: router.query.page },
+        //   },
+        // ],
       });
       console.log("result", result);
       alert("성공!!");
