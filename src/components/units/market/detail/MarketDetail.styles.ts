@@ -70,8 +70,13 @@ export const TopRigth = styled.div``;
 export const LikeWrap = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
 `;
-export const LikeIcon = styled(LikeOutlined)``;
+export const LikeIcon = styled(LikeOutlined)`
+  font-size: 30px;
+  margin-bottom: 5px;
+`;
 export const LikeCount = styled.span`
   font-size: 18px;
   font-weight: 500;
@@ -81,14 +86,13 @@ export const BodyContent = styled.div`
   padding-bottom: 40px;
 `;
 export const ImgWrap = styled.div`
-  width: 400px;
-  height: 400px;
-  margin: 40px auto 80px;
-`;
-export const Img = styled.div`
   width: 100%;
   height: 100%;
-  background: #999;
+  margin: 40px auto 80px;
+`;
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 export const Content = styled.span`
   font-size: 18px;
@@ -97,6 +101,7 @@ export const Content = styled.span`
 `;
 export const Tags = styled.span`
   display: block;
+  margin-top: 5px;
   font-size: 14px;
   color: #bdbdbd;
 `;
@@ -108,7 +113,6 @@ export const MapWrap = styled.div`
 export const Map = styled.div`
   width: 100%;
   height: 500px;
-  background: #999;
 `;
 export const Footer = styled.div`
   display: flex;

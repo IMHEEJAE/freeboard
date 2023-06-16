@@ -26,58 +26,64 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
                 {props.SoldOutTrueData ? (
                   props.SoldOutTrueData?.fetchUseditems.map(
                     (el: any, index: any) => (
-                      <S.ListItem
-                        key={el._id}
-                        onClick={props.onClickMoveToPage(`/markets/${el._id}`)}
-                      >
-                        <S.ListLeft>
-                          <S.ImageWrap>
-                            {el.images
-                              ?.filter((el: string) => el)
-                              .map((el: string) => (
-                                <S.Image
-                                  key={uuidv4()}
-                                  src={`https://storage.googleapis.com/${el}`}
-                                  onError={props.onChangeImageError}
-                                />
-                              ))}
-                          </S.ImageWrap>
-                          <S.Content>
-                            <S.ItemTitle>
-                              {el.name
-                                .replaceAll(
-                                  props.keyword,
-                                  `!@#$%${props.keyword}!@#$%`
-                                )
-                                .split("!@#$%")
-                                .map((el: any) => (
-                                  <S.StrongText
+                      <div key={el._id}>
+                        <S.ListItem
+                          id={el._id}
+                          onClick={props.onClickMoveToPage(
+                            `/markets/${el._id}`
+                          )}
+                        >
+                          <S.ListLeft>
+                            <S.ImageWrap>
+                              {el.images
+                                ?.filter((el: string) => el)
+                                .map((el: string) => (
+                                  <S.Image
                                     key={uuidv4()}
-                                    isMatched={props.keyword === el}
-                                  >
-                                    {el}
-                                  </S.StrongText>
+                                    src={`https://storage.googleapis.com/${el}`}
+                                    onError={props.onChangeImageError}
+                                  />
                                 ))}
-                            </S.ItemTitle>
-                            <S.Desc>{el.remarks}</S.Desc>
-                            <S.Tags>{el.tags}</S.Tags>
-                            <S.SellerWrap>
-                              <S.Seller>
-                                <S.SellerAvatar
-                                  size="small"
-                                  icon={<S.SllerAvatarUser />}
-                                />
-                                {el.seller.name}
-                              </S.Seller>
-                              <S.PickCount>
-                                <S.LickCount />
-                                {el.pickedCount}
-                              </S.PickCount>
-                            </S.SellerWrap>
-                          </S.Content>
-                        </S.ListLeft>
-                        <S.ListRight>{el.price.toLocaleString()}원</S.ListRight>
-                      </S.ListItem>
+                            </S.ImageWrap>
+                            <S.Content>
+                              <S.ItemTitle>
+                                {el.name
+                                  .replaceAll(
+                                    props.keyword,
+                                    `!@#$%${props.keyword}!@#$%`
+                                  )
+                                  .split("!@#$%")
+                                  .map((el: any) => (
+                                    <S.StrongText
+                                      key={uuidv4()}
+                                      isMatched={props.keyword === el}
+                                    >
+                                      {el}
+                                    </S.StrongText>
+                                  ))}
+                              </S.ItemTitle>
+                              <S.Desc>{el.remarks}</S.Desc>
+                              <S.Tags>{el.tags}</S.Tags>
+                              <S.SellerWrap>
+                                <S.Seller>
+                                  <S.SellerAvatar
+                                    size="small"
+                                    icon={<S.SllerAvatarUser />}
+                                  />
+                                  {el.seller.name}
+                                </S.Seller>
+                                <S.PickCount>
+                                  <S.LickCount />
+                                  {el.pickedCount}
+                                </S.PickCount>
+                              </S.SellerWrap>
+                            </S.Content>
+                          </S.ListLeft>
+                          <S.ListRight>
+                            {el.price.toLocaleString()}원
+                          </S.ListRight>
+                        </S.ListItem>
+                      </div>
                     )
                   )
                 ) : (

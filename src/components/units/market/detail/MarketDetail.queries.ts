@@ -5,6 +5,28 @@ export const FETCH_USEDITEM = gql`
     fetchUseditem(useditemId: $useditemId) {
       _id
       name
+      remarks
+      contents
+      price
+      tags
+      createdAt
+      pickedCount
+      seller {
+        name
+        picture
+      }
+      useditemAddress {
+        lat
+        lng
+        address
+        addressDetail
+      }
+      images
     }
+  }
+`;
+export const DELETE_USEDITEM = gql`
+  mutation deleteUseditem($useditemId: ID!) {
+    deleteUseditem(useditemId: $useditemId)
   }
 `;

@@ -1,5 +1,7 @@
-import { IQuery } from "../../../../commons/types/generated/types";
+import { MouseEventHandler } from "react";
 
 export interface MarketDetailPresenterProps {
-  data?: Pick<IQuery, "fetchUseditem">;
+  onClickDelete: MouseEventHandler<HTMLButtonElement> | undefined;
+  data?: any;
+  onClickMoveToPage: (path: string) => () => void;
 }
