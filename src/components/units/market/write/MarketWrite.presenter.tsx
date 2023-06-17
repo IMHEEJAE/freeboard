@@ -10,20 +10,24 @@ import Validation01 from "../../../commons/validations/01/Validation01";
 export default function MarketWritePresenter(
   props: IMarketWritePresenterProps
 ) {
+  console.log("제발제발saaa", props.onClickUpdate);
   return (
     <>
       <S.Wrapper>
-        <S.Title>상품 등록</S.Title>
+        <S.Title>상품 {props.isEdit ? "수정" : "등록"}</S.Title>
         <S.FormWrap>
-          <form onSubmit={props.handleSubmit}>
+          <form
+            onSubmit={props.handleSubmit(
+              props.isEdit ? props.onClickUpdate : props.onClickSubmit
+            )}
+          >
             <S.InputWrap>
               <S.Label>상품명</S.Label>
               <InputsBoard
                 type="text"
                 register={props.register("name")}
                 placeholder="상품명을 작성해주세요."
-                //   defaultValue={props.data?.fetchBoard.writer ?? ""}
-                //   readOnly={!!props.data?.fetchBoard.writer}
+                defaultValue={props.data?.fetchUseditem.name}
               />
               {props.formState.errors.name && (
                 <Validation01 title={props.formState.errors.name?.message} />
@@ -31,16 +35,16 @@ export default function MarketWritePresenter(
               <S.Label>한줄요약</S.Label>
               <InputsBoard
                 type="text"
-                register={props.register("remark")}
+                register={props.register("remarks")}
                 placeholder="한줄요약을 작성해주세요."
+                defaultValue={props.data?.fetchUseditem.remarks}
               />
-              {props.formState.errors.remark && (
-                <Validation01 title={props.formState.errors.remark?.message} />
+              {props.formState.errors.remarks && (
+                <Validation01 title={props.formState.errors.remarks?.message} />
               )}
               <S.Label>상품설명</S.Label>
               <S.Quill
                 onChange={props.onChangeContents}
-                // value={props.contents || props.data?.fetchUseditem.contents}
               />
               {props.formState.errors.contents && (
                 <Validation01
@@ -52,6 +56,7 @@ export default function MarketWritePresenter(
                 type="text"
                 register={props.register("price")}
                 placeholder="판매 가격을 작성해주세요."
+                defaultValue={props.data?.fetchUseditem.price ?? ""}
               />
               {props.formState.errors.price && (
                 <Validation01 title={props.formState.errors.price?.message} />
@@ -61,7 +66,8 @@ export default function MarketWritePresenter(
                 type="text"
                 register={props.register("tags")}
                 placeholder="#태그 #태그 #태그"
-              />{" "}
+                defaultValue={props.data?.fetchUseditem.tags ?? ""}
+              />
               {props.formState.errors.tags && (
                 <Validation01 title={props.formState.errors.tags?.message} />
               )}
@@ -80,6 +86,7 @@ export default function MarketWritePresenter(
                     type="text"
                     register={props.register("useditemAddress.lat")}
                     placeholder="위도(LAT)"
+                    // defaultValue={props.data?.fetchUseditem.addressLat}
                   />
                   <S.GpsIcon src="/images/icon/icon_location.svg" />
                   <InputsBoard
@@ -117,8 +124,7 @@ export default function MarketWritePresenter(
             </S.ImgWrap>
             <S.SubmitWrap>
               <ButtonsBoard
-                // title={props.isEdit ? "수정하기" : "등록하기"}
-                title="등록하기"
+                title={props.isEdit ? "수정하기" : "등록하기"}
                 isActive={props.formState.isValid}
               />
             </S.SubmitWrap>

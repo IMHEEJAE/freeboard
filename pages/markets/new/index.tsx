@@ -1,4 +1,4 @@
-import { withAuth } from "../../../src/components/commons/hoc";
+// import { withAuth } from "../../../src/components/commons/hoc";
 import MarketWriteContainer from "../../../src/components/units/market/write/MarketWrite.container";
 
 // const MarketsNew = () => {
@@ -12,7 +12,7 @@ import MarketWriteContainer from "../../../src/components/units/market/write/Mar
 export default function MarketsNew() {
   return (
     <>
-      <MarketWriteContainer />
+      <MarketWriteContainer isEdit={false} />
     </>
   );
 }

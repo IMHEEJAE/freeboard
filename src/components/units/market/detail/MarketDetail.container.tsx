@@ -9,7 +9,7 @@ import {
   IQueryFetchUseditemArgs,
 } from "../../../../commons/types/generated/types";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
-import { MouseEventHandler, useEffect } from "react";
+import { useEffect } from "react";
 import { FETCH_USEDITEMS } from "../lists/MarketLists.queries";
 
 export default function MarketDetailContainer() {
@@ -28,7 +28,7 @@ export default function MarketDetailContainer() {
     IMutationDeleteUseditemArgs
   >(DELETE_USEDITEM);
 
-  const onClickDelete = async (event: MouseEventHandler<HTMLButtonElement>) => {
+  const onClickDelete = async () => {
     try {
       await deleteUseditem({
         variables: {
@@ -71,8 +71,6 @@ export default function MarketDetailContainer() {
 
         const map = new window.kakao.maps.Map(container, options);
 
-        console.log(map);
-
         const marker = new window.kakao.maps.Marker({
           // 지도 중심좌표에 마커를 생성합니다
           position: map.getCenter(),
@@ -83,6 +81,7 @@ export default function MarketDetailContainer() {
       });
     };
   });
+
   return (
     <>
       <MarketDetailPresenter
