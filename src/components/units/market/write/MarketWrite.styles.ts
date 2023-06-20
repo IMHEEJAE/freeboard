@@ -50,8 +50,12 @@ export const MapImg = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 300px;
+  height: 230px;
   margin-right: 26px;
+`;
+export const KakaoMap = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 export const MapDesc = styled.div`
   width: 100%;
@@ -63,6 +67,13 @@ export const ImgBox = styled.div`
 export const Gps = styled.div`
   display: flex;
   align-items: center;
+`;
+export const GpsInput = styled.input`
+  width: 100%;
+  height: 52px;
+  border: 1px solid #bdbdbd;
+  padding-left: 16px;
+  box-sizing: border-box;
 `;
 
 export const GpsIcon = styled.img`

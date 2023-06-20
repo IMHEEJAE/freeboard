@@ -14,7 +14,7 @@ import { Modal } from "antd";
 // import { FETCH_USEDITEMS } from "../list/MarketList.queries";
 import { useRouter } from "next/router";
 import "react-quill/dist/quill.snow.css";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { FETCH_USEDITEMS } from "../lists/MarketLists.queries";
 import { FETCH_USEDITEM } from "../detail/MarketDetail.queries";
 
@@ -22,10 +22,19 @@ const schema = yup.object({
   name: yup.string().required("상품명을 입력해주세요"),
   remarks: yup.string().required("한줄요약을 입력해주세요"),
   contents: yup.string().required("설명을 입력해주세요"),
-  price: yup.string().required("판매가격을 입력해주세요"),
+  price: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .required("판매가격을 숫자로 입력해주세요"),
   tags: yup.string().required("태그를 입력해주세요"),
 });
 
+declare global {
+  interface Window {
+    kakao: any;
+    maps: string;
+  }
+}
 export default function MarketWriteContainer(
   props: IMarketWriteContainerProps
 ) {
@@ -38,8 +47,9 @@ export default function MarketWriteContainer(
     Pick<IMutation, "updateUseditem">,
     IMutationUpdateUseditemArgs
   >(UPDATE_USEDITEM);
-  const [addressLat, setAddressLatLat] = useState(null);
-  const [addressLng, setAddressLng] = useState(null);
+
+  const [addressLat, setAddressLat] = useState("");
+  const [addressLng, setAddressLng] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
@@ -50,6 +60,7 @@ export default function MarketWriteContainer(
       resolver: yupResolver(schema),
       mode: "onChange",
     });
+
   const onChangeContents = (value: string) => {
     setValue("contents", value === "<p><br></p>" ? "" : value);
     setContents(
@@ -57,29 +68,47 @@ export default function MarketWriteContainer(
     );
     void trigger("contents");
   };
+
   const onChangeFileUrls = (fileUrl: string, index: number) => {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
     setFileUrls(newFileUrls);
   };
+
   useEffect(() => {
     if (props.data?.fetchUseditem.images?.length) {
       setFileUrls([...props.data?.fetchUseditem.images]);
     }
   }, [props.data]);
+
+  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddressDetail(event.target.value);
+  };
+
+  useEffect(() => {
+    if (props.isEdit && props.data?.fetchUseditem) {
+      setValue("name", props.data?.fetchUseditem.name);
+      setValue("remarks", props.data?.fetchUseditem.remarks);
+      setValue("contents", props.data?.fetchUseditem.contents);
+      setValue("price", props.data?.fetchUseditem.price);
+      setValue("tags", props.data?.fetchUseditem.tags);
+    }
+  }, [props.isEdit, props.data?.fetchUseditem]);
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=9bbd257bacbf7b1e0519291e4f771ef5&libraries=services";
+      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=f2400c45d63389ba72ae0f127645b6ec&libraries=services";
     document.head.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(function () {
         const container = document.getElementById("map"); // 지도를 담을 영역의 DOM 레퍼런스
         const options = {
+          // 지도를 생성할 때 필요한 기본 옵션
           center: new window.kakao.maps.LatLng(
             37.5546788388674,
             126.970606917394
-          ),
+          ), // 지도의 중심좌표.
           level: 3, // 지도의 레벨(확대, 축소 정도)
         };
 
@@ -92,29 +121,45 @@ export default function MarketWriteContainer(
           position: map.getCenter(),
         });
         const geocoder = new window.kakao.maps.services.Geocoder();
-        const geocodeCont = function (coords, callback) {
+        console.log(geocoder);
+        // const coord = new window.kakao.maps.LatLng(myLat, myLng);
+        const test = function (coords: any, callback: any) {
           geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
         };
         marker.setMap(map);
+
         window.kakao.maps.event.addListener(
           map,
           "click",
           function (mouseEvent: { latLng: any }) {
-            geocodeCont(mouseEvent.latLng, function (result: any, status: any) {
+            // 클릭한 위도, 경도 정보를 가져옵니다
+            test(mouseEvent.latLng, function (result: any, status: any) {
               if (status === window.kakao.maps.services.Status.OK) {
                 setAddress(result[0].address.address_name);
               }
             });
+
             const latlng = mouseEvent.latLng;
+
+            // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
-            addressLat(latlng.getLat());
-            addressLng(latlng.getLng());
+
+            // const message =
+            //   "클릭한 위치의 위도는 " +
+            //   latlng.getLat() +
+            //   " 이고, " +
+            //   "경도는 " +
+            //   latlng.getLng() +
+            //   " 입니다";
+            // alert(message);
+            setAddressLat(latlng.getLat());
+            setAddressLng(latlng.getLng());
             setAddress(geocoder.coord2Address);
           }
         );
       });
     };
-  });
+  }, []);
   const onClickSubmit = async (data: IFormData) => {
     try {
       const result = await createUseditem({
@@ -161,7 +206,11 @@ export default function MarketWriteContainer(
             remarks: data.remarks,
             contents,
             price: data.price,
-            tags: data.tags,
+            tags: data.tags
+              .replaceAll(" ", "")
+              .split("#")
+              .filter((el: string) => el !== "")
+              .map((el) => "#" + el),
             images: [...fileUrls],
           },
           useditemId: String(router.query.marketId),
@@ -189,15 +238,21 @@ export default function MarketWriteContainer(
       <MarketWritePresenter
         fileUrls={fileUrls}
         isEdit={props.isEdit}
+        data={props.data}
         register={register}
         handleSubmit={handleSubmit}
         formState={formState}
         setValue={setValue}
         trigger={trigger}
+        contents={contents}
         onChangeContents={onChangeContents}
         onChangeFileUrls={onChangeFileUrls}
         onClickSubmit={onClickSubmit}
         onClickUpdate={onClickUpdate}
+        address={address}
+        addressLat={addressLat}
+        addressLng={addressLng}
+        onChangeAddressDetail={onChangeAddressDetail}
       />
     </>
   );

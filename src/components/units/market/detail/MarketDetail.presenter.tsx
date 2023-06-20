@@ -43,7 +43,7 @@ export default function MarketDetailPresenter(
               </S.TopLeft>
               <S.TopRigth>
                 <S.LikeWrap>
-                  <S.LikeIcon />
+                  <S.LikeIcon onClick={props.onClickPickCount} />
                   <S.LikeCount>
                     {props.data?.fetchUseditem.pickedCount}
                   </S.LikeCount>

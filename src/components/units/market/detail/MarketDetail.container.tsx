@@ -1,10 +1,15 @@
 import { useMutation, useQuery } from "@apollo/client";
 import MarketDetailPresenter from "./MarketDetail.presenter";
 import { useRouter } from "next/router";
-import { DELETE_USEDITEM, FETCH_USEDITEM } from "./MarketDetail.queries";
+import {
+  DELETE_USEDITEM,
+  FETCH_USEDITEM,
+  TOGGLE_USEDITEM_PICK,
+} from "./MarketDetail.queries";
 import {
   IMutation,
   IMutationDeleteUseditemArgs,
+  IMutationToggleUseditemPickArgs,
   IQuery,
   IQueryFetchUseditemArgs,
 } from "../../../../commons/types/generated/types";
@@ -27,7 +32,10 @@ export default function MarketDetailContainer() {
     Pick<IMutation, "deleteUseditem">,
     IMutationDeleteUseditemArgs
   >(DELETE_USEDITEM);
-
+  const [toggleUseditemPick] = useMutation<
+    Pick<IMutation, "toggleUseditemPick">,
+    IMutationToggleUseditemPickArgs
+  >(TOGGLE_USEDITEM_PICK);
   const onClickDelete = async () => {
     try {
       await deleteUseditem({
@@ -50,7 +58,27 @@ export default function MarketDetailContainer() {
       }
     }
   };
-
+  const onClickPickCount = async () => {
+    try {
+      await toggleUseditemPick({
+        variables: {
+          useditemId: String(router.query.marketId),
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USEDITEM,
+            variables: {
+              useditemId: String(router.query.marketId),
+            },
+          },
+        ],
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
+    }
+  };
   // 카카오맵
   useEffect(() => {
     const script = document.createElement("script");
@@ -88,6 +116,7 @@ export default function MarketDetailContainer() {
         data={data}
         onClickMoveToPage={onClickMoveToPage}
         onClickDelete={onClickDelete}
+        onClickPickCount={onClickPickCount}
       />
     </>
   );

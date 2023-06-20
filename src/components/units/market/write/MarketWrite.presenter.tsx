@@ -10,7 +10,8 @@ import Validation01 from "../../../commons/validations/01/Validation01";
 export default function MarketWritePresenter(
   props: IMarketWritePresenterProps
 ) {
-  console.log("제발제발saaa", props.onClickUpdate);
+  console.log("zzdfdfdsff");
+  console.log("제발제발saaa", props.data?.fetchUseditem);
   return (
     <>
       <S.Wrapper>
@@ -45,6 +46,7 @@ export default function MarketWritePresenter(
               <S.Label>상품설명</S.Label>
               <S.Quill
                 onChange={props.onChangeContents}
+                defaultValue={props.data?.fetchUseditem.contents}
               />
               {props.formState.errors.contents && (
                 <Validation01
@@ -76,35 +78,32 @@ export default function MarketWritePresenter(
               <S.MapBox>
                 <S.Label>거래위치</S.Label>
                 <S.MapImg>
-                  <KakaomapPage />
+                  {/* <KakaomapPage /> */}
+                  <S.KakaoMap id="map" />
                 </S.MapImg>
               </S.MapBox>
               <S.MapDesc>
                 <S.Label>GPS</S.Label>
                 <S.Gps>
-                  <InputsBoard
+                  <S.GpsInput
                     type="text"
-                    register={props.register("useditemAddress.lat")}
                     placeholder="위도(LAT)"
-                    // defaultValue={props.data?.fetchUseditem.addressLat}
+                    value={props.addressLat}
                   />
                   <S.GpsIcon src="/images/icon/icon_location.svg" />
-                  <InputsBoard
+                  <S.GpsInput
                     type="text"
-                    register={props.register("useditemAddress.lng")}
                     placeholder="경도(LNG)"
+                    value={props.addressLng}
                   />
                 </S.Gps>
                 <S.Address>
                   <S.Label>주소</S.Label>
-                  <InputsBoard
-                    type="text"
-                    register={props.register("useditemAddress.address")}
-                  />
+                  <S.GpsInput type="text" value={props.address} />
                   <S.PT20 />
-                  <InputsBoard
+                  <S.GpsInput
                     type="text"
-                    register={props.register("useditemAddress.addressDetail")}
+                    onChange={props.onChangeAddressDetail}
                   />
                 </S.Address>
               </S.MapDesc>

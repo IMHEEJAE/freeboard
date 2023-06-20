@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IFormData {
@@ -13,7 +14,7 @@ export interface IFormData {
 }
 
 export interface IMarketWriteContainerProps {
-  data?: Pick<IQuery, "fetchUseditem">;
+  data?: any;
   isEdit: boolean;
 }
 export interface IMarketWritePresenterProps {
@@ -22,5 +23,13 @@ export interface IMarketWritePresenterProps {
   onClickSubmit: (data: IFormData) => Promise<void>;
   onClickUpdate: (data: IFormData) => Promise<void>;
   onChangeFileUrls: (fileUrls: string, index: number) => void;
+  contents: string;
   fileUrls: string[];
+  myAddress: any;
+  addressLat: any;
+  addressLng: any;
+  onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeAddress: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeAddressLat: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeAddressLng: (event: ChangeEvent<HTMLInputElement>) => void;
 }
