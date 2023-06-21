@@ -4,14 +4,12 @@ import * as S from "./MarketWrite.styles";
 import { IMarketWritePresenterProps } from "./MarketWrite.types";
 import Upload01Container from "../../../commons/uploads/01/Upload01.container";
 import { v4 as uuidv4 } from "uuid";
-import KakaomapPage from "../../../commons/map";
+// import KakaomapPage from "../../../commons/map";
 import ButtonsBoard from "../../../commons/buttons/board/ButtonsBoard";
 import Validation01 from "../../../commons/validations/01/Validation01";
 export default function MarketWritePresenter(
   props: IMarketWritePresenterProps
 ) {
-  console.log("zzdfdfdsff");
-  console.log("제발제발saaa", props.data?.fetchUseditem);
   return (
     <>
       <S.Wrapper>

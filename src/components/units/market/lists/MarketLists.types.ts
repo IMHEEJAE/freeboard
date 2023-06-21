@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactEventHandler } from "react";
+import { ChangeEvent } from "react";
 
 export interface IMarketPresenterProps {
   BestItemData: any;
@@ -16,12 +16,13 @@ export interface IMarketPresenterProps {
   onLoadMoreSoldOutTrue: () => void;
   onLoadMoreSoldOutFalse: () => void;
   fetchMore: any;
-  onChangeImageError: ReactEventHandler<HTMLImageElement>;
+  onChangeImageError: (event: { target: { src: string } }) => void;
   onChangeSearch: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeSearch02: (event: ChangeEvent<HTMLInputElement>) => void;
   keyword: string;
   keyword02: string;
   onClickMoveToPage: (path: string) => () => void;
+  onClickDetail: (event: any) => void;
 }
 export interface IMatched {
   isMatched: boolean;

@@ -188,7 +188,7 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
         <S.MainTitle>베스트 상품</S.MainTitle>
         <S.BestCard>
           {props.BestItemData?.fetchUseditemsOfTheBest.map((el: any) => (
-            <S.CardBox key={el._id} hoverable>
+            <S.CardBox key={el._id} hoverable id={el._id} onClick={props.onClickDetail}>
               <S.CardImgWrap>
                 {el.images
                   .slice(0, 1)

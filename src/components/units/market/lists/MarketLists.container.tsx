@@ -8,10 +8,11 @@ import MarketsListsPresenter from "./MarketLists.presenter";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { IQuery } from "../../../../commons/types/generated/types";
 import { useSearch02 } from "../../../commons/hooks/useSearch02";
+import { useRouter } from "next/router";
 
 export default function MarketsListsContainer() {
   const { onClickMoveToPage } = useMoveToPage();
-
+  const router = useRouter();
   const { data: BestItemData } = useQuery<
     Pick<IQuery, "fetchUseditemsOfTheBest">
   >(FETCH_USEDITEMS_OF_THE_BEST);
@@ -37,6 +38,9 @@ export default function MarketsListsContainer() {
   const { onChangeSearch02, keyword02 } = useSearch02({
     refetch: SoldOutFalseRefetch,
   });
+  const onClickDetail = (event: { currentTarget: { id: any } }) => {
+    void router.push(`./markets/${event.currentTarget.id}`);
+  };
   const onLoadMoreSoldOutTrue = () => {
     if (SoldOutTrueData === undefined) return;
     void SoldOutTrueRetchMore({
@@ -109,6 +113,7 @@ export default function MarketsListsContainer() {
         keyword02={keyword02}
         onClickMoveToPage={onClickMoveToPage}
         fetchMore={undefined}
+        onClickDetail={onClickDetail}
       />
     </>
   );

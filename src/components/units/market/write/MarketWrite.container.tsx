@@ -211,6 +211,12 @@ export default function MarketWriteContainer(
               .split("#")
               .filter((el: string) => el !== "")
               .map((el) => "#" + el),
+            useditemAddress: {
+              address,
+              addressDetail,
+              lat: addressLat,
+              lng: addressLng,
+            },
             images: [...fileUrls],
           },
           useditemId: String(router.query.marketId),
@@ -245,13 +251,13 @@ export default function MarketWriteContainer(
         setValue={setValue}
         trigger={trigger}
         contents={contents}
+        address={address}
+        addressLat={addressLat}
+        addressLng={addressLng}
         onChangeContents={onChangeContents}
         onChangeFileUrls={onChangeFileUrls}
         onClickSubmit={onClickSubmit}
         onClickUpdate={onClickUpdate}
-        address={address}
-        addressLat={addressLat}
-        addressLng={addressLng}
         onChangeAddressDetail={onChangeAddressDetail}
       />
     </>

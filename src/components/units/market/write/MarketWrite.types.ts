@@ -7,10 +7,10 @@ export interface IFormData {
   contents: string;
   price: number;
   tags: string;
-  address: string;
-  addressDetail: string;
-  lat: number;
-  lng: number;
+  address?: string;
+  addressDetail?: string;
+  lat?: number;
+  lng?: number;
 }
 
 export interface IMarketWriteContainerProps {
@@ -18,18 +18,15 @@ export interface IMarketWriteContainerProps {
   isEdit: boolean;
 }
 export interface IMarketWritePresenterProps {
+  fileUrls: string[];
   [x: string]: any;
   data?: Pick<IQuery, "fetchUseditem">;
+  contents: string;
+  addressLat: any;
+  addressLng: any;
+  onChangeContents: (value: string) => void;
   onClickSubmit: (data: IFormData) => Promise<void>;
   onClickUpdate: (data: IFormData) => Promise<void>;
   onChangeFileUrls: (fileUrls: string, index: number) => void;
-  contents: string;
-  fileUrls: string[];
-  myAddress: any;
-  addressLat: any;
-  addressLng: any;
   onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeAddress: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeAddressLat: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeAddressLng: (event: ChangeEvent<HTMLInputElement>) => void;
 }

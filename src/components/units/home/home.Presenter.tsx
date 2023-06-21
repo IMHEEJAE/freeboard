@@ -7,7 +7,12 @@ export default function HomePresenter(props: IHomePresenterProps) {
       <S.Title>베스트 게시물</S.Title>
       <S.CardWrap>
         {props.data?.fetchBoardsOfTheBest.map((el: any, index: any) => (
-          <S.CardBox hoverable key={el._id} onClick={props.onClickDetail}>
+          <S.CardBox
+            hoverable
+            key={el._id}
+            id={el._id}
+            onClick={props.onClickDetail}
+          >
             <S.CardImageWrap>
               <S.CardImage>
                 {el.images
