@@ -19,7 +19,7 @@ export default function BoardCommentListContainer() {
       boardId: router.query.boardId,
     },
   });
-
+  console.log("dddddddddddddddddd", data);
   const onLoadMore = () => {
     if (data === undefined) return;
     void fetchMore({

@@ -1,13 +1,15 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_USEDITEM_QUESTIONS = gql`
-    query fetchUseditemQuestions ($page:Int, $useditemId:ID!) {
-        fetchUseditemQuestions (page:$page, useditemId:$useditemId) {
-            _id
-            contents
-            useditem
-            user
-            createAt
-        }
+  query fetchUseditemQuestions($useditemId: ID!, $page: Int) {
+    fetchUseditemQuestions(useditemId: $useditemId, page: $page) {
+      _id
+      contents
+      user {
+        name
+        picture
+      }
+      createdAt
     }
+  }
 `;

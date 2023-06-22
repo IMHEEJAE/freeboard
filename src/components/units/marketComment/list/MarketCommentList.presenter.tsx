@@ -5,14 +5,12 @@ import MarketCommentListItemPresenter from "./MarketCommentListItem.presenter";
 export default function MarketCommentListPresenter(
   props: IMarketCommentListPresenterProps
 ) {
-  console.log("zzz", props);
+  console.log("asdfasdfasdf", props.data?.fetchUseditemQuestions);
   return (
     <>
       <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
         {props?.data ? (
           props.data?.fetchUseditemQuestions.map((el) => (
-            // <BoardCommentListItemPresenter key={el._id} el={el} />
-
             <MarketCommentListItemPresenter key={el._id} el={el} />
           ))
         ) : (

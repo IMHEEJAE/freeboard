@@ -6,8 +6,8 @@ export default function MarketId() {
   return (
     <>
       <MarketDetailContainer />
-      <MarketCommentListContainer />
       <MarketCommentWriteContainer />
+      {/* <MarketCommentListContainer /> */}
     </>
   );
 }
