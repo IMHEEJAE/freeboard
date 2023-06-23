@@ -7,7 +7,7 @@ export default function MarketId() {
     <>
       <MarketDetailContainer />
       <MarketCommentWriteContainer />
-      {/* <MarketCommentListContainer /> */}
+      <MarketCommentListContainer />
     </>
   );
 }

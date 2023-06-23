@@ -3,37 +3,38 @@ import * as S from "./MarketCommentList.styles";
 import { MarketCommentListPresenterItemProps } from "./MarketCommentList.types";
 import { getDate } from "../../../../commons/utils/utils";
 import MarketCommentWriteContainer from "../write/MarketCommentWrite.container";
+import { DELETE_USEDITEM_QUESTION } from "./MarketCommentList.queries";
+import { useMutation } from "@apollo/client";
+import {
+  IMutation,
+  IMutationDeleteUseditemQuestionArgs,
+} from "../../../../commons/types/generated/types";
+import MarketAnswerWriteContainer from "../../marketAnswer/write/MarketAnswerWrite.container";
+import MarketAnswerListContainer from "../../marketAnswer/list/MarketAnswerList.container";
 export default function MarketCommentListItemPresenter(
   props: MarketCommentListPresenterItemProps
 ) {
   const [isQuestionEdit, setIsQuestionEdit] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
-  const [marketCommentId, setMarketCommentId] = useState("");
+  const [isOpenAnswer, setIsOpenAnswer] = useState(false);
+  // const [marketCommentId, setMarketCommentId] = useState("");
+  const [deleteUseditemQuestion] = useMutation<
+    Pick<IMutation, "deleteUseditemQuestion">,
+    IMutationDeleteUseditemQuestionArgs
+  >(DELETE_USEDITEM_QUESTION);
   const onClickUpdate = () => {
-    setIsEdit(true);
+    setIsQuestionEdit((prev) => !prev);
   };
-  const onClickDeleteModal = (event: MouseEvent<HTMLElement>) => {
-    if (!(event.target instanceof HTMLImageElement)) return;
-    setMarketCommentId(event.target.id);
-    setIsQuestionEdit(true);
+  const onClickAnswer = () => {
+    setIsOpenAnswer((prev) => !prev);
   };
-  const handleCancel = (event: MouseEvent<HTMLElement>) => {
-    setIsQuestionEdit(false);
-  };
-  console.log("asd15f61asdf", props);
+  // const onClickDelete = (event: MouseEvent<HTMLElement>) => {
+  //   if (!(event.target instanceof HTMLImageElement)) return;
+  //   setMarketCommentId(event.target.id);
+  //   setIsQuestionEdit(true);
+  // };
   return (
     <>
-      {isQuestionEdit && (
-        <S.PasswordModal
-          visible={true}
-          //   onOk={onClickDelete}
-          onCancel={handleCancel}
-        >
-          <span>비밀번호 입력: </span>
-          <S.PasswordInput type="password" />
-        </S.PasswordModal>
-      )}
-      {!isEdit && (
+      {!isQuestionEdit && (
         <S.ItemWrapper>
           <S.FlexWrapper>
             <S.Avatar src="/images/avatar.png" />
@@ -44,27 +45,39 @@ export default function MarketCommentListItemPresenter(
               <S.Contents>{props.el?.contents}</S.Contents>
             </S.MainWrapper>
             <S.OptionWrapper>
+              <S.AnswerIcon
+                src="/images/icon/icon_comment.svg"
+                onClick={onClickAnswer}
+              />
               <S.UpdateIcon
                 src="/images/icon/icon_update.png"
                 onClick={onClickUpdate}
               />
-              <S.DeleteIcon
+              {/* <S.DeleteIcon
                 id={props.el?._id}
                 src="/images/icon/icon_delete.png"
-                onClick={onClickDeleteModal}
-              />
+                onClick={onClickDelete}
+              /> */}
             </S.OptionWrapper>
           </S.FlexWrapper>
           <S.DateString>{getDate(props.el?.createdAt)}</S.DateString>
         </S.ItemWrapper>
-      )}{" "}
-      {/* {isEdit && (
+      )}
+      {isQuestionEdit && (
         <MarketCommentWriteContainer
-          isEdit={true}
-          setIsEdit={setIsEdit}
+          isQuestionEdit={isQuestionEdit}
+          setIsQuestionEdit={setIsQuestionEdit}
           el={props.el}
         />
-      )} */}
+      )}
+      <MarketAnswerListContainer el={props.el} />
+
+      {isOpenAnswer && (
+        <MarketAnswerWriteContainer
+          el={props.el}
+          setIsOpenAnswer={setIsOpenAnswer}
+        />
+      )}
     </>
   );
 }

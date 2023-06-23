@@ -38,6 +38,12 @@ export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;
+export const AnswerIcon = styled.img`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 20px;
+`;
 export const UpdateIcon = styled.img`
   width: 24px;
   height: 24px;
@@ -57,10 +63,4 @@ export const DateString = styled.div`
 `;
 export const Star = styled(Rate)`
   padding-left: 20px;
-`;
-export const PasswordModal = styled(Modal)``;
-
-export const PasswordInput = styled.input`
-  width: 100%;
-  margin-top: 10px;
 `;

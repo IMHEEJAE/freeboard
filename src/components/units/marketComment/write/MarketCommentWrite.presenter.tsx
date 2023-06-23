@@ -1,4 +1,43 @@
 import * as S from "./MarketCommentWrite.styles";
-export default function MarketCommentWritePresenter() {
-  return <>댓글부분이다아악</>;
+import { IMarketCommentWritePresenterProps } from "./MarketCommentWrite.types";
+export default function MarketCommentWritePresenter(
+  props: IMarketCommentWritePresenterProps
+) {
+  return (
+    <>
+      <S.Wrapper>
+        {!props.isQuestionEdit && (
+          <>
+            <S.WrapperTitle>문의하기</S.WrapperTitle>
+          </>
+        )}
+
+        <S.ContentsWrapper>
+          <S.Contents
+            maxLength={100}
+            placeholder="내용을 입력하세요."
+            onChange={props.onChangeContents}
+            value={props.contents || (props.el?.contents ?? "")}
+          />
+          <S.BottomWrapper>
+            <S.ContentsLength>
+              {(props.contents
+                ? props.contents.length
+                : props.el?.contents.length) ?? 0}
+              /100
+            </S.ContentsLength>
+            <S.Button
+              onClick={
+                props.isQuestionEdit
+                  ? props.onClickUpdateComment
+                  : props.onClickSubmitComment
+              }
+            >
+              {props.isQuestionEdit ? "수정하기" : "문의하기"}
+            </S.Button>
+          </S.BottomWrapper>
+        </S.ContentsWrapper>
+      </S.Wrapper>
+    </>
+  );
 }
