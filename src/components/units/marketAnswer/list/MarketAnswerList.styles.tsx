@@ -1,54 +1,45 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div`
-  width: 1200px;
-
-  margin-top: 30px;
-
+export const ItemWrapper = styled.div`
+  margin: 30px 100px 10px 150px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  border-bottom: 1px solid #eee;
 `;
-export const WrapperFooter = styled.div`
+export const FlexWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
 `;
 
-export const AnswerWrapper = styled.div`
+export const MainWrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;
 export const Arrow = styled.img`
-  width: 15px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
   margin-bottom: 12px;
 `;
 
-export const UserPhoto = styled.img`
+export const Avatar = styled.img`
   width: 40px;
   height: 40px;
   margin-left: 30px;
   border-radius: 50%;
 `;
 
-export const AnswerInfo = styled.div`
+export const WriterWrapper = styled.div`
   margin-left: 16px;
 `;
 
 export const UserName = styled.div`
-  font-family: Noto Sans CJK KR;
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
 `;
 
-export const Comment = styled.div`
-  font-family: Noto Sans CJK KR;
-  font-style: normal;
-  font-weight: normal;
+export const Contents = styled.div`
   font-size: 16px;
   line-height: 24px;
   margin-top: 4px;
@@ -58,8 +49,8 @@ export const ButtonWrapper = styled.div`
   margin-bottom: 60px;
 `;
 export const Button = styled.img`
-  width: 18px;
-  height: 18px;
-  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  margin-right: 20px;
   cursor: pointer;
 `;

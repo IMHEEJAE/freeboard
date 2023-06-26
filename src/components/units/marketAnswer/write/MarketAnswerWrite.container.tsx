@@ -67,11 +67,13 @@ export default function MarketAnswerWriteContainer(
   return (
     <>
       <MarketAnswerWritePresenter
+        contents={contents}
         onChangeContents={onChangeContents}
         onClickSubmitAnswer={onClickSubmitAnswer}
         onClickUpdateAnswer={onClickUpdateAnswer}
         isAnswerEdit={props.isAnswerEdit}
         answerel={props.answerel}
+        el={props.el}
       />
     </>
   );

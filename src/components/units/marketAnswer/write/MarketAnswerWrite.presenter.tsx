@@ -1,27 +1,36 @@
-import {
-  Wrapper,
-  Arrow,
-  InputCommentBox,
-  CommentInput,
-  CommentInfo,
-  CommentCountInput,
-} from "./MarketAnswerWrite.styles";
+import * as S from "./MarketAnswerWrite.styles";
 import { IMarketAnswerWritePresenterProps } from "./MarketAnswerWrite.types";
 export default function MarketAnswerWritePresenter(
   props: IMarketAnswerWritePresenterProps
 ) {
   return (
     <>
-      <Wrapper>
-        <Arrow src="/images/answerarrow.png" />
-        <InputCommentBox>
-          <CommentInput type="text" onChange={props.onChangeContents} />
-          <CommentInfo>
-            <CommentCountInput></CommentCountInput>
-            <button>asda0</button>
-          </CommentInfo>
-        </InputCommentBox>
-      </Wrapper>
+      <S.Wrapper>
+        <S.Arrow src="/images/icon/icon_answer.svg" />
+        <S.ContentsWrapper>
+          <S.MainContents>
+            <S.Contents onChange={props.onChangeContents} />
+            <S.BottomWrapper>
+              <S.ContentsLength>
+                {(props.contents
+                  ? props.contents.length
+                  : props.el?.contents.length) ?? 0}
+                /100
+              </S.ContentsLength>
+              <S.Button
+                id={props.answerel?._id}
+                onClick={
+                  props.isAnswerEdit
+                    ? props.onClickUpdateAnswer
+                    : props.onClickSubmitAnswer
+                }
+              >
+                {props.isAnswerEdit ? "수정하기" : "답변하기"}
+              </S.Button>
+            </S.BottomWrapper>
+          </S.MainContents>
+        </S.ContentsWrapper>
+      </S.Wrapper>
     </>
   );
 }

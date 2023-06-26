@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Rate } from "antd";
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -20,14 +19,6 @@ export const InputWrapper = styled.div`
 
 export const ContentsWrapper = styled.div`
   border: 1px solid lightgray;
-`;
-
-export const Input = styled.input`
-  width: 180px;
-  height: 52px;
-  padding-left: 20px;
-  border: 1px solid #eee;
-  margin-right: 20px;
 `;
 
 export const Contents = styled.textarea`
@@ -64,4 +55,3 @@ export const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
 `;
-export const Star = styled(Rate)``;

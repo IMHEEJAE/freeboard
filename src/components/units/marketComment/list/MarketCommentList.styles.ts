@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Modal, Rate } from "antd";
+import {  Rate } from "antd";
 
 export const ItemWrapper = styled.div`
   width: 1200px;

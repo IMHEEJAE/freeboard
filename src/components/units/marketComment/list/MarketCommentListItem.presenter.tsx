@@ -35,33 +35,36 @@ export default function MarketCommentListItemPresenter(
   return (
     <>
       {!isQuestionEdit && (
-        <S.ItemWrapper>
-          <S.FlexWrapper>
-            <S.Avatar src="/images/avatar.png" />
-            <S.MainWrapper>
-              <S.WriterWrapper>
-                <S.Writer>{props.el?.user?.name}</S.Writer>
-              </S.WriterWrapper>
-              <S.Contents>{props.el?.contents}</S.Contents>
-            </S.MainWrapper>
-            <S.OptionWrapper>
-              <S.AnswerIcon
-                src="/images/icon/icon_comment.svg"
-                onClick={onClickAnswer}
-              />
-              <S.UpdateIcon
-                src="/images/icon/icon_update.png"
-                onClick={onClickUpdate}
-              />
-              {/* <S.DeleteIcon
+        <>
+          <S.ItemWrapper>
+            <S.FlexWrapper>
+              <S.Avatar src="/images/avatar.png" />
+              <S.MainWrapper>
+                <S.WriterWrapper>
+                  <S.Writer>{props.el?.user?.name}</S.Writer>
+                </S.WriterWrapper>
+                <S.Contents>{props.el?.contents}</S.Contents>
+              </S.MainWrapper>
+              <S.OptionWrapper>
+                <S.AnswerIcon
+                  src="/images/icon/icon_comment.svg"
+                  onClick={onClickAnswer}
+                />
+                <S.UpdateIcon
+                  src="/images/icon/icon_update.png"
+                  onClick={onClickUpdate}
+                />
+                {/* <S.DeleteIcon
                 id={props.el?._id}
                 src="/images/icon/icon_delete.png"
                 onClick={onClickDelete}
               /> */}
-            </S.OptionWrapper>
-          </S.FlexWrapper>
-          <S.DateString>{getDate(props.el?.createdAt)}</S.DateString>
-        </S.ItemWrapper>
+              </S.OptionWrapper>
+            </S.FlexWrapper>
+            <S.DateString>{getDate(props.el?.createdAt)}</S.DateString>
+          </S.ItemWrapper>
+          <MarketAnswerListContainer el={props.el} />
+        </>
       )}
       {isQuestionEdit && (
         <MarketCommentWriteContainer
@@ -70,7 +73,6 @@ export default function MarketCommentListItemPresenter(
           el={props.el}
         />
       )}
-      <MarketAnswerListContainer el={props.el} />
 
       {isOpenAnswer && (
         <MarketAnswerWriteContainer
