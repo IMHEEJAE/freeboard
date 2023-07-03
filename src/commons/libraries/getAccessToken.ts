@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import { GraphQLClient } from "graphql-request";
+import { IMutation } from "../types/generated/types";
 
 const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -9,18 +10,19 @@ const RESTORE_ACCESS_TOKEN = gql`
   }
 `;
 
-export async function getAccessToken(setAccessToken: (arg0: any) => void) {
+export const getAccessToken = async () => {
   try {
-    const graphQLCLient = new GraphQLClient(
+    const graphQLClient = new GraphQLClient(
       "https://backend-practice.codebootcamp.co.kr/graphql",
       { credentials: "include" }
     );
-    const result = await graphQLCLient.request(RESTORE_ACCESS_TOKEN);
-    const newAccessToken = result.restoreAccessToken.accessToken;
-    setAccessToken(newAccessToken);
+    const result = await graphQLClient.request<
+      Pick<IMutation, "restoreAccessToken">
+    >(RESTORE_ACCESS_TOKEN);
 
+    const newAccessToken = result?.restoreAccessToken.accessToken;
     return newAccessToken;
   } catch (error) {
     if (error instanceof Error) alert(error.message);
   }
-}
+};

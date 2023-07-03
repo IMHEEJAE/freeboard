@@ -1,21 +1,8 @@
-import { gql, useQuery } from "@apollo/client";
 import * as S from "./LayoutHeader.styles";
 import { ILayoutHeaderProps } from "./LayoutHeader.types";
-import { IQuery } from "../../../../commons/types/generated/types";
 import { MenuProps } from "antd";
-const FETCH_USER_LOGGED_IN = gql`
-  query fetchUserLoggedIn {
-    fetchUserLoggedIn {
-      _id
-      name
-      email
-    }
-  }
-`;
 
 export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
-  const { data } =
-    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -26,7 +13,7 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
             <S.ProfileSetting />
           </S.ProfileIconWrap>
           <S.ProfileHeaderDetail>
-            <S.ProfileName>{data?.fetchUserLoggedIn.name}</S.ProfileName>
+            <S.ProfileName>{props.data?.fetchUserLoggedIn.name}</S.ProfileName>
             <S.ProfileCash>10,000P</S.ProfileCash>
           </S.ProfileHeaderDetail>
         </S.ProfileMenuHeader>
@@ -47,7 +34,7 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
     {
       key: "3",
       label: (
-        <S.ProfileLogoutWrap>
+        <S.ProfileLogoutWrap onClick={props.onClickLogout}>
           <S.ProfileMenu>
             <S.ProfileLogoutIcon />
             <S.ProfileDesc>로그아웃</S.ProfileDesc>
@@ -61,7 +48,7 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
       <S.Wrapper>
         <S.InnerWrapper>
           <S.InnerLogo onClick={props.onClickLogo}>Logo</S.InnerLogo>
-          {data?.fetchUserLoggedIn.name ? (
+          {props.data?.fetchUserLoggedIn.name ? (
             <S.ProfileWrap>
               <S.ProfileAvatar icon={<S.UserProfile />} />
               <S.ProfileDropdown

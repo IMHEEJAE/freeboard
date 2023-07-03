@@ -18,7 +18,6 @@ export default function HomeContainer() {
   const onClickDetail = (event: MouseEvent<HTMLDivElement>) => {
     void router.push(`./boards/${event.currentTarget.id}`);
   };
-  console.log(data);
   return (
     <>
       <HomePresenter
