@@ -55,6 +55,7 @@ export default function PointModal(props: IPointModalProps) {
             variables: {
               impUid: rsp.imp_uid,
             },
+            refetchQueries: [{ query: FETCH_USER_LOGGED_IN }],
           });
           Modal.success({ content: `포인트 ${myPoint} 원이 충전되었습니다` });
           console.log(rsp);
