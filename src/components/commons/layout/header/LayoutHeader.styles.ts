@@ -1,4 +1,4 @@
-import { Avatar, Dropdown } from "antd";
+import { Avatar, Dropdown, Modal } from "antd";
 import { CaretDownOutlined, UserOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
@@ -118,4 +118,13 @@ export const ProfileDesc = styled.span`
 `;
 export const ProfileDropdown = styled(Dropdown)`
   color: #5c469c;
+`;
+export const PointModal = styled(Modal)`
+  .ant-modal-content {
+    padding: 40px 30px;
+  }
+
+  .ant-modal-footer {
+    display: none;
+  }
 `;

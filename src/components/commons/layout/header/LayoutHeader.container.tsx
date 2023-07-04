@@ -4,10 +4,13 @@ import { useRouter } from "next/router";
 import { FETCH_USER_LOGGED_IN, LOGOUT_USER } from "./LayoutHeader.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
-import { accessTokenState } from "../../../../commons/store";
-import { useRecoilState } from "recoil";
+import { useState } from "react";
 export default function LayoutHeaderContainer() {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const showPointModal = () => {
+    setIsOpen((prev) => !prev);
+  };
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
@@ -20,7 +23,9 @@ export default function LayoutHeaderContainer() {
   };
   const onClickLogout = async () => {
     try {
-      const result = logoutUser({});
+      await logoutUser();
+      localStorage.clear();
+      window.location.reload();
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
@@ -32,6 +37,8 @@ export default function LayoutHeaderContainer() {
         onClickLogo={onClickLogo}
         onClickLogin={onClickLogin}
         onClickLogout={onClickLogout}
+        isOpen={isOpen}
+        showPointModal={showPointModal}
       />
     </>
   );

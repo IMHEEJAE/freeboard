@@ -1,7 +1,8 @@
+import PointModal from "../../modal/point/PointModal";
 import * as S from "./LayoutHeader.styles";
 import { ILayoutHeaderProps } from "./LayoutHeader.types";
 import { MenuProps } from "antd";
-
+import Head from "next/head";
 export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
   const items: MenuProps["items"] = [
     {
@@ -14,7 +15,12 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
           </S.ProfileIconWrap>
           <S.ProfileHeaderDetail>
             <S.ProfileName>{props.data?.fetchUserLoggedIn.name}</S.ProfileName>
-            <S.ProfileCash>10,000P</S.ProfileCash>
+            <S.ProfileCash>
+              {props.data?.fetchUserLoggedIn.userPoint.amount.toLocaleString(
+                "ko-KR"
+              )}
+              P
+            </S.ProfileCash>
           </S.ProfileHeaderDetail>
         </S.ProfileMenuHeader>
       ),
@@ -23,7 +29,7 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
     {
       key: "2",
       label: (
-        <S.ProfileCashWrap>
+        <S.ProfileCashWrap onClick={props.showPointModal}>
           <S.ProfileMenu>
             <S.ProfileCashIcon />
             <S.ProfileDesc>충전하기</S.ProfileDesc>
@@ -45,6 +51,10 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
   ];
   return (
     <>
+      <Head>
+        <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+      </Head>
+
       <S.Wrapper>
         <S.InnerWrapper>
           <S.InnerLogo onClick={props.onClickLogo}>Logo</S.InnerLogo>
@@ -67,6 +77,11 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
             </div>
           )}
         </S.InnerWrapper>
+        {props.isOpen && (
+          <S.PointModal visible={true} onCancel={props.showPointModal}>
+            <PointModal />
+          </S.PointModal>
+        )}
       </S.Wrapper>
     </>
   );

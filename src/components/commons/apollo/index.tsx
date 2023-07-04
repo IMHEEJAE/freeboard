@@ -12,14 +12,14 @@ import {
   restoreAccessTokenLoadable,
 } from "../../../commons/store";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
-import Head from "next/head";
 import { useEffect } from "react";
 import { getAccessToken } from "../../../commons/libraries/getAccessToken";
+
+const GLOBAL_STATE = new InMemoryCache();
 
 interface IApolloSettingProps {
   children: JSX.Element;
 }
-const GLOBAL_STATE = new InMemoryCache();
 
 export default function ApolloSetting(props: IApolloSettingProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
@@ -47,7 +47,8 @@ export default function ApolloSetting(props: IApolloSettingProps) {
               operation.setContext({
                 headers: {
                   ...operation.getContext().headers, //  Authorization: `Bearer ${accessToken}`  => 만료된 토큰이 추가되어 있는 상태
-                  Authorization: `Bearer ${newAccessToken}`, // 3-2 토큰만 새걸로 바꿔치기
+                  // 3-2 토큰만 새걸로 바꿔치기
+                  Authorization: `Bearer ${newAccessToken}`,
                 },
               });
               // 3-3. 방금 수정한 쿼리 재요청하기
@@ -70,12 +71,6 @@ export default function ApolloSetting(props: IApolloSettingProps) {
   });
   return (
     <>
-      {/* <Head>
-        <script
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9bbd257bacbf7b1e0519291e4f771ef5&libraries=services"
-        ></script>
-      </Head> */}
       <ApolloProvider client={client}>{props.children}</ApolloProvider>
     </>
   );

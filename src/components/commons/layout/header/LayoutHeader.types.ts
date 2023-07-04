@@ -3,4 +3,6 @@ export interface ILayoutHeaderProps {
   onClickLogo: () => void;
   onClickLogin: () => void;
   onClickLogout: () => void;
+  isOpen: boolean;
+  showPointModal: () => void;
 }

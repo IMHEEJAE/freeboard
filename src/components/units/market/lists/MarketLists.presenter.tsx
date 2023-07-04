@@ -222,6 +222,7 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
         <S.Bottom>
           <S.EditBtn onClick={props.onClickMoveToPage(`./markets/new`)}>
             <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
+            
           </S.EditBtn>
         </S.Bottom>
       </S.ListWrap>
