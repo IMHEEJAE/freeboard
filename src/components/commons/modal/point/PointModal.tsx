@@ -59,8 +59,6 @@ export default function PointModal(props: IPointModalProps) {
           });
           Modal.success({ content: `포인트 ${myPoint} 원이 충전되었습니다` });
           console.log(rsp);
-
-          // location.reload();
           // createPointTransactionOfBuyingAndSelling => 충전된 포인트로 상품 거래 api
         } else {
           // 결제 실패 시 로직,
@@ -79,7 +77,9 @@ export default function PointModal(props: IPointModalProps) {
         <S.PointIcon src="/images/icon/icon_point.svg" />
         <S.PointTitle>충전할 포인트를 입력하세요</S.PointTitle>
         <span>
+          현재 보유 중 인 포인트는{" "}
           {data?.fetchUserLoggedIn.userPoint?.amount.toLocaleString("ko-KR")} 원
+          입니다.
         </span>
         <S.PointInput
           type="text"

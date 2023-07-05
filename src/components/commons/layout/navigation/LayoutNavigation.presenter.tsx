@@ -5,7 +5,7 @@ const NAVIGATION_MENUS = [
   { name: "라이브게시판", page: "/boards" },
   { name: "파이어베이스", page: "/myfirebase" },
   { name: "중고마켓", page: "/markets" },
-  { name: "마이페이지", page: "/mypages" },
+  { name: "마이페이지", page: "/mypage/mycart" },
 ];
 
 export default function LayoutNavigationPresenter(
