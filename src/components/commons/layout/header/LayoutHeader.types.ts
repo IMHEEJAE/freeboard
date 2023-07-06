@@ -1,6 +1,6 @@
 export interface ILayoutHeaderProps {
   data: any;
-  onClickLogo: () => void;
+  onClickMoveToPage: (path: string) => () => void;
   onClickLogin: () => void;
   onClickLogout: () => void;
   isOpen: boolean;

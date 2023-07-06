@@ -5,8 +5,10 @@ import { FETCH_USER_LOGGED_IN, LOGOUT_USER } from "./LayoutHeader.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useState } from "react";
+import { useMoveToPage } from "../../hooks/useMoveToPage";
 export default function LayoutHeaderContainer() {
   const router = useRouter();
+  const { onClickMoveToPage } = useMoveToPage();
   const [isOpen, setIsOpen] = useState(false);
   const showPointModal = () => {
     setIsOpen((prev) => !prev);
@@ -14,9 +16,6 @@ export default function LayoutHeaderContainer() {
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
-  const onClickLogo = () => {
-    void router.push("/");
-  };
 
   const onClickLogin = () => {
     void router.push("/login");
@@ -34,7 +33,7 @@ export default function LayoutHeaderContainer() {
     <>
       <LayoutHeaderPresenter
         data={data}
-        onClickLogo={onClickLogo}
+        onClickMoveToPage={onClickMoveToPage}
         onClickLogin={onClickLogin}
         onClickLogout={onClickLogout}
         isOpen={isOpen}

@@ -19,73 +19,68 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
             <S.ScrollWrap>
               <S.InfiniScroll
                 pageStart={0}
-                loadMore={props.onLoadMoreSoldOutTrue}
+                loadMore={props.onLoadMoreSoldOutFalse}
                 hasMore={true}
                 useWindow={false}
               >
-                {props.SoldOutTrueData ? (
-                  props.SoldOutTrueData?.fetchUseditems.map(
-                    (el: any, index: any) => (
-                      <div key={el._id}>
-                        <S.ListItem
-                          id={el._id}
-                          onClick={props.onClickMoveToPage(
-                            `/markets/${el._id}`
-                          )}
-                        >
-                          <S.ListLeft>
-                            <S.ImageWrap>
-                              {el.images
-                                ?.filter((el: string) => el)
-                                .map((el: string) => (
-                                  <S.Image
-                                    key={uuidv4()}
-                                    src={`https://storage.googleapis.com/${el}`}
-                                    onError={props.onChangeImageError}
-                                  />
-                                ))}
-                            </S.ImageWrap>
-                            <S.Content>
-                              <S.ItemTitle>
-                                {el.name
-                                  .replaceAll(
-                                    props.keyword,
-                                    `!@#$%${props.keyword}!@#$%`
-                                  )
-                                  .split("!@#$%")
-                                  .map((el: any) => (
-                                    <S.StrongText
-                                      key={uuidv4()}
-                                      isMatched={props.keyword === el}
-                                    >
-                                      {el}
-                                    </S.StrongText>
-                                  ))}
-                              </S.ItemTitle>
-                              <S.Desc>{el.remarks}</S.Desc>
-                              <S.Tags>{el.tags}</S.Tags>
-                              <S.SellerWrap>
-                                <S.Seller>
-                                  <S.SellerAvatar
-                                    size="small"
-                                    icon={<S.SllerAvatarUser />}
-                                  />
-                                  {el.seller.name}
-                                </S.Seller>
-                                <S.PickCount>
-                                  <S.LickCount />
-                                  {el.pickedCount}
-                                </S.PickCount>
-                              </S.SellerWrap>
-                            </S.Content>
-                          </S.ListLeft>
-                          <S.ListRight>
-                            {el.price.toLocaleString()}원
-                          </S.ListRight>
-                        </S.ListItem>
-                      </div>
-                    )
-                  )
+                {props.SoldOutFalseData ? (
+                  props.SoldOutFalseData?.fetchUseditems.map((el: any) => (
+                    <S.ListItem
+                      id={el._id}
+                      key={el._id}
+                      onClick={props.onClickMoveToPage(`/markets/${el._id}`)}
+                    >
+                      <S.ListLeft>
+                        <S.ImageWrap>
+                          {el.images
+                            ?.filter((el: string) => el)
+                            .map((el: string) => (
+                              <S.Image
+                                key={uuidv4()}
+                                src={`https://storage.googleapis.com/${el}`}
+                                onError={props.onChangeImageError}
+                              />
+                            ))}
+                        </S.ImageWrap>
+                        <S.Content>
+                          <S.ItemTitle>
+                            {el.name
+                              .replaceAll(
+                                props.keyword,
+                                `!@#$%${props.keyword}!@#$%`
+                              )
+                              .split("!@#$%")
+                              .map((el: any) => (
+                                <S.StrongText
+                                  key={uuidv4()}
+                                  isMatched={props.keyword === el}
+                                >
+                                  {el}
+                                </S.StrongText>
+                              ))}
+                          </S.ItemTitle>
+                          <S.Desc>{el.remarks}</S.Desc>
+                          <S.Tags>{el.tags}</S.Tags>
+                          <S.SellerWrap>
+                            <S.Seller>
+                              <S.SellerAvatar
+                                size="small"
+                                icon={<S.SllerAvatarUser />}
+                              />
+                              {el.seller.name}
+                            </S.Seller>
+                            <S.PickCount>
+                              <S.LickCount />
+                              {el.pickedCount}
+                            </S.PickCount>
+                          </S.SellerWrap>
+                        </S.Content>
+                      </S.ListLeft>
+                      <S.ListRight>
+                        {el.price.toLocaleString("ko-KR")}원
+                      </S.ListRight>
+                    </S.ListItem>
+                  ))
                 ) : (
                   <></>
                 )}
@@ -108,70 +103,68 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
             <S.ScrollWrap>
               <S.InfiniScroll
                 pageStart={0}
-                loadMore={props.onLoadMoreSoldOutFalse}
+                loadMore={props.onLoadMoreSoldOutTrue}
                 hasMore={true}
                 useWindow={false}
               >
-                {props.SoldOutFalseData ? (
-                  props.SoldOutFalseData?.fetchUseditems.map(
-                    (el: any, index: any) => (
-                      <S.ListItem
-                        key={el._id}
-                        onClick={props.onClickMoveToPage(`/markets/${el._id}`)}
-                      >
-                        <S.ListLeft>
-                          <S.ImageWrap>
-                            {el.images
-                              ?.filter((el: string) => el)
-                              .map((el: string) => (
-                                <S.Image
+                {props.SoldOutTrueData ? (
+                  props.SoldOutTrueData?.fetchUseditems.map((el: any) => (
+                    <S.ListItem
+                      id={el._id}
+                      key={el._id}
+                      onClick={props.onClickMoveToPage(`/markets/${el._id}`)}
+                    >
+                      <S.ListLeft>
+                        <S.ImageWrap>
+                          {el.images
+                            ?.filter((el: string) => el)
+                            .map((el: string) => (
+                              <S.Image
+                                key={uuidv4()}
+                                src={`https://storage.googleapis.com/${el}`}
+                                onError={props.onChangeImageError}
+                              />
+                            ))}
+                        </S.ImageWrap>
+                        <S.Content>
+                          <S.ItemTitle>
+                            {el.name
+                              .replaceAll(
+                                props.keyword02,
+                                `!@#$%${props.keyword02}!@#$%`
+                              )
+                              .split("!@#$%")
+                              .map((el: any) => (
+                                <S.StrongText
                                   key={uuidv4()}
-                                  src={`https://storage.googleapis.com/${el}`}
-                                  onError={props.onChangeImageError}
-                                />
+                                  isMatched={props.keyword02 === el}
+                                >
+                                  {el}
+                                </S.StrongText>
                               ))}
-                          </S.ImageWrap>
-                          <S.Content>
-                            <S.ItemTitle>
-                              {el.name
-                                .replaceAll(
-                                  props.keyword02,
-                                  `!@#$%${props.keyword02}!@#$%`
-                                )
-                                .split("!@#$%")
-                                .map((el: any) => (
-                                  <S.StrongText
-                                    key={uuidv4()}
-                                    isMatched={props.keyword02 === el}
-                                  >
-                                    {el}
-                                  </S.StrongText>
-                                ))}
-                            </S.ItemTitle>
-                            <S.Desc>{el.remarks}</S.Desc>
-                            <S.Tags>{el.tags}</S.Tags>
-                            <S.SellerWrap>
-                              <S.Seller>
-                                <S.SellerAvatar
-                                  size="small"
-                                  icon={<S.SllerAvatarUser />}
-                                />
-                                {el.seller.name}
-                              </S.Seller>
-                              <S.PickCount>
-                                <S.LickCount />
-                                {el.pickedCount}
-                              </S.PickCount>
-                            </S.SellerWrap>
-                          </S.Content>
-                        </S.ListLeft>
-                        <S.ListRight>
-                          {/* <S.IconMoney src="/images/icon/icon_money.svg" /> */}
-                          {el.price.toLocaleString()}원
-                        </S.ListRight>
-                      </S.ListItem>
-                    )
-                  )
+                          </S.ItemTitle>
+                          <S.Desc>{el.remarks}</S.Desc>
+                          <S.Tags>{el.tags}</S.Tags>
+                          <S.SellerWrap>
+                            <S.Seller>
+                              <S.SellerAvatar
+                                size="small"
+                                icon={<S.SllerAvatarUser />}
+                              />
+                              {el.seller.name}
+                            </S.Seller>
+                            <S.PickCount>
+                              <S.LickCount />
+                              {el.pickedCount}
+                            </S.PickCount>
+                          </S.SellerWrap>
+                        </S.Content>
+                      </S.ListLeft>
+                      <S.ListRight>
+                        {el.price.toLocaleString("ko-KR")}원
+                      </S.ListRight>
+                    </S.ListItem>
+                  ))
                 ) : (
                   <></>
                 )}
@@ -188,7 +181,12 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
         <S.MainTitle>베스트 상품</S.MainTitle>
         <S.BestCard>
           {props.BestItemData?.fetchUseditemsOfTheBest.map((el: any) => (
-            <S.CardBox key={el._id} hoverable id={el._id} onClick={props.onClickDetail}>
+            <S.CardBox
+              key={el._id}
+              hoverable
+              id={el._id}
+              onClick={props.onClickDetail}
+            >
               <S.CardImgWrap>
                 {el.images
                   .slice(0, 1)
@@ -222,7 +220,6 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
         <S.Bottom>
           <S.EditBtn onClick={props.onClickMoveToPage(`./markets/new`)}>
             <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
-            
           </S.EditBtn>
         </S.Bottom>
       </S.ListWrap>

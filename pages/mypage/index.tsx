@@ -1,9 +1,7 @@
-import MypageBody from "../../src/components/units/mypage";
+interface IProps {
+  children: JSX.Element;
+}
 
-export default function Mypage() {
-  return (
-    <>
-      <MypageBody />
-    </>
-  );
+export default function Mypage(props: IProps) {
+  return <>sd</>;
 }

@@ -8,7 +8,7 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
     {
       key: "1",
       label: (
-        <S.ProfileMenuHeader>
+        <S.ProfileMenuHeader onClick={props.onClickMoveToPage(`/mypage`)}>
           <S.ProfileIconWrap>
             <S.ProfileAvatar icon={<S.UserProfile />} />
             <S.ProfileSetting />
@@ -57,7 +57,7 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
 
       <S.Wrapper>
         <S.InnerWrapper>
-          <S.InnerLogo onClick={props.onClickLogo}>Logo</S.InnerLogo>
+          <S.InnerLogo onClick={props.onClickMoveToPage(`/`)}>Logo</S.InnerLogo>
           {props.data?.fetchUserLoggedIn.name ? (
             <S.ProfileWrap>
               <S.ProfileAvatar icon={<S.UserProfile />} />
