@@ -10,7 +10,7 @@ export default function BoardListPresenter(props: IBoardListPresenterProps) {
     <>
       <S.Wrapper>
         <S.Card>
-          <S.Header>graphql-api 게시판</S.Header>
+          <S.Header>자유 게시판</S.Header>
           <Search01Container
             refetch={props.refetch}
             refetchBoardsCount={props.refetchBoardsCount}

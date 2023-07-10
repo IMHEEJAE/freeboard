@@ -46,7 +46,34 @@ export default function MypageCartPresenter(props: IMypageCartPresenterProps) {
               </S.Tbody>
             </S.Table>
           ) : (
-            <S.TheadNumber>마이찜 아직!!!</S.TheadNumber>
+            <S.Table>
+              <S.Thead>
+                <S.Tr>
+                  <S.TheadNumber>번호</S.TheadNumber>
+                  <S.TheadTitle>상품명</S.TheadTitle>
+                  <S.TheadSold></S.TheadSold>
+                  <S.TheadPrice>판매가격</S.TheadPrice>
+                  <S.TheadSeller>판매자</S.TheadSeller>
+                  <S.TheadDay>날짜</S.TheadDay>
+                </S.Tr>
+              </S.Thead>
+              <S.Tbody>
+                {props.dataPick?.fetchUseditemsIPicked.map(
+                  (el: any, index: any) => (
+                    <S.Tr key={el._id} id={el._id}>
+                      <S.TbodyNumber>{index + 1}</S.TbodyNumber>
+                      <S.TbodyTitle>{el.name}</S.TbodyTitle>
+                      <S.TbodySold>{el?.buyer?.name && "판매완료"}</S.TbodySold>
+                      <S.TbodyPrice>
+                        {el.price.toLocaleString("ko-KR")}원
+                      </S.TbodyPrice>
+                      <S.TbodySeller>{el.seller.name}</S.TbodySeller>
+                      <S.TbodyDay>{getDate(el.createdAt)}</S.TbodyDay>
+                    </S.Tr>
+                  )
+                )}
+              </S.Tbody>
+            </S.Table>
           )}
         </S.TableWrap>
         <S.Bottom> </S.Bottom>

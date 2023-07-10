@@ -39,6 +39,7 @@ export const TheadTitle = styled.th`
 export const TheadSold = styled.th``;
 export const TheadPrice = styled.th``;
 export const TheadDay = styled.th``;
+export const TheadSeller = styled.th``;
 export const Tbody = styled.tbody``;
 export const TbodyNumber = styled.th`
   padding: 14px 12px;
@@ -49,6 +50,9 @@ export const TbodyTitle = styled.th`
   padding: 14px 12px;
   border-top: 1px solid #bdbdbd;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 export const TbodySold = styled.th`
   padding: 14px 12px;
@@ -63,6 +67,11 @@ export const TbodyPrice = styled.th`
   font-weight: 400;
 `;
 export const TbodyDay = styled.th`
+  padding: 14px 12px;
+  border-top: 1px solid #bdbdbd;
+  font-weight: 400;
+`;
+export const TbodySeller = styled.th`
   padding: 14px 12px;
   border-top: 1px solid #bdbdbd;
   font-weight: 400;

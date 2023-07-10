@@ -36,9 +36,11 @@ export const Title = styled.span`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 4px;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  word-wrap: break-word;
+  -webkit-line-clamp: 1;
 `;
 export const Remark = styled.span`
   font-size: 12px;

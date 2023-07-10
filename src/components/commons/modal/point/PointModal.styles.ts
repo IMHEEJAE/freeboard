@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import { Button } from "antd";
 
-export const PointWrap = styled.div` display: flex;
-flex-direction: column;
-align-items: center;`;
+export const PointWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const PointIcon = styled.img`
   display: block;
@@ -19,6 +21,7 @@ export const PointInput = styled.input`
   border: none;
   border-bottom: 2px solid #000;
   padding: 10px;
+  margin-top: 20px;
   :focus {
     outline: none;
   }
