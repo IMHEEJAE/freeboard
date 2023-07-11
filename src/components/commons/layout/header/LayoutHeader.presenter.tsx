@@ -10,8 +10,19 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
       label: (
         <S.ProfileMenuHeader onClick={props.onClickMoveToPage(`/mypage`)}>
           <S.ProfileIconWrap>
-            <S.ProfileAvatar icon={<S.UserProfile />} />
-            <S.ProfileSetting />
+            {props.data?.fetchUserLoggedIn.picture ? (
+              <div>
+                <S.UserAvatar
+                  src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}
+                />
+                <S.ProfileSetting />
+              </div>
+            ) : (
+              <div>
+                <S.ProfileAvatar icon={<S.UserProfile />} />
+                <S.ProfileSetting />
+              </div>
+            )}
           </S.ProfileIconWrap>
           <S.ProfileHeaderDetail>
             <S.ProfileName>{props.data?.fetchUserLoggedIn.name}</S.ProfileName>
@@ -60,7 +71,17 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
           <S.InnerLogo onClick={props.onClickMoveToPage(`/`)}>Logo</S.InnerLogo>
           {props.data?.fetchUserLoggedIn.name ? (
             <S.ProfileWrap>
-              <S.ProfileAvatar icon={<S.UserProfile />} />
+              {props.data?.fetchUserLoggedIn.picture ? (
+                <div>
+                  <S.UserAvatar
+                    src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <S.ProfileAvatar icon={<S.UserProfile />} />
+                </div>
+              )}
               <S.ProfileDropdown
                 menu={{ items }}
                 placement="bottomRight"

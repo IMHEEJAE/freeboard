@@ -9,7 +9,6 @@ interface IUseSearchMypageArgs {
   ) => Promise<ApolloQueryResult<Pick<IQuery, any>>>;
 }
 
-// 검색 함수
 export const useSearchMypage = (
   args: IUseSearchMypageArgs
 ): {

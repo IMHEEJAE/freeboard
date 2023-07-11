@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 
-export const RESORT_USER_PASSWORD = gql`
-  mutation resetUserPassword($password: String!) {
-    resetUserPassword(password: $password)
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      url
+    }
   }
 `;
-
 export const UPDATE_USER = gql`
   mutation updateUser($updateUserInput: UpdateUserInput!) {
     updateUser(updateUserInput: $updateUserInput) {
@@ -13,7 +14,6 @@ export const UPDATE_USER = gql`
     }
   }
 `;
-
 export const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
     fetchUserLoggedIn {

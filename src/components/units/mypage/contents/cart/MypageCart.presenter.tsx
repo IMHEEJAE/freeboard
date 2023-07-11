@@ -15,9 +15,6 @@ export default function MypageCartPresenter(props: IMypageCartPresenterProps) {
               마이찜
             </S.TabPick>
           </S.Tab>
-          <S.Search>
-            <input type="text" />
-          </S.Search>
         </S.Header>
         <S.TableWrap>
           {!props.isTab ? (

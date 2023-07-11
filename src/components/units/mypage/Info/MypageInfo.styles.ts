@@ -24,6 +24,13 @@ export const ProfileAvatar = styled(Avatar)`
   background: #5c469c;
   font-size: 48px !important;
 `;
+export const UserAvatar = styled.img`
+  width: 200px;
+  height: 200px;
+  display: block;
+  border: 2px solid #000;
+  border-radius: 50%;
+`;
 export const UserProfile = styled(UserOutlined)``;
 export const Name = styled.span`
   margin: 20px 0;
@@ -37,14 +44,17 @@ export const Menu = styled.div`
   font-size: 18px;
 `;
 export const MenuCart = styled.div`
+  cursor: pointer;
   display: flex;
   margin-bottom: 20px;
 `;
 export const MenuPoint = styled.div`
+  cursor: pointer;
   display: flex;
   margin-bottom: 20px;
 `;
 export const MenuProfile = styled.div`
+  cursor: pointer;
   display: flex;
 `;
 export const Icon = styled.img`

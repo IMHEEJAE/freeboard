@@ -5,7 +5,14 @@ export default function MyPageInfoPresenter(props: IMyPageInfoPresenterProps) {
     <>
       <S.Wrapper>
         <S.Title>MYPAGE</S.Title>
-        <S.ProfileAvatar icon={<S.UserProfile />} />
+        {props.data?.fetchUserLoggedIn.picture ? (
+          <S.UserAvatar
+            src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}
+          />
+        ) : (
+          <S.ProfileAvatar icon={<S.UserProfile />} />
+        )}
+
         <S.Name>{props.data?.fetchUserLoggedIn.name}</S.Name>
         <S.Point>
           <S.Icon src="/images/icon/icon_mypage_point.svg" />

@@ -20,7 +20,6 @@ export const TabPick = styled.li`
   color: ${(props: isTab) => (props.isTab ? "#1d267d" : "black")};
   font-weight: ${(props: isTab) => (props.isTab ? "bold" : "normal")};
 `;
-export const Search = styled.div``;
 export const TableWrap = styled.div``;
 export const Table = styled.table`
   width: 100%;

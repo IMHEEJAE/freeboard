@@ -11,7 +11,7 @@ export default function Uploads01Presenter(props: IUpload01PresenterProps) {
         />
       ) : (
         <UploadButton type="button" onClick={props.onClickUpload}>
-          <span>+ Upload</span>
+          <div>+ Upload</div>
         </UploadButton>
       )}
       <UploadFileHidden
