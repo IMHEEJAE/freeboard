@@ -69,7 +69,7 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
       <S.Wrapper>
         <S.InnerWrapper>
           <S.InnerLogo onClick={props.onClickMoveToPage(`/`)}>Logo</S.InnerLogo>
-          {props.data?.fetchUserLoggedIn.name ? (
+          {props.data?.fetchUserLoggedIn ? (
             <S.ProfileWrap>
               {props.data?.fetchUserLoggedIn.picture ? (
                 <div>
@@ -94,7 +94,9 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
           ) : (
             <div>
               <S.InnerButton onClick={props.onClickLogin}>로그인</S.InnerButton>
-              <S.InnerButton>회원가입</S.InnerButton>
+              <S.InnerButton onClick={props.onClickRegistPage}>
+                회원가입
+              </S.InnerButton>
             </div>
           )}
         </S.InnerWrapper>

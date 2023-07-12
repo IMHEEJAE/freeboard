@@ -1,26 +1,12 @@
 import styled from "@emotion/styled";
-import { isTab } from "./MypageCart.types";
+import { Tabs } from "antd";
 export const Wrapper = styled.div``;
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 `;
-export const Tab = styled.ul`
-  display: flex;
-`;
-export const TabSold = styled.li`
-  margin-right: 20px;
-  cursor: pointer;
-  color: ${(props: isTab) => (props.isTab ? "black" : "#1d267d")};
-  font-weight: ${(props: isTab) => (props.isTab ? "normal" : "bold")};
-`;
-export const TabPick = styled.li`
-  cursor: pointer;
-  color: ${(props: isTab) => (props.isTab ? "#1d267d" : "black")};
-  font-weight: ${(props: isTab) => (props.isTab ? "bold" : "normal")};
-`;
-export const TableWrap = styled.div``;
+
 export const Table = styled.table`
   width: 100%;
   border-top: 1px solid #000;
@@ -76,3 +62,9 @@ export const TbodySeller = styled.th`
   font-weight: 400;
 `;
 export const Bottom = styled.div``;
+export const Tab = styled(Tabs)`
+  padding: 0 0 20px;
+  .ant-tabs-nav {
+    width: auto;
+  }
+`;

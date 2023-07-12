@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   width: 300px;
   font-weight: bold;
   border-right: 2px solid #000;
-  margin-right: 30px;
+  padding-right: 30px;
+  margin-right: 60px;
 `;
 export const Title = styled.h4`
   font-size: 24px;

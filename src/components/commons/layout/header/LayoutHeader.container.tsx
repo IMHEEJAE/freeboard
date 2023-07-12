@@ -20,6 +20,9 @@ export default function LayoutHeaderContainer() {
   const onClickLogin = () => {
     void router.push("/login");
   };
+  const onClickRegistPage = () => {
+    void router.push("./login/regist");
+  };
   const onClickLogout = async () => {
     try {
       await logoutUser();
@@ -35,6 +38,7 @@ export default function LayoutHeaderContainer() {
         data={data}
         onClickMoveToPage={onClickMoveToPage}
         onClickLogin={onClickLogin}
+        onClickRegistPage={onClickRegistPage}
         onClickLogout={onClickLogout}
         isOpen={isOpen}
         showPointModal={showPointModal}

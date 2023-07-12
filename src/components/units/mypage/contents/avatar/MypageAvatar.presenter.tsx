@@ -7,25 +7,23 @@ export default function MypageAvatarPresenter(
   return (
     <>
       <S.Wrapper>
-        <S.NameWrapper>
-          <S.Title>내 프로필 변경</S.Title>
-          <S.UploadWrapper>
-            <Upload03Container
-              index={0}
-              fileUrl={""}
-              onChangeFileUrls={props.onChangeFileUrls}
-              defaultFileUrl={props.data?.fetchUserLoggedIn.picture}
-            />
-          </S.UploadWrapper>
-          <S.ButtonWrapper>
-            <S.AvatarBtn
-              name="사진 변경하기"
-              onClick={props.onClickUpdateUserPicture}
-            >
-              사진 변경하기
-            </S.AvatarBtn>
-          </S.ButtonWrapper>
-        </S.NameWrapper>
+        <S.Title>내 프로필 변경</S.Title>
+        <S.UploadWrapper>
+          <Upload03Container
+            index={0}
+            fileUrl={""}
+            onChangeFileUrls={props.onChangeFileUrls}
+            defaultFileUrl={props.data?.fetchUserLoggedIn.picture}
+          />
+        </S.UploadWrapper>
+        <S.BtnWrapper>
+          <S.AvatarBtn
+            name="사진 변경하기"
+            onClick={props.onClickUpdateUserPicture}
+          >
+            사진 변경하기
+          </S.AvatarBtn>
+        </S.BtnWrapper>
       </S.Wrapper>
     </>
   );

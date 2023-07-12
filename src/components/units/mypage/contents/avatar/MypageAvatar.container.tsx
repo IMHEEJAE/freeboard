@@ -18,7 +18,7 @@ export default function MypageAvatarContainer() {
     setFiles(file);
   };
 
-  async function onClickUpdateUserPicture() {
+  const onClickUpdateUserPicture = async () => {
     try {
       const result = await uploadFile({
         variables: { file: files },
@@ -40,7 +40,7 @@ export default function MypageAvatarContainer() {
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
-  }
+  };
 
   return (
     <>
