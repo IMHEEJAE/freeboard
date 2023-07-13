@@ -21,6 +21,10 @@ export const TheadNumber = styled.th`
 `;
 export const TheadTh = styled.th`
   padding: 16px 12px;
+  width: 25%;
+`;
+export const TheadTitle = styled.th`
+  padding: 16px 12px;
 `;
 export const Tbody = styled.tbody``;
 export const TbodyNumber = styled.th`
@@ -36,27 +40,23 @@ export const TbodyTitle = styled.th`
   white-space: nowrap;
   overflow: hidden;
 `;
-export const TbodySold = styled.th`
+export const TbodyTh = styled.th`
   padding: 14px 12px;
   border-top: 1px solid #bdbdbd;
   font-weight: 400;
   font-size: 14px;
+`;
+export const TbodyThRed = styled.th`
+  padding: 14px 12px;
+  border-top: 1px solid #bdbdbd;
+  font-weight: normal;
   color: red;
 `;
-export const TbodyPrice = styled.th`
+export const TbodyThBlue = styled.th`
   padding: 14px 12px;
   border-top: 1px solid #bdbdbd;
-  font-weight: 400;
-`;
-export const TbodyDay = styled.th`
-  padding: 14px 12px;
-  border-top: 1px solid #bdbdbd;
-  font-weight: 400;
-`;
-export const TbodySeller = styled.th`
-  padding: 14px 12px;
-  border-top: 1px solid #bdbdbd;
-  font-weight: 400;
+  font-weight: normal;
+  color: #091e6f;
 `;
 export const Bottom = styled.div``;
 export const Tab = styled(Tabs)`

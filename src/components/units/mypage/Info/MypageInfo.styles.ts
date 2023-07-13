@@ -22,7 +22,7 @@ export const ProfileAvatar = styled(Avatar)`
   justify-content: center;
   align-items: center;
   color: #fff;
-  background: #5c469c;
+  background: #091e6f;
   font-size: 48px !important;
 `;
 export const UserAvatar = styled.img`

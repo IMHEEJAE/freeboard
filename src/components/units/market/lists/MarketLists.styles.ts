@@ -3,6 +3,11 @@ import styled from "@emotion/styled";
 import { Avatar, Button, Card, Tabs } from "antd";
 import { IMatched } from "./MarketLists.types";
 import InfiniteScroll from "react-infinite-scroller";
+
+export const Wrapper = styled.div`
+  position: relative;
+`;
+
 export const BestWrap = styled.div`
   padding: 40px 0 80px;
 `;

@@ -3,7 +3,7 @@ export const globalStyles = css`
   * {
     margin: 0;
     box-sizing: border-box;
-    // font-family: myfont;
+    font-family: "MFL";
   }
   ul,
   li,
@@ -12,10 +12,19 @@ export const globalStyles = css`
     padding: 0;
     list-style: none;
   }
-  // @font-face {
-  //   font-family: "myfont";
-  //   src: url("/fonts/scifibit.ttf");
-  // }
+  @font-face {
+    font-family: "MFL";
+    src: url("/fonts/SB_aggro_L.ttf");
+  }
+  @font-face {
+    font-family: "MFM";
+    src: url(/font/SB_aggro_M.ttf);
+  }
+  @font-face {
+    font-family: "MFB";
+    src: url(/font/SB_aggro_B.ttf);
+  }
+
   .ant-dropdown-menu {
     .ant-dropdown-menu-item {
       padding: 0 !important;
@@ -34,3 +43,10 @@ export const globalStyles = css`
     }
   }
 `;
+// const color = {
+//   primary: "#091E6F",
+//   secondary: " #E8E298",
+//   white: "#E0DCD0",
+//   red: "#BA664C",
+//   gray: '#E5E5E5',
+// };

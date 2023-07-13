@@ -10,7 +10,7 @@ export const UploadButton = styled.button`
   justify-content: center;
   align-items: center;
   :hover {
-    background-color: #1d267d;
+    background-color: #091e6f;
     color: #fff;
   }
 `;

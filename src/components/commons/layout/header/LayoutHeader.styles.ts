@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  background-color: #eee;
+  background-color: #e0dcd0;
 `;
 
 export const InnerWrapper = styled.div`
@@ -25,13 +25,13 @@ export const InnerLogo = styled.div`
   font-weight: bold;
   font-family: "live";
   font-style: italic;
-  color: #1d267d;
+  color: #091e6f;
   cursor: pointer;
 `;
 
 export const InnerButton = styled.span`
   margin: 10px;
-  color: #1d267d;
+  color: #091e6f;
   cursor: pointer;
 `;
 export const ProfileWrap = styled.div`
@@ -48,7 +48,7 @@ export const IconDown = styled(CaretDownOutlined)`
 
 export const ProfileAvatar = styled(Avatar)`
   color: #fff;
-  background: #5c469c;
+  background: #091E6F;
   width: 40px;
   height: 40px;
   display: flex;
@@ -130,7 +130,7 @@ export const ProfileDesc = styled.span`
   font-weight: bold;
 `;
 export const ProfileDropdown = styled(Dropdown)`
-  color: #5c469c;
+  color: #091e6f;
 `;
 export const PointModal = styled(Modal)`
   .ant-modal-content {

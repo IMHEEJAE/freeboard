@@ -15,5 +15,5 @@ export const ButtonsBoard = styled.button`
   font-size: 16px;
   cursor: pointer;
   background: ${(props: IButtonBoardStyleProps) =>
-    props.isActive ? "#1d267d" : "#bdbdbd"};
+    props.isActive ? "#091E6F" : "#bdbdbd"};
 `;

@@ -4,6 +4,7 @@ import SearchBar from "../../../commons/search/searchBar/SearchBar";
 import { IMarketPresenterProps } from "./MarketLists.types";
 import { v4 as uuidv4 } from "uuid";
 import SearchBar02 from "../../../commons/search/searchBar02/SearchBar02";
+import Box01Container from "../../../commons/box/01/box01.container";
 export default function MarketsListsPresenter(props: IMarketPresenterProps) {
   const items: TabsProps["items"] = [
     {
@@ -177,52 +178,54 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
   ];
   return (
     <>
-      <S.BestWrap>
-        <S.MainTitle>베스트 상품</S.MainTitle>
-        <S.BestCard>
-          {props.BestItemData?.fetchUseditemsOfTheBest.map((el: any) => (
-            <S.CardBox
-              key={el._id}
-              hoverable
-              id={el._id}
-              onClick={props.onClickDetail}
-            >
-              <S.CardImgWrap>
-                {el.images
-                  .slice(0, 1)
-                  ?.filter((el: string) => el)
-                  .map((el: string) => (
-                    <S.CardImg
-                      key={el}
-                      src={`https://storage.googleapis.com/${el}`}
-                    />
-                  ))}
-              </S.CardImgWrap>
-              <S.CardContent>
-                <S.TopWrap>
-                  <S.Title>{el.name}</S.Title>
-                  <S.Remark>{el.remarks}</S.Remark>
-                </S.TopWrap>
-                <S.BottomWrap>
-                  <S.Price>{el.price.toLocaleString()}원</S.Price>
-                  <S.LickBox>
-                    <S.LickIcon />
-                    <S.LickCountBest>{el.pickedCount}</S.LickCountBest>
-                  </S.LickBox>
-                </S.BottomWrap>
-              </S.CardContent>
-            </S.CardBox>
-          ))}
-        </S.BestCard>
-      </S.BestWrap>
-      <S.ListWrap>
-        <S.Tabss defaultActiveKey="1" items={items} />
-        <S.Bottom>
-          <S.EditBtn onClick={props.onClickMoveToPage(`./markets/new`)}>
-            <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
-          </S.EditBtn>
-        </S.Bottom>
-      </S.ListWrap>
+      <S.Wrapper>
+        <S.BestWrap>
+          <S.MainTitle>베스트 상품</S.MainTitle>
+          <S.BestCard>
+            {props.BestItemData?.fetchUseditemsOfTheBest.map((el: any) => (
+              <S.CardBox
+                key={el._id}
+                hoverable
+                id={el._id}
+                onClick={props.onClickDetail}
+              >
+                <S.CardImgWrap>
+                  {el.images
+                    .slice(0, 1)
+                    ?.filter((el: string) => el)
+                    .map((el: string) => (
+                      <S.CardImg
+                        key={el}
+                        src={`https://storage.googleapis.com/${el}`}
+                      />
+                    ))}
+                </S.CardImgWrap>
+                <S.CardContent>
+                  <S.TopWrap>
+                    <S.Title>{el.name}</S.Title>
+                    <S.Remark>{el.remarks}</S.Remark>
+                  </S.TopWrap>
+                  <S.BottomWrap>
+                    <S.Price>{el.price.toLocaleString()}원</S.Price>
+                    <S.LickBox>
+                      <S.LickIcon />
+                      <S.LickCountBest>{el.pickedCount}</S.LickCountBest>
+                    </S.LickBox>
+                  </S.BottomWrap>
+                </S.CardContent>
+              </S.CardBox>
+            ))}
+          </S.BestCard>
+        </S.BestWrap>
+        <S.ListWrap>
+          <S.Tabss defaultActiveKey="1" items={items} />
+          <S.Bottom>
+            <S.EditBtn onClick={props.onClickMoveToPage(`./markets/new`)}>
+              <S.EditIcon src="/images/icon/icon_edit.svg" /> 게시물 등록하기
+            </S.EditBtn>
+          </S.Bottom>
+        </S.ListWrap>
+      </S.Wrapper>
     </>
   );
 }

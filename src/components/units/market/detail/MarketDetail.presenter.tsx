@@ -79,7 +79,7 @@ export default function MarketDetailPresenter(
               <S.Button onClick={props.onClickMoveToPage(`/markets`)}>
                 목록으로
               </S.Button>
-              <S.Button>구매하기</S.Button>
+              <S.Button onClick={props.onClickBuy}>구매하기</S.Button>
               <S.Button
                 onClick={props.onClickMoveToPage(
                   `/markets/${router.query.marketId}/edit`
