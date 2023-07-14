@@ -8,11 +8,11 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  background-color: #e0dcd0;
+  // background-color: #e0dcd0;
 `;
 
 export const InnerWrapper = styled.div`
-  width: 1000px;
+  width: 1200px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,9 +22,8 @@ export const InnerWrapper = styled.div`
 
 export const InnerLogo = styled.div`
   font-size: 30px;
-  font-weight: bold;
-  font-family: "live";
-  font-style: italic;
+  font-family: "MFB";
+  font-weight: 700;
   color: #091e6f;
   cursor: pointer;
 `;
@@ -34,6 +33,20 @@ export const InnerButton = styled.span`
   color: #091e6f;
   cursor: pointer;
 `;
+export const MenuWrap = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+export const Menu = styled.div`
+  display: flex;
+`;
+export const MenuItem = styled.div`
+  cursor: pointer;
+  :hover {
+    color: #ba664c;
+  }
+`;
+
 export const ProfileWrap = styled.div`
   display: flex;
   align-items: center;

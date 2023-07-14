@@ -1,9 +1,7 @@
+import { withAuth } from "../../../src/components/commons/hoc";
 import MypagePointContainer from "../../../src/components/units/mypage/contents/point/MypagePoint.container";
 
-export default function MyPoint() {
-  return (
-    <>
-      <MypagePointContainer />
-    </>
-  );
-}
+const MyPoint = () => {
+  return <MypagePointContainer />;
+};
+export default withAuth(MyPoint);

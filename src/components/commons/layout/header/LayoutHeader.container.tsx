@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { FETCH_USER_LOGGED_IN, LOGOUT_USER } from "./LayoutHeader.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { useMoveToPage } from "../../hooks/useMoveToPage";
 export default function LayoutHeaderContainer() {
   const router = useRouter();
@@ -16,7 +16,9 @@ export default function LayoutHeaderContainer() {
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
-
+  const onClickMenu = (event: MouseEvent<HTMLDivElement>) => {
+    void router.push(event.currentTarget.id);
+  };
   const onClickLogin = () => {
     void router.push("/login");
   };
@@ -42,6 +44,7 @@ export default function LayoutHeaderContainer() {
         onClickLogout={onClickLogout}
         isOpen={isOpen}
         showPointModal={showPointModal}
+        onClickMenu={onClickMenu}
       />
     </>
   );

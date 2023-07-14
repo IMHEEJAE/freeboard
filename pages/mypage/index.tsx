@@ -1,9 +1,7 @@
+import { withAuth } from "../../src/components/commons/hoc";
 import MypageAvatarContainer from "../../src/components/units/mypage/contents/avatar/MypageAvatar.container";
 
-export default function Mypage() {
-  return (
-    <>
-      <MypageAvatarContainer />
-    </>
-  );
-}
+const Mypage = () => {
+  return <MypageAvatarContainer />;
+};
+export default withAuth(Mypage);

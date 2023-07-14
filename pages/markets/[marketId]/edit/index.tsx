@@ -5,6 +5,7 @@ import {
   IQueryFetchUseditemArgs,
 } from "../../../../src/commons/types/generated/types";
 import MarketWriteContainer from "../../../../src/components/units/market/write/MarketWrite.container";
+import { withAuth } from "../../../../src/components/commons/hoc";
 
 const FETCH_USEDITEM = gql`
   query fetchUseditem($useditemId: ID!) {
@@ -31,7 +32,7 @@ const FETCH_USEDITEM = gql`
     }
   }
 `;
-export default function MarketEdit() {
+const MarketEdit = () => {
   const router = useRouter();
   const { data } = useQuery<
     Pick<IQuery, "fetchUseditem">,
@@ -40,9 +41,6 @@ export default function MarketEdit() {
     variables: { useditemId: String(router.query.marketId) },
   });
 
-  return (
-    <>
-      <MarketWriteContainer isEdit={true} data={data} />
-    </>
-  );
-}
+  return <MarketWriteContainer isEdit={true} data={data} />;
+};
+export default withAuth(MarketEdit);

@@ -3,6 +3,13 @@ import * as S from "./LayoutHeader.styles";
 import { ILayoutHeaderProps } from "./LayoutHeader.types";
 import { MenuProps } from "antd";
 import Head from "next/head";
+const NAVIGATION_MENUS = [
+  { name: "라이브게시판", page: "/boards" },
+  // { name: "파이어베이스", page: "/myfirebase" },
+  { name: "중고마켓", page: "/markets" },
+  { name: "마이페이지", page: "/mypage" },
+];
+
 export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
   const items: MenuProps["items"] = [
     {
@@ -68,7 +75,17 @@ export default function LayoutHeaderPresenter(props: ILayoutHeaderProps) {
 
       <S.Wrapper>
         <S.InnerWrapper>
-          <S.InnerLogo onClick={props.onClickMoveToPage(`/`)}>Logo</S.InnerLogo>
+          <S.InnerLogo onClick={props.onClickMoveToPage(`/`)}>HJ</S.InnerLogo>
+          <S.MenuWrap>
+            {NAVIGATION_MENUS.map((el) => (
+              <S.Menu key={el.page}>
+                <S.MenuItem id={el.page} onClick={props.onClickMenu}>
+                  {el.name}
+                </S.MenuItem>
+              </S.Menu>
+            ))}
+          </S.MenuWrap>
+
           {props.data?.fetchUserLoggedIn ? (
             <S.ProfileWrap>
               {props.data?.fetchUserLoggedIn.picture ? (
