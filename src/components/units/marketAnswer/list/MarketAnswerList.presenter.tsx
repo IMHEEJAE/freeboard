@@ -8,10 +8,10 @@ export default function MarketAnswerListPresenter(
     <>
       <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
         {props?.data ? (
-          props.data?.fetchUseditemQuestionAnswers.map((answerel: any) => (
+          props.data?.fetchUseditemQuestionAnswers.map((el: any) => (
             <MarketAnswerListItemPresenter
-              key={answerel._id}
-              answerel={answerel}
+              key={el._id}
+              el={el}
             />
           ))
         ) : (

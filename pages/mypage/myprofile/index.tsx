@@ -1,7 +1,10 @@
-import { withAuth } from "../../../src/components/commons/hoc";
 import MypageProfileContainer from "../../../src/components/units/mypage/contents/profile/MypageProfile.container";
+// import { withAuth } from "../../../src/components/commons/hoc";
+// const MyProfile = () => {
+//   return <MypageProfileContainer />;
+// };
+// export default withAuth(MyProfile);
 
-const MyProfile = () => {
+export default function MyProfile() {
   return <MypageProfileContainer />;
-};
-export default withAuth(MyProfile);
+}

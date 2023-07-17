@@ -3,7 +3,6 @@ import MarketsListsContainer from "../../src/components/units/market/lists/Marke
 export default function Markets() {
   return (
     <>
-      {/* <MarketsListContainer /> */}
       <MarketsListsContainer />
     </>
   );

@@ -14,8 +14,8 @@ export const FlexWrapper = styled.div`
 `;
 
 export const Avatar = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
 `;
 
 export const MainWrapper = styled.div`

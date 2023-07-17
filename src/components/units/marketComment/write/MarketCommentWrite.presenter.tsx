@@ -26,6 +26,11 @@ export default function MarketCommentWritePresenter(
                 : props.el?.contents.length) ?? 0}
               /100
             </S.ContentsLength>
+            {props.isQuestionEdit ? (
+              <S.Button onClick={props.onClickCancel}>취소</S.Button>
+            ) : (
+              ""
+            )}
             <S.Button
               onClick={
                 props.isQuestionEdit

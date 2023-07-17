@@ -62,7 +62,9 @@ export default function MarketCommentWriteContainer(
       if (error instanceof Error) alert(error.message);
     }
   };
-
+  const onClickCancel = () => {
+    props.setIsQuestionEdit?.(false);
+  };
   return (
     <>
       <MarketCommentWritePresenter
@@ -72,6 +74,7 @@ export default function MarketCommentWriteContainer(
         onChangeContents={onChangeContents}
         onClickSubmitComment={onClickSubmitComment}
         onClickUpdateComment={onClickUpdateComment}
+        onClickCancel={onClickCancel}
       />
     </>
   );

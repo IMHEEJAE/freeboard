@@ -1,5 +1,5 @@
 export interface IMarketAnswerWriteContainerProps {
-  answerel: any;
+  el: any;
   el?: any;
   isAnswerEdit: boolean;
   setIsAnswerEdit: any;
@@ -11,6 +11,7 @@ export interface IMarketAnswerWritePresenterProps {
   onClickSubmitAnswer: () => void;
   onClickUpdateAnswer: (event: any) => Promise<void>;
   isAnswerEdit: boolean;
-  answerel: any;
+  el: any;
   contents: string;
+  onClickCancel: () => void;
 }

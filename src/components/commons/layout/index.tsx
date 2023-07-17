@@ -6,6 +6,7 @@ import LayoutHeaderContainer from "./header/LayoutHeader.container";
 import MyPageInfoContainer from "../../units/mypage/Info/MypageInfo.container";
 
 const Body = styled.div`
+  min-height: calc(100vh - 82px);
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -55,7 +55,7 @@ export const ContentsLength = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 91px;
+  width: 100px;
   height: 51px;
   background-color: white;
   border: none;

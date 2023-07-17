@@ -1,6 +1,7 @@
 import { Avatar, Dropdown, Modal } from "antd";
 import { CaretDownOutlined, UserOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
+import { mq } from "../../../../commons/styles/globalStyles";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,16 +9,20 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
+  border-bottom: 2px solid #000;
   // background-color: #e0dcd0;
 `;
 
 export const InnerWrapper = styled.div`
-  width: 1200px;
+  width: 1400px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
+  ${mq[3]} {
+    width: 1100px;
+  }
 `;
 
 export const InnerLogo = styled.div`

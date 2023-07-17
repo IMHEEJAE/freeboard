@@ -4,7 +4,6 @@ import SearchBar from "../../../commons/search/searchBar/SearchBar";
 import { IMarketPresenterProps } from "./MarketLists.types";
 import { v4 as uuidv4 } from "uuid";
 import SearchBar02 from "../../../commons/search/searchBar02/SearchBar02";
-import Box01Container from "../../../commons/box/01/box01.container";
 export default function MarketsListsPresenter(props: IMarketPresenterProps) {
   const items: TabsProps["items"] = [
     {
@@ -64,10 +63,14 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
                           <S.Tags>{el.tags}</S.Tags>
                           <S.SellerWrap>
                             <S.Seller>
-                              <S.SellerAvatar
-                                size="small"
-                                icon={<S.SllerAvatarUser />}
+                              <S.Avatar
+                                src={
+                                  el?.seller?.picture
+                                    ? `https://storage.googleapis.com/${el?.seller?.picture}`
+                                    : "/images/avatar.png"
+                                }
                               />
+
                               {el.seller.name}
                             </S.Seller>
                             <S.PickCount>
@@ -148,9 +151,12 @@ export default function MarketsListsPresenter(props: IMarketPresenterProps) {
                           <S.Tags>{el.tags}</S.Tags>
                           <S.SellerWrap>
                             <S.Seller>
-                              <S.SellerAvatar
-                                size="small"
-                                icon={<S.SllerAvatarUser />}
+                              <S.Avatar
+                                src={
+                                  el?.seller?.picture
+                                    ? `https://storage.googleapis.com/${el?.seller?.picture}`
+                                    : "/images/avatar.png"
+                                }
                               />
                               {el.seller.name}
                             </S.Seller>

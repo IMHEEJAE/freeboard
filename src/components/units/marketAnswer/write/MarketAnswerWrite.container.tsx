@@ -7,6 +7,7 @@ import {
 } from "./MarketAnswerWrite.queries";
 import { FETCH_USEDITEM_QUESTIONS_ANSWERS } from "../list/MarketAnswerList.queries";
 import { IMarketAnswerWriteContainerProps } from "./MarketAnswerWrite.types";
+import { Modal } from "antd";
 
 export default function MarketAnswerWriteContainer(
   props: IMarketAnswerWriteContainerProps
@@ -38,6 +39,7 @@ export default function MarketAnswerWriteContainer(
           },
         ],
       });
+      console.log(".....", props.setIsAnswerEdit);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -53,16 +55,19 @@ export default function MarketAnswerWriteContainer(
           {
             query: FETCH_USEDITEM_QUESTIONS_ANSWERS,
             variables: {
-              useditemQuestionId: props.answerel?.useditemQuestion._id,
+              useditemQuestionId: props.el?.useditemQuestion._id,
             },
           },
         ],
       });
+      Modal.success({ content: "답변 수정을 완료하였습니다." });
       props.setIsAnswerEdit?.(false);
-      alert("답변을 수정합니다~");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
+  };
+  const onClickCancel = () => {
+    props.setIsAnswerEdit?.(false);
   };
   return (
     <>
@@ -72,8 +77,8 @@ export default function MarketAnswerWriteContainer(
         onClickSubmitAnswer={onClickSubmitAnswer}
         onClickUpdateAnswer={onClickUpdateAnswer}
         isAnswerEdit={props.isAnswerEdit}
-        answerel={props.answerel}
         el={props.el}
+        onClickCancel={onClickCancel}
       />
     </>
   );

@@ -2,11 +2,10 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  margin: 10px 100px;
 `;
 
 export const WrapperTitle = styled.h2`
-  margin-bottom: 30px;
+  padding-bottom: 10px;
 `;
 
 export const InputWrapper = styled.div`
@@ -18,16 +17,19 @@ export const InputWrapper = styled.div`
 `;
 
 export const ContentsWrapper = styled.div`
-  border: 1px solid lightgray;
+  margin-top: 10px;
 `;
 
 export const Contents = styled.textarea`
+  display: block;
   width: 100%;
   min-height: 108px;
   padding: 20px;
   border: none;
   box-sizing: border-box;
   resize: none;
+  background-color: #e0dcd0;
+  border: 1px solid #000;
   :focus {
     outline: none;
   }
@@ -37,6 +39,8 @@ export const BottomWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  border: 1px solid #000;
+  border-top: none;
 `;
 
 export const ContentsLength = styled.div`
@@ -44,13 +48,13 @@ export const ContentsLength = styled.div`
   height: 51px;
   line-height: 51px;
   padding-left: 20px;
-  color: gray;
+  color: #828282;
 `;
 
 export const Button = styled.button`
-  width: 91px;
+  width: 100px;
   height: 51px;
-  background-color: white;
+  background-color: #e0dcd0;
   border: none;
   font-weight: bold;
   cursor: pointer;

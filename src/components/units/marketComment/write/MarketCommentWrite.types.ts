@@ -15,4 +15,5 @@ export interface IMarketCommentWritePresenterProps {
   onChangeContents: any;
   onClickSubmitComment: () => void;
   onClickUpdateComment: () => void;
+  onClickCancel: () => void;
 }

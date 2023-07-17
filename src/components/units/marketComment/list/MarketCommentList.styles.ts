@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
-import { Rate } from "antd";
 
 export const ItemWrapper = styled.div`
-  width: 1200px;
-  margin: 0px 100px;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  width: 100%;
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #000;
 `;
 
 export const FlexWrapper = styled.div`
@@ -14,8 +12,9 @@ export const FlexWrapper = styled.div`
 `;
 
 export const Avatar = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 `;
 
 export const MainWrapper = styled.div`
@@ -24,15 +23,23 @@ export const MainWrapper = styled.div`
 `;
 export const WriterWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   margin-bottom: 5px;
+`;
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 export const Writer = styled.div`
   font-size: 20px;
   font-weight: bold;
 `;
-export const Contents = styled.div``;
+export const Contents = styled.div`
+  word-break: break-all;
+  width: 80%;
+`;
 
 export const OptionWrapper = styled.div`
   display: flex;
@@ -42,13 +49,13 @@ export const AnswerIcon = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 10px;
 `;
 export const UpdateIcon = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 10px;
 `;
 export const DeleteIcon = styled.img`
   width: 24px;
@@ -58,9 +65,6 @@ export const DeleteIcon = styled.img`
 
 export const DateString = styled.div`
   color: #999;
-  font-size: 14px;
-  padding: 10px 0 0 68px;
-`;
-export const Star = styled(Rate)`
-  padding-left: 20px;
+  font-size: 12px;
+  padding-left: 5px;
 `;

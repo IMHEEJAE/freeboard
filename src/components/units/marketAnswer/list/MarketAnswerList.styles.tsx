@@ -1,40 +1,45 @@
 import styled from "@emotion/styled";
 
 export const ItemWrapper = styled.div`
-  margin: 30px 100px 10px 150px;
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #828282;
+  padding: 10px 0;
+`;
+export const ImgWrapper = styled.div`
+  display: flex;
 `;
 export const FlexWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  padding-left: 10px;
 `;
 
-export const MainWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 export const Arrow = styled.img`
   width: 20px;
   height: 20px;
-  margin-bottom: 12px;
+  margin: 10px 0 0 10px;
 `;
 
 export const Avatar = styled.img`
   width: 40px;
   height: 40px;
-  margin-left: 30px;
+  margin-left: 10px;
   border-radius: 50%;
 `;
 
 export const WriterWrapper = styled.div`
-  margin-left: 16px;
+  display: flex;
+  justify-content: space-between;
 `;
-
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 export const UserName = styled.div`
-  font-weight: 500;
+  font-weight: bold;
   font-size: 16px;
   line-height: 24px;
 `;
@@ -43,14 +48,21 @@ export const Contents = styled.div`
   font-size: 16px;
   line-height: 24px;
   margin-top: 4px;
+  word-break: break-all;
+  width: 80%;
 `;
 
 export const ButtonWrapper = styled.div`
-  margin-bottom: 60px;
+  display: flex;
 `;
 export const Button = styled.img`
   width: 24px;
   height: 24px;
-  margin-right: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+`;
+export const ButtonDelete = styled.img`
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 `;

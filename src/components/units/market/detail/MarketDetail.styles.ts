@@ -1,23 +1,19 @@
 import { LikeOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
+import { mq } from "../../../../commons/styles/globalStyles";
 
-export const Wrapper = styled.div`
-  width: 800px;
-  margin: 100px;
-`;
-export const MarketWrap = styled.div``;
-export const Header = styled.div`
+export const User = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 20px;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid #000;
   justify-content: space-between;
 `;
-export const HeaderLeft = styled.div`
+export const UserLeft = styled.div`
   display: flex;
   align-items: center;
 `;
-export const HeaderRight = styled.div``;
+export const UserRight = styled.div``;
 export const Avatar = styled.img`
   margin-right: 15px;
   display: flex;
@@ -45,28 +41,30 @@ export const Body = styled.div`
   width: 100%;
   padding: 20px 0 40px;
 `;
-export const BodyTop = styled.div`
+export const ContTop = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-top: 20px;
 `;
-export const TopLeft = styled.div`
+export const Cont = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
 `;
 export const Remark = styled.span`
-  font-size: 18px;
-  color: #bdbdbd;
+  font-size: 14px;
+  color: #828282;
 `;
 export const Title = styled.span`
-  margin: 4px 0 8px;
+  padding-bottom: 10px;
   font-size: 24px;
   font-weight: bold;
 `;
 export const Price = styled.span`
-  font-size: 36px;
+  font-size: 20px;
   font-weight: bold;
+  padding-top: 10px;
 `;
-export const TopRigth = styled.div``;
 export const LikeWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,58 +72,147 @@ export const LikeWrap = styled.div`
   margin-top: 5px;
 `;
 export const LikeIcon = styled(LikeOutlined)`
-  font-size: 30px;
+  font-size: 20px;
   margin-bottom: 5px;
 `;
 export const LikeCount = styled.span`
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
 `;
-export const BodyContent = styled.div`
-  border-bottom: 1px solid #bdbdbd;
-  padding-bottom: 40px;
-`;
+
 export const ImgWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  margin: 40px auto 80px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 500px;
+  ${mq[1]} {
+    max-width: initial;
+  }
 `;
 export const Img = styled.img`
+  margin-bottom: 20px;
   width: 100%;
-  height: 100%;
+  min-height: 300px;
+  ${mq[2]} {
+    max-width: 600px;
+  }
+  ${mq[1]} {
+    max-width: initial;
+    width: 100%;
+    height: 100%;
+  }
 `;
 export const Content = styled.span`
-  font-size: 18px;
-  margin-bottom: 30px;
   display: block;
+  font-size: 18px;
+  padding-top: 20px;
 `;
 export const Tags = styled.span`
   display: block;
   margin-top: 5px;
   font-size: 14px;
-  color: #bdbdbd;
+  color: #828282;
 `;
 export const MapWrap = styled.div`
   width: 100%;
-  padding: 40px 0;
-  border-bottom: 1px solid #bdbdbd;
+  padding: 20px 0;
+  border-bottom: 1px solid #000;
 `;
 export const Map = styled.div`
   width: 100%;
-  height: 500px;
+  height: 300px;
 `;
-export const Footer = styled.div`
+export const ButtonWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 20px;
 `;
 export const Button = styled.button`
-  width: 179px;
+  width: 100%;
   height: 45px;
-  background-color: white;
-  border: 1px solid gray;
+  background-color: #091e6f;
+  border: 1px solid #091e6f;
   margin: 0px 12px;
   cursor: pointer;
+  color: #fff;
+  :first-child {
+    margin-left: 0;
+  }
+  :last-child {
+    margin-right: 0;
+  }
+  :hover {
+    color: #ba664c;
+  }
+`;
+export const Wrapper = styled.div`
+  width: 90%;
+  padding: 50px 0;
+`;
+export const MarketWrap = styled.div`
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 1600px;
+  ${mq[2]} {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
+export const Top = styled.div`
+  display: flex;
+  flex: 2;
+  width: 50%;
+  ${mq[2]} {
+    width: 100%;
+  }
+  ${mq[1]} {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+export const SideA = styled.div`
+  border-right: 2px solid #000;
+  padding-right: 40px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  ${mq[2]} {
+    width: 50%;
+  }
+  ${mq[1]} {
+    width: 100%;
+    border-right: none;
+    padding-right: 0;
+  }
+`;
+export const Center = styled.div`
+  overflow: hidden;
+  margin: 0 40px;
+  display: flex;
+  flex: 1;
+  ${mq[2]} {
+    width: 50%;
+    margin-right: 0;
+  }
+  ${mq[1]} {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 40px;
+  }
+`;
+export const SideB = styled.div`
+  border-left: 2px solid #000;
+  padding-left: 40px;
+  flex: 1;
+  width: 50%;
+  ${mq[2]} {
+    width: 100%;
+    flex: 1;
+    border-left: none;
+    padding-left: 0;
+    margin-top: 40px;
   }
 `;

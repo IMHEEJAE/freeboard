@@ -15,6 +15,7 @@ export const FETCH_USEDITEMS = gql`
         _id
         email
         name
+        picture
       }
     }
   }

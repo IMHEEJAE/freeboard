@@ -1,4 +1,10 @@
 import { css } from "@emotion/react";
+
+export const breakpoints = [375, 768, 1366];
+export const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+// ${mq[0]} {
+//   color: red;
+// }
 export const globalStyles = css`
   * {
     margin: 0;
@@ -36,10 +42,19 @@ export const globalStyles = css`
     ::before {
       border-bottom: none !important;
     }
+    .ant-tabs-nav-wrap {
+      .ant-tabs-ink-bar-animated {
+        background: #091e6f !important;
+      }
+    }
     .ant-tabs-tab {
       padding: 5px 0;
+      :hover {
+        color: #000 !important;
+      }
     }
     .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: #091e6f !important;
     }
   }
 `;
@@ -48,5 +63,5 @@ export const globalStyles = css`
 //   secondary: " #E8E298",
 //   white: "#E0DCD0",
 //   red: "#BA664C",
-//   gray: '#E5E5E5',
+//   gray: '#828282',
 // };

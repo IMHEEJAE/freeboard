@@ -33,10 +33,10 @@ export default function MarketsListsContainer() {
   });
 
   const { onChangeSearch, keyword } = useSearch({
-    refetch: SoldOutTrueRefetch,
+    refetch: SoldOutFalseRefetch,
   });
   const { onChangeSearch02, keyword02 } = useSearch02({
-    refetch: SoldOutFalseRefetch,
+    refetch: SoldOutTrueRefetch,
   });
   const onClickDetail = (event: { currentTarget: { id: any } }) => {
     void router.push(`./markets/${event.currentTarget.id}`);

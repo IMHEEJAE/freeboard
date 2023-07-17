@@ -1,24 +1,24 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import {
-  DELETE_USEDITEM_QUESTION_ANSWER,
-  FETCH_USEDITEM_QUESTIONS_ANSWERS,
-} from "./MarketAnswerList.queries";
+import { useQuery } from "@apollo/client";
+import { FETCH_USEDITEM_QUESTIONS_ANSWERS } from "./MarketAnswerList.queries";
 import { IMarketAnswerListContainerProps } from "./MarketAnswerList.types";
 import MarketAnswerListPresenter from "./MarketAnswerList.presenter";
+import {
+  IQuery,
+  IQueryFetchUseditemQuestionAnswersArgs,
+} from "../../../../commons/types/generated/types";
 
 export default function MarketAnswerListContainer(
   props: IMarketAnswerListContainerProps
 ) {
-  const { data, fetchMore } = useQuery(FETCH_USEDITEM_QUESTIONS_ANSWERS, {
+  const { data, fetchMore } = useQuery<
+    Pick<IQuery, "fetchUseditemQuestionAnswers">,
+    IQueryFetchUseditemQuestionAnswersArgs
+  >(FETCH_USEDITEM_QUESTIONS_ANSWERS, {
     variables: {
       useditemQuestionId: props.el?._id,
     },
   });
 
-  //   const [deleteUseditemQuestionAnswer] = useMutation(
-  //     DELETE_USEDITEM_QUESTION_ANSWER
-  //   );
   const onLoadMore = () => {
     if (data === undefined) return;
     void fetchMore({

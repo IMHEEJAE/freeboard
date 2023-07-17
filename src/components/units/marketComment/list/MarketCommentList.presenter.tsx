@@ -5,7 +5,6 @@ import MarketCommentListItemPresenter from "./MarketCommentListItem.presenter";
 export default function MarketCommentListPresenter(
   props: IMarketCommentListPresenterProps
 ) {
-  console.log("asdfasdfasdf", props.data?.fetchUseditemQuestions);
   return (
     <>
       <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>

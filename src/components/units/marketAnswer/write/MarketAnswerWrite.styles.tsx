@@ -1,30 +1,29 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  margin: 30px 100px 10px 150px;
-  display: flex;
   display: flex;
   flex-direction: row;
+  margin: 10px 0;
 `;
 
 export const Arrow = styled.img`
   width: 20px;
   height: 20px;
-  margin-right: 20px;
+  margin: 10px 15px 0 10px;
 `;
 export const ContentsWrapper = styled.div`
-  border: 1px solid lightgray;
-
-  width: 100%;
+  flex: 1;
 `;
-export const MainContents = styled.div``;
 export const Contents = styled.textarea`
+  display: block;
   width: 100%;
   min-height: 108px;
   padding: 20px;
   border: none;
   box-sizing: border-box;
   resize: none;
+  background-color: #e0dcd0;
+  border: 1px solid #000;
   :focus {
     outline: none;
   }
@@ -43,18 +42,20 @@ export const BottomWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  border: 1px solid #000;
+  border-top: none;
 `;
 export const ContentsLength = styled.div`
   width: 100%;
   height: 51px;
   line-height: 51px;
   padding-left: 20px;
-  color: gray;
+  color: #828282;
 `;
 export const Button = styled.button`
-  width: 91px;
+  width: 100px;
   height: 51px;
-  background-color: white;
+  background-color: #e0dcd0;
   border: none;
   font-weight: bold;
   cursor: pointer;
