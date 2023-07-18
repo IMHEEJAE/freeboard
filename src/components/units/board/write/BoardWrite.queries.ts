@@ -21,5 +21,5 @@ export const UPDATE_BOARD = gql`
     ) {
       _id
     }
-  }
+  } 
 `;

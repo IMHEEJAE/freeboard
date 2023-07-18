@@ -3,22 +3,31 @@ import styled from "@emotion/styled";
 import { Button, Card, Tabs } from "antd";
 import { IMatched } from "./MarketLists.types";
 import InfiniteScroll from "react-infinite-scroller";
+import { mq } from "../../../../commons/styles/globalStyles";
 
 export const Wrapper = styled.div`
   position: relative;
+  width: 90%;
 `;
-
+export const MainWrap = styled.div`
+  padding: 50px 0 100px;
+  max-width: 1600px;
+  margin: 0 auto;
+`;
 export const BestWrap = styled.div`
-  padding: 40px 0 80px;
+  padding-bottom: 100px;
 `;
 
 export const BestCard = styled.div`
   display: flex;
+  gap: 16px;
+  ${mq[1]} {
+    flex-wrap: wrap;
+  }
 `;
 export const CardBox = styled(Card)`
-  width: 280px;
+  width: 25%;
   overflow: hidden;
-  margin: 0 12px;
   border: 2px solid #000;
   background-color: #e0dcd0;
   border-radius: 0;
@@ -27,6 +36,13 @@ export const CardBox = styled(Card)`
   }
   .ant-card-body {
     padding: 0;
+  }
+  ${mq[1]} {
+    flex-grow: 1;
+    flex-basis: calc(50% - 16px);
+  }
+  ${mq[0]} {
+    flex-basis: 100%;
   }
 `;
 export const CardImgWrap = styled.div`
@@ -90,13 +106,17 @@ export const LickCountBest = styled.span`
 
 export const ListWrap = styled.div``;
 export const MainTitle = styled.h2`
-  margin: 40px auto;
+  margin: 0 auto 40px;
   text-align: center;
 `;
+export const ListTitle = styled.h3`
+  margin: 0 auto 20px;
+  text-align: center;
+  font-size: 24px;
+`;
 export const List = styled.div`
-  border-top: 1px solid #bdbdbd;
-  border-bottom: 1px solid #bdbdbd;
-  min-width: 1200px;
+  border-top: 1px solid #828282;
+  border-bottom: 1px solid #828282;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -122,25 +142,33 @@ export const ScrollWrap = styled.div`
 `;
 export const ListItem = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 20px;
   border: 2px solid #000;
   border-bottom: none;
   :last-child {
     border-bottom: 2px solid #000;
   }
+  ${mq[1]} {
+    padding: 10px 0;
+    flex-direction: column;
+  }
 `;
 export const ListLeft = styled.div`
   display: flex;
   align-items: center;
+  ${mq[1]} {
+    flex-direction: column;
+    align-items: baseline;
+    margin: 0 auto;
+  }
 `;
-export const ListRight = styled.div`
-  display: flex;
-  align-items: center;
-  line-height: 35px;
-  font-weight: 700;
+export const MarketPrice = styled.div`
   font-size: 24px;
+  font-weight: 500;
+  margin-top: 10px;
+  ${mq[1]} {
+    font-size: 20px;
+  }
 `;
 export const IconMoney = styled.img`
   margin-right: 10px;
@@ -155,17 +183,31 @@ export const ImageWrap = styled.div`
 export const Image = styled.img`
   width: 160px;
   height: 160px;
+  ${mq[1]} {
+    width: 75%;
+    min-width: 300px;
+    height: 160px;
+  }
 `;
-export const Content = styled.div`
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
+  ${mq[1]} {
+    margin-left: 0px;
+  }
 `;
+export const Content = styled.div``;
 export const ItemTitle = styled.span`
   font-size: 24px;
-  line-height: 35px;
-  margin-bottom: 3px;
-  height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  -webkit-line-clamp: 1;
+  ${mq[1]} {
+    font-size: 20px;
+  }
 `;
 export const Desc = styled.span`
   color: #4f4f4f;
@@ -204,16 +246,16 @@ export const PickCount = styled.span`
   align-items: center;
 `;
 export const StrongText = styled.span`
-  color: ${(props: IMatched) => (props.isMatched ? "#D4ADFC" : "#000")};
+  color: ${(props: IMatched) => (props.isMatched ? "#ba664c" : "#000")};
   font-weight: ${(props: IMatched) => (props.isMatched ? "bold" : "normal")};
 `;
 export const Tabss = styled(Tabs)`
   padding: 0 0 20px;
 `;
 export const InfiniScroll = styled(InfiniteScroll)``;
+
 export const Bottom = styled.div`
   display: flex;
-  margin-bottom: 100px;
   justify-content: flex-end;
 `;
 export const EditBtn = styled(Button)`

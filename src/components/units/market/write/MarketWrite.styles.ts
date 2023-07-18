@@ -1,24 +1,25 @@
 import dynamic from "next/dynamic";
 import styled from "@emotion/styled";
+import { mq } from "../../../../commons/styles/globalStyles";
 const ReactQuill = dynamic(async () => await import("react-quill"), {
   ssr: false,
 });
 export const Wrapper = styled.div`
-  width: 1200px;
-  border: 1px solid black;
-  margin: 100px;
-  padding: 80px 100px 100px 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: none;
-  box-shadow: 0px 0px 10px gray;
+  position: relative;
+  width: 90%;
 `;
-export const Title = styled.div`
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 52px;
+export const MainWrap = styled.div`
+  max-width: 1600px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  padding: 50px;
+  border-top: none;
+  border-bottom: none;
+  ${mq[1]} {
+    padding: 20px;
+  }
 `;
+export const MainTitle = styled.h2``;
 export const FormWrap = styled.div`
   width: 100%;
 `;
@@ -37,6 +38,10 @@ export const Label = styled.div`
   margin: 20px 0 10px;
 `;
 export const Quill = styled(ReactQuill)`
+  border: 2px solid #000;
+  .ql-toolbar.ql-snow {
+    border-bottom: 2px solid #000;
+  }
   .ql-container.ql-snow {
     height: 200px;
   }
@@ -44,14 +49,21 @@ export const Quill = styled(ReactQuill)`
 
 export const MapWrap = styled.div`
   display: flex;
+  ${mq[2]} {
+    flex-direction: column;
+  }
 `;
 export const MapBox = styled.div``;
 export const MapImg = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 600px;
   height: 230px;
   margin-right: 26px;
+  border: 2px solid #000;
+  ${mq[2]} {
+    width: 100%;
+  }
 `;
 export const KakaoMap = styled.div`
   width: 100%;
@@ -72,8 +84,10 @@ export const GpsInput = styled.input`
   width: 100%;
   height: 52px;
   border: 1px solid #bdbdbd;
-  padding-left: 16px;
+  padding: 0 12px;
   box-sizing: border-box;
+  background: #e0dcd0;
+  border: 2px solid #000;
 `;
 
 export const GpsIcon = styled.img`
@@ -89,5 +103,5 @@ export const PT20 = styled.div`
 export const SubmitWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 40px;
 `;

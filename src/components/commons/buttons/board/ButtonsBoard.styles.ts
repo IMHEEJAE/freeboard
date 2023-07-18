@@ -8,12 +8,12 @@ export const ButtonsBoard = styled.button`
   width: 180px;
   height: 52px;
   box-sizing: border-box;
-  border: none;
-  background: #d4adfc;
+  border: 2px solid #000;
+
   color: ${(props: IButtonBoardStyleProps) =>
-    props.isActive ? "#eee" : "#000"};
+    props.isActive ? "#E8E298" : "#e8e298"};
   font-size: 16px;
   cursor: pointer;
   background: ${(props: IButtonBoardStyleProps) =>
-    props.isActive ? "#091E6F" : "#bdbdbd"};
+    props.isActive ? "#091E6F" : "#828282"};
 `;

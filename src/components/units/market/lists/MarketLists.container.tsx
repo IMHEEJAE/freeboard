@@ -101,9 +101,6 @@ export default function MarketsListsContainer() {
         SoldOutFalseData={SoldOutFalseData}
         SoldOutFalseRefetch={SoldOutFalseRefetch}
         SoldOutFalseRetchMore={SoldOutFalseRetchMore}
-        // data={data}
-        // refetch={refetch}
-        // fetchMore={fetchMore}
         onChangeImageError={onChangeImageError}
         onChangeSearch={onChangeSearch}
         onChangeSearch02={onChangeSearch02}

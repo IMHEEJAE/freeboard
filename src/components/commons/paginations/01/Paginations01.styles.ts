@@ -8,7 +8,7 @@ interface IPageProps {
 }
 export const Page = styled.span`
   margin: 0px 10px;
-  color: ${(props: IPageProps) => (props.isActive ? "#D4ADFC" : "black")};
+  color: ${(props: IPageProps) => (props.isActive ? "#BA664C" : "black")};
   font-weight: ${(props: IPageProps) => (props.isActive ? "bold" : "normal")};
   cursor: pointer;
 `;

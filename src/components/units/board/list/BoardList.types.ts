@@ -4,9 +4,13 @@ import {
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
+import { MouseEvent } from "react";
 
 export interface IBoardListPresenterProps {
   data?: any;
+  dataBest?: Pick<IQuery, "fetchBoardsOfTheBest">;
+  onChangeImageError: (event: { target: { src: string } }) => void;
+  onClickDetail: (event: MouseEvent<HTMLDivElement>) => void;
   onClickMoveToPage: (path: string) => () => void;
   refetch: (
     variables?: Partial<IQueryFetchBoardsArgs> | undefined

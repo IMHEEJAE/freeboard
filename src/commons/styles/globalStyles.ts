@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-export const breakpoints = [375, 768, 1366];
+export const breakpoints = [450, 769, 1366];
 export const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
 // ${mq[0]} {
 //   color: red;
@@ -37,7 +37,6 @@ export const globalStyles = css`
     }
   }
   .ant-tabs-nav {
-    width: 1200px;
     margin: 0 auto;
     ::before {
       border-bottom: none !important;
@@ -57,7 +56,13 @@ export const globalStyles = css`
       color: #091e6f !important;
     }
   }
+  ${mq[0]} {
+    .ant-tabs .ant-tabs-tab + .ant-tabs-tab {
+      margin-left: 10px;
+    }
+  }
 `;
+
 // const color = {
 //   primary: "#091E6F",
 //   secondary: " #E8E298",

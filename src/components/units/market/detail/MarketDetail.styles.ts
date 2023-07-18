@@ -144,10 +144,13 @@ export const Button = styled.button`
   :hover {
     color: #ba664c;
   }
+  ${mq[0]} {
+    margin: 0 5px;
+  }
 `;
 export const Wrapper = styled.div`
   width: 90%;
-  padding: 50px 0;
+  padding: 50px 0 100px;
 `;
 export const MarketWrap = styled.div`
   display: flex;

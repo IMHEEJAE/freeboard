@@ -9,103 +9,104 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
   return (
     <>
       <S.Wrapper>
-        <S.Title>게시글 {props.isEdit ? "수정" : "등록"}</S.Title>
-        <S.FormWrap>
-          <form
-            onSubmit={props.handleSubmit(
-              props.isEdit ? props.onClickUpdate : props.onClickSubmit
-            )}
-          >
-            <S.WriterWrap>
-              <S.WriterBox>
-                <S.Label>작성자</S.Label>
+        <S.MainWrap>
+          <S.MainTitle>게시글 {props.isEdit ? "수정" : "등록"}</S.MainTitle>
+          <S.FormWrap>
+            <form
+              onSubmit={props.handleSubmit(
+                props.isEdit ? props.onClickUpdate : props.onClickSubmit
+              )}
+            >
+              <S.WriterWrap>
+                <S.WriterBox>
+                  <S.Label>작성자</S.Label>
+                  <InputsBoard
+                    type="text"
+                    register={props.register("writer")}
+                    placeholder="이름을 적어주세요."
+                    defaultValue={props.data?.fetchBoard.writer ?? ""}
+                    readOnly={!!props.data?.fetchBoard.writer}
+                  />
+                  {props.formState.errors.writer && (
+                    <Validation01
+                      title={props.formState.errors.writer?.message}
+                    />
+                  )}
+                </S.WriterBox>
+                <S.WriterBox>
+                  <S.Label>비밀번호</S.Label>
+
+                  <InputsBoard
+                    type="password"
+                    register={props.register("password")}
+                    placeholder="비밀번호를 적어주세요."
+                  />
+
+                  {props.formState.errors.password && (
+                    <Validation01
+                      title={props.formState.errors.password?.message}
+                    />
+                  )}
+                </S.WriterBox>
+              </S.WriterWrap>
+              <S.InputWrap>
+                <S.Label>제목</S.Label>
                 <InputsBoard
                   type="text"
-                  register={props.register("writer")}
-                  placeholder="이름을 적어주세요."
-                  defaultValue={props.data?.fetchBoard.writer ?? ""}
-                  readOnly={!!props.data?.fetchBoard.writer}
+                  register={props.register("title")}
+                  placeholder="제목을 작성해주세요."
+                  defaultValue={props.data?.fetchBoard.title}
                 />
-                {props.formState.errors.writer && (
+
+                {props.formState.errors.title && (
+                  <Validation01 title={props.formState.errors.title?.message} />
+                )}
+              </S.InputWrap>
+              <S.InputWrap>
+                <S.Label>내용</S.Label>
+                <S.Textarea
+                  placeholder="내용을 작성해주세요."
+                  {...props.register("contents")}
+                  defaultValue={props.data?.fetchBoard.contents}
+                />
+                {props.formState.errors.contents && (
                   <Validation01
-                    title={props.formState.errors.writer?.message}
+                    title={props.formState.errors.contents?.message}
                   />
                 )}
-              </S.WriterBox>
-              <S.WriterBox>
-                <S.Label>비밀번호</S.Label>
-
-                <InputsBoard
-                  type="password"
-                  register={props.register("password")}
-                  placeholder="비밀번호를 적어주세요."
-                />
-
-                {props.formState.errors.password && (
-                  <Validation01
-                    title={props.formState.errors.password?.message}
+              </S.InputWrap>
+              <S.InputWrap>
+                <S.Label>주소</S.Label>
+                <S.ZipWrap>
+                  <S.ZipCode
+                    type="text"
+                    placeholder="07250"
+                    readOnly
+                    value={props.zipcode}
                   />
-                )}
-              </S.WriterBox>
-            </S.WriterWrap>
-            <S.InputWrap>
-              <S.Label>제목</S.Label>
-
-              <InputsBoard
-                type="text"
-                register={props.register("title")}
-                placeholder="제목을 작성해주세요."
-                defaultValue={props.data?.fetchBoard.title}
-              />
-
-              {props.formState.errors.title && (
-                <Validation01 title={props.formState.errors.title?.message} />
-              )}
-            </S.InputWrap>
-            <S.InputWrap>
-              <S.Label>내용</S.Label>
-              <S.Textarea
-                placeholder="내용을 작성해주세요."
-                {...props.register("contents")}
-                defaultValue={props.data?.fetchBoard.contents}
-              />
-              {props.formState.errors.contents && (
-                <Validation01
-                  title={props.formState.errors.contents?.message}
-                />
-              )}
-            </S.InputWrap>
-            <S.InputWrap>
-              <S.Label>주소</S.Label>
-              <S.ZipWrap>
-                <S.ZipCode
-                  type="text"
-                  placeholder="07250"
+                  <S.ZipCodeBtn
+                    type="button"
+                    onClick={props.onClickAddressSearch}
+                  >
+                    우편번호 검색
+                  </S.ZipCodeBtn>
+                </S.ZipWrap>
+                <S.InputBox
                   readOnly
-                  value={props.zipcode}
+                  value={
+                    props.address ||
+                    (props.data?.fetchBoard.boardAddress?.address ?? "")
+                  }
                 />
-                <S.ZipCodeBtn
-                  type="button"
-                  onClick={props.onClickAddressSearch}
-                >
-                  우편번호 검색
-                </S.ZipCodeBtn>
-              </S.ZipWrap>
-              <S.InputBox
-                readOnly
-                value={
-                  props.address ||
-                  (props.data?.fetchBoard.boardAddress?.address ?? "")
-                }
-              />
-              <S.InputBox
-                onChange={props.onChangeAddressDetail}
-                defaultValue={
-                  props.data?.fetchBoard.boardAddress?.addressDetail ?? ""
-                }
-              />
-            </S.InputWrap>
-            <S.InputWrapTop>
+                <S.InputBox
+                  onChange={props.onChangeAddressDetail}
+                  defaultValue={
+                    props.data?.fetchBoard.boardAddress?.addressDetail ?? ""
+                  }
+                  placeholder="상세주소를 입력해주세요."
+                />
+              </S.InputWrap>
+
               <S.Label>유튜브</S.Label>
               <InputsBoard
                 type="text"
@@ -113,8 +114,6 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
                 placeholder="링크를 복사해주세요."
                 defaultValue={props.data?.fetchBoard.youtubeUrl ?? ""}
               />
-            </S.InputWrapTop>
-            <S.InputWrapTop>
               <S.Label>사진첨부</S.Label>
               <S.UploadWrap>
                 {props.fileUrls.map((el, index) => (
@@ -126,15 +125,15 @@ export default function BoardWritePresenter(props: BoardWritePresenterProps) {
                   />
                 ))}
               </S.UploadWrap>
-            </S.InputWrapTop>
-            <S.SubmitWrap>
-              <ButtonsBoard
-                title={props.isEdit ? "수정하기" : "등록하기"}
-                isActive={props.formState.isValid}
-              />
-            </S.SubmitWrap>
-          </form>
-        </S.FormWrap>
+              <S.SubmitWrap>
+                <ButtonsBoard
+                  title={props.isEdit ? "수정하기" : "등록하기"}
+                  isActive={props.formState.isValid}
+                />
+              </S.SubmitWrap>
+            </form>
+          </S.FormWrap>
+        </S.MainWrap>
       </S.Wrapper>
       {props.isOpen && (
         <S.ZipModal visible={true} onCancel={props.onClickAddressSearch}>

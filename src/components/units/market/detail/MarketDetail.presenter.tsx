@@ -33,6 +33,7 @@ export default function MarketDetailPresenter(
                   <Tooltip
                     placement="topRight"
                     title={`${props.data?.fetchUseditem.useditemAddress?.address} ${props.data?.fetchUseditem.useditemAddress?.addressDetail}`}
+                    trigger={"click"}
                   >
                     <S.IconLocation src="/images/icon/icon_location.svg" />
                   </Tooltip>

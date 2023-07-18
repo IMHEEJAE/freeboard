@@ -9,8 +9,60 @@ export default function BoardListPresenter(props: IBoardListPresenterProps) {
   return (
     <>
       <S.Wrapper>
-        <S.Card>
-          <S.Header>자유 게시판</S.Header>
+        <S.MainWrap>
+          <S.BestWrap>
+            <S.MainTitle>베스트 게시물</S.MainTitle>
+            <S.CardWrap>
+              {props.dataBest?.fetchBoardsOfTheBest.map(
+                (el: any, index: any) => (
+                  <S.CardBox
+                    hoverable
+                    key={el._id}
+                    id={el._id}
+                    onClick={props.onClickDetail}
+                  >
+                    <S.CardImageWrap>
+                      {el.images
+                        .slice(0, 1)
+                        ?.filter((el: string) => el)
+                        .map((el: string) => (
+                          <S.CardImg
+                            key={el}
+                            src={`https://storage.googleapis.com/${el}`}
+                          />
+                        ))}
+                    </S.CardImageWrap>
+                    <S.CardContents>
+                      <S.CardTitle>{el.title}</S.CardTitle>
+                      <S.CardProfileWrap>
+                        <S.CardProfileTop>
+                          <S.CardProfileDate>
+                            {getDate(el.createdAt)}
+                          </S.CardProfileDate>
+                          <S.CardProfileLikeIcon />
+                        </S.CardProfileTop>
+                        <S.CardProfileBottom>
+                          <S.CardProfile>
+                            <S.Avatar
+                              src={
+                                el?.seller?.picture
+                                  ? `https://storage.googleapis.com/${el?.seller?.picture}`
+                                  : "/images/avatar.png"
+                              }
+                            />
+                            <S.CardProfileName>{el.writer}</S.CardProfileName>
+                          </S.CardProfile>
+
+                          <S.CardProfileLike>{el.likeCount}</S.CardProfileLike>
+                        </S.CardProfileBottom>
+                      </S.CardProfileWrap>
+                    </S.CardContents>
+                  </S.CardBox>
+                )
+              )}
+            </S.CardWrap>
+          </S.BestWrap>
+          <S.MainTitle>자유 게시판</S.MainTitle>
           <Search01Container
             refetch={props.refetch}
             refetchBoardsCount={props.refetchBoardsCount}
@@ -64,7 +116,7 @@ export default function BoardListPresenter(props: IBoardListPresenterProps) {
               </S.EditBtn>
             </Link>
           </S.BoardFooter>
-        </S.Card>
+        </S.MainWrap>
       </S.Wrapper>
     </>
   );

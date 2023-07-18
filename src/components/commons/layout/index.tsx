@@ -16,7 +16,6 @@ const MypageWrap = styled.div`
   display: flex;
   // align-items: center;
   justify-content: center;
-  width: 1200px;
   height: 100%;
   padding: 80px 0;
   margin: 0 auto;
