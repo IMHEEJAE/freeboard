@@ -19,7 +19,13 @@ export default function MarketDetailPresenter(
             <S.SideA>
               <S.User>
                 <S.UserLeft>
-                  <S.Avatar src="/images/avatar.png" />
+                  <S.Avatar
+                    src={
+                      props.data?.fetchUseditem.seller?.picture
+                        ? `https://storage.googleapis.com/${props.data?.fetchUseditem.seller?.picture}`
+                        : "/images/avatar.png"
+                    }
+                  />
                   <S.AvatarInfo>
                     <S.Writer>
                       {props.data?.fetchUseditem.seller?.name}
@@ -86,7 +92,6 @@ export default function MarketDetailPresenter(
             <S.Center>
               <S.ImgWrap>
                 {props.data?.fetchUseditem.images
-
                   ?.filter((el: string) => el)
                   .map((el: string) => (
                     <S.Img

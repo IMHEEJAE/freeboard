@@ -21,9 +21,12 @@ export const AvatarBtn = styled(Button)`
   justify-content: center;
   height: 100%;
   padding: 10px 16px;
+  background: #e0dcd0;
+  border: 2px solid #000;
+  border-radius: 0;
   :hover {
-    border-color: #d4adfc !important;
-    color: #d4adfc !important;
+    border-color: #ba664c !important;
+    color: #ba664c !important;
   }
 `;
 export const UploadWrapper = styled.div`

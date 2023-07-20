@@ -2,10 +2,11 @@ import { CloseOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Button, Input } from "antd";
 import { ILoginRegistBtnProps } from "./LoginRegist.types";
+import { mq } from "../../../../commons/styles/globalStyles";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 1080px;
+  height: 100vh;
   min-height: 100%;
   display: flex;
   align-items: center;
@@ -26,23 +27,23 @@ export const Inner = styled.div`
 export const Logo = styled.h2`
   color: #fff;
   font-size: 32px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   margin: 0 auto;
 `;
 
 export const SubmitButton = styled(Button)`
   // background: #4f4f4f;
   background: ${(props: ILoginRegistBtnProps) =>
-    props.isActive ? "#291473" : "#4f4f4f"};
+    props.isActive ? "#8A4C38" : "#828282"};
   height: 64px;
   border-radius: 16px;
   border: none;
   margin-top: 20px;
   :hover {
     background: ${(props: ILoginRegistBtnProps) =>
-      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
+      props.isActive ? "#BA664C !important" : "#828282 !important"};
     border-color: ${(props: ILoginRegistBtnProps) =>
-      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
+      props.isActive ? "#BA664C !important" : "#828282 !important"};
   }
   span {
     color: #bdbdbd;
@@ -56,18 +57,27 @@ export const LoginButton = styled(CloseOutlined)`
   position: absolute;
   top: 80px;
   right: 80px;
+  ${mq[0]} {
+    font-size: 30px;
+    top: 40px;
+    right: 40px;
+  }
 `;
 export const RegistInnerWrap = styled.div`
   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   width: 400px;
   height: 100%;
   margin: 0 auto;
-  padding-top: 240px;
+  ${mq[0]} {
+    width: 90%;
+  }
 `;
-export const RegistForm = styled.div``;
+export const RegistForm = styled.div`
+  width: 400px;
+`;
 export const RegistInputs = styled(Input)`
   width: 100%;
   border: 1px solid #ffffff;

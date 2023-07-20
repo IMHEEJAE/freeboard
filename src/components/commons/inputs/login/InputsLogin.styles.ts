@@ -24,14 +24,14 @@ export const InputsLogin = styled.input`
   width: 100%;
   height: 64px;
   padding: 4px 15px;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   font-size: 14px;
   border-radius: 16px;
   background: transparent;
   color: #fff;
   :hover,
   :focus {
-    border-color: #d4adfc !important;
+    border-color: #ba664c !important;
     box-shadow: none !important;
     border-inline-end-width: 1px;
     outline: 0;

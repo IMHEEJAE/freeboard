@@ -13,19 +13,10 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
           <S.LoginInnerWrap>
             <S.HomeIcon onClick={props.onClickHome} />
             <S.Logo>로그인</S.Logo>
-            <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
-              {/* <Controller
-                name="email"
-                control={control}
-                render={({ field }) => (
-                  <InputsLogin
-                    type="text"
-                    register={register("email")}
-                    placeholder="이메일을 입력해주세요."
-                    autoComplete="off"
-                  />
-                )}
-              /> */}
+            <form
+              onSubmit={props.handleSubmit(props.onClickSubmit)}
+              style={{ width: "100%" }}
+            >
               <InputsLogin
                 type="text"
                 register={props.register("email")}
@@ -35,17 +26,7 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
               {props.formState.errors.email && (
                 <Validation01 title={props.formState.errors.email?.message} />
               )}
-              {/* <Controller
-                name="email"
-                control={control}
-                render={({ field }) => (
-                  <InputsLogin
-                    type="password"
-                    register={register("password")}
-                    placeholder="비밀번호를 입력해주세요."
-                  />
-                )}
-              /> */}
+
               <InputsLogin
                 type="password"
                 register={props.register("password")}

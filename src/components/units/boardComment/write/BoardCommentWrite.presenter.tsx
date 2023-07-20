@@ -13,18 +13,20 @@ export default function BoardCommentWritePresenter(
         )}
 
         <S.InputWrapper>
-          <S.Input
-            placeholder="작성자"
-            onChange={props.onChangeWriter}
-            value={props.writer || (props.el?.writer ?? "")}
-            readOnly={!!props.el?.writer}
-          />
-          <S.Input
-            type="password"
-            placeholder="비밀번호"
-            onChange={props.onChangePassword}
-            value={props.password}
-          />
+          <S.Box>
+            <S.Input
+              placeholder="작성자"
+              onChange={props.onChangeWriter}
+              value={props.writer || (props.el?.writer ?? "")}
+              readOnly={!!props.el?.writer}
+            />
+            <S.Input
+              type="password"
+              placeholder="비밀번호"
+              onChange={props.onChangePassword}
+              value={props.password}
+            />
+          </S.Box>
           <S.Star onChange={props.setStar} />
         </S.InputWrapper>
         <S.ContentsWrapper>
@@ -41,6 +43,11 @@ export default function BoardCommentWritePresenter(
                 : props.el?.contents.length) ?? 0}
               /100
             </S.ContentsLength>
+            {props.isEdit ? (
+              <S.Button onClick={props.onClickCancel}>취소</S.Button>
+            ) : (
+              ""
+            )}
             <S.Button
               onClick={
                 props.isEdit ? props.onClickUpdate : props.onClickSubmitComment

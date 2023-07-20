@@ -13,7 +13,7 @@ declare const window: typeof globalThis & {
 
 export default function PointModal(props: IPointModalProps) {
   const [myPoint, setMyPoint] = useState<any>();
-
+  const [isChecked, setIsChecked] = useState(false);
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
@@ -30,8 +30,12 @@ export default function PointModal(props: IPointModalProps) {
       return;
     }
     if (myPoint < 100) {
+      setIsChecked(false);
       Modal.error({ content: "100원 이상 결제 가능합니다" });
       return;
+    }
+    if (myPoint >= 100) {
+      setIsChecked(true);
     }
     const IMP = window.IMP; // 생략 가능
     IMP.init("imp49910675"); // 빽엔드 2차확인.
@@ -86,7 +90,9 @@ export default function PointModal(props: IPointModalProps) {
           placeholder="금액을 입력하세요."
           onChange={onChangeMyPoint}
         />
-        <S.PointBtn onClick={onClickPayment}>충전하기</S.PointBtn>
+        <S.PointBtn isChecked={isChecked} onClick={onClickPayment}>
+          충전하기
+        </S.PointBtn>
       </S.PointWrap>
     </>
   );

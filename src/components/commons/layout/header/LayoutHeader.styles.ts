@@ -8,13 +8,20 @@ export const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
+  padding: 10px 0;
   border-bottom: 2px solid #000;
   // background-color: #e0dcd0;
+  height: 72px;
+`;
+export const Pc = styled.div`
+  // ${mq[1]} {
+  //   display: none;
+  // }
 `;
 
 export const InnerWrapper = styled.div`
-  width: 1400px;
+  max-width: 1600px;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,37 +31,51 @@ export const InnerWrapper = styled.div`
     width: 1100px;
   }
 `;
-
+export const Logo = styled.img`
+  width: 40px;
+  height: 40px;
+`;
 export const InnerLogo = styled.div`
-  font-size: 30px;
-  font-family: "MFB";
-  font-weight: 700;
-  color: #091e6f;
-  cursor: pointer;
+  // font-size: 30px;
+  // font-family: "MFB";
+  // font-weight: 700;
+  // color: #091e6f;
+  // cursor: pointer;
 `;
 
 export const InnerButton = styled.span`
-  margin: 10px;
+  font-size: 20px;
   color: #091e6f;
   cursor: pointer;
+  ${mq[0]} {
+    font-size: 16px;
+  }
 `;
 export const MenuWrap = styled.div`
   display: flex;
   gap: 20px;
+  ${mq[0]} {
+    gap: 5px;
+  }
 `;
 export const Menu = styled.div`
   display: flex;
 `;
 export const MenuItem = styled.div`
   cursor: pointer;
+  font-size: 20px;
   :hover {
     color: #ba664c;
+  }
+  ${mq[0]} {
+    font-size: 16px;
   }
 `;
 
 export const ProfileWrap = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
   .ant-dropdown-menu-item {
     padding: 0 !important;
   }
@@ -79,7 +100,7 @@ export const UserAvatar = styled.img`
   width: 40px;
   height: 40px;
   display: block;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 50%;
 `;
 export const UserProfile = styled(UserOutlined)``;
@@ -149,13 +170,32 @@ export const ProfileDesc = styled.span`
 `;
 export const ProfileDropdown = styled(Dropdown)`
   color: #091e6f;
+  padding-left: 10px;
+
+  display: block;
 `;
 export const PointModal = styled(Modal)`
   .ant-modal-content {
     padding: 40px 30px;
   }
-
   .ant-modal-footer {
     display: none;
   }
+`;
+export const Moblie = styled.div`
+  display: none;
+  ${mq[1]} {
+    background: red;
+    width: 100%;
+    height: 40px;
+    display: block;
+  }
+`;
+export const MWrapper = styled.div``;
+export const MLogo = styled.div``;
+export const MMenu = styled.div`
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #000;
 `;

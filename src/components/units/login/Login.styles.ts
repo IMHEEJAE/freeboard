@@ -2,10 +2,11 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Button, Checkbox, Input } from "antd";
 import { ILoginBtnProps } from "./Login.types";
+import { mq } from "../../../commons/styles/globalStyles";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 1080px;
+  height: 100vh;
   min-height: 100%;
   display: flex;
   align-items: center;
@@ -29,21 +30,28 @@ export const HomeIcon = styled(ArrowRightOutlined)`
   position: absolute;
   top: 80px;
   right: 80px;
+  ${mq[0]} {
+    font-size: 30px;
+    top: 40px;
+    right: 40px;
+  }
 `;
 export const LoginInnerWrap = styled.div`
   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   width: 400px;
   height: 100%;
   margin: 0 auto;
-  padding-top: 240px;
+  ${mq[0]} {
+    width: 90%;
+  }
 `;
 export const Logo = styled.h2`
   color: #fff;
   font-size: 32px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   margin: 0 auto;
 `;
 export const LoginEmail = styled(Input)`
@@ -68,14 +76,24 @@ export const CheckBoxLogin = styled(Checkbox)`
   cursor: initial;
   user-select: none;
   margin: 20px 0;
+  &:hover {
+    .ant-checkbox-inner {
+      border-color: #ba664c !important;
+    }
+  }
+  .ant-checkbox:hover {
+    .ant-checkbox-inner {
+      border-color: #ba664c !important;
+    }
+  }
   .ant-checkbox-inner {
     border-radius: 50%;
     background-color: transparent;
   }
   .ant-checkbox-checked {
     .ant-checkbox-inner {
-      background-color: #d4adfc !important;
-      border-color: #d4adfc;
+      background-color: #ba664c !important;
+      border-color: #ba664c;
     }
   }
 
@@ -87,22 +105,23 @@ export const CheckBoxLogin = styled(Checkbox)`
 
 export const SubmitButton = styled(Button)`
   background: ${(props: ILoginBtnProps) =>
-    props.isActive ? "#291473" : "#4f4f4f"};
+    props.isActive ? "#8A4C38" : "#828282"};
   height: 64px;
   border-radius: 16px;
   border: none;
   margin-top: 20px;
   :hover {
     background: ${(props: ILoginBtnProps) =>
-      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
+      props.isActive ? "#BA664C !important" : "#828282 !important"};
     border-color: ${(props: ILoginBtnProps) =>
-      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
+      props.isActive ? "#BA664C !important" : "#828282 !important"};
   }
   span {
     color: #bdbdbd;
   }
 `;
 export const BottomWrap = styled.div`
+  width: 100%;
   padding-top: 40px;
 `;
 export const Line = styled.div`

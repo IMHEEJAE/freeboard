@@ -17,10 +17,7 @@ export default function MypageAvatarPresenter(
           />
         </S.UploadWrapper>
         <S.BtnWrapper>
-          <S.AvatarBtn
-            name="사진 변경하기"
-            onClick={props.onClickUpdateUserPicture}
-          >
+          <S.AvatarBtn onClick={props.onClickUpdateUserPicture}>
             사진 변경하기
           </S.AvatarBtn>
         </S.BtnWrapper>

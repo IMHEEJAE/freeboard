@@ -4,25 +4,37 @@ import styled from "@emotion/styled";
 // import LayoutBannerContainer from "./banner/LayoutBanner.container";
 import LayoutHeaderContainer from "./header/LayoutHeader.container";
 import MyPageInfoContainer from "../../units/mypage/Info/MypageInfo.container";
+import { mq } from "../../../commons/styles/globalStyles";
 
 const Body = styled.div`
-  min-height: calc(100vh - 82px);
+  min-height: calc(100vh - 72px);
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #e0dcd0;
 `;
-const MypageWrap = styled.div`
+const Mypage = styled.div`
+  min-height: calc(100vh - 72px);
   display: flex;
-  // align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 80px 0;
+  background-color: #e0dcd0;
+`;
+const MypageWrap = styled.div`
+  position: relative;
+  width: 90%;
+  display: flex;
+  padding: 50px 0 100px;
+  max-width: 1600px;
   margin: 0 auto;
+  ${mq[1]} {
+    flex-direction: column;
+  }
 `;
 
 const MypageContents = styled.div`
   width: 100%;
+  ${mq[1]} {
+    margin-top: 40px;
+  }
 `;
 interface ILayoutProps {
   children: JSX.Element;
@@ -50,10 +62,12 @@ export default function Layout(props: ILayoutProps) {
       {/* {!isHiddenNavigation && <LayoutNavigationContainer />} */}
       {!isHiddenMypage && <Body>{props.children}</Body>}
       {isHiddenMypage && (
-        <MypageWrap>
-          <MyPageInfoContainer />
-          <MypageContents>{props.children}</MypageContents>
-        </MypageWrap>
+        <Mypage>
+          <MypageWrap>
+            <MyPageInfoContainer />
+            <MypageContents>{props.children}</MypageContents>
+          </MypageWrap>
+        </Mypage>
       )}
     </>
   );

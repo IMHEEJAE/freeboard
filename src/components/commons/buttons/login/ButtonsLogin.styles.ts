@@ -8,12 +8,12 @@ export const ButtonsLogin = styled.button`
   border: none;
   margin-top: 20px;
   background: ${(props: IButtonLoginStyleProps) =>
-    props.isActive ? "#291473" : "#4f4f4f"};
+    props.isActive ? "#8A4C38" : "#828282"};
   :hover {
     background: ${(props: IButtonLoginStyleProps) =>
-      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
+      props.isActive ? "#BA664C !important" : "#828282 !important"};
     border-color: ${(props: IButtonLoginStyleProps) =>
-      props.isActive ? "#3300ff !important" : "#4f4f4f !important"};
+      props.isActive ? "#BA664C !important" : "#828282 !important"};
   }
   span {
     color: #bdbdbd;

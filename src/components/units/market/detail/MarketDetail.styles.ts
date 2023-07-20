@@ -1,6 +1,77 @@
 import { LikeOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { mq } from "../../../../commons/styles/globalStyles";
+export const Wrapper = styled.div`
+  width: 90%;
+  padding: 50px 0 100px;
+`;
+export const MarketWrap = styled.div`
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 1600px;
+  ${mq[2]} {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const Top = styled.div`
+  display: flex;
+  flex: 2;
+  width: 50%;
+  ${mq[2]} {
+    width: 100%;
+  }
+  ${mq[1]} {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+export const SideA = styled.div`
+  border-right: 2px solid #000;
+  padding-right: 40px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  ${mq[2]} {
+    width: 50%;
+  }
+  ${mq[1]} {
+    width: 100%;
+    border-right: none;
+    padding-right: 0;
+  }
+`;
+export const Center = styled.div`
+  overflow: hidden;
+  margin: 0 40px;
+  display: flex;
+  flex: 1;
+  ${mq[2]} {
+    width: 50%;
+    margin-right: 0;
+  }
+  ${mq[1]} {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 40px;
+  }
+`;
+export const SideB = styled.div`
+  border-left: 2px solid #000;
+  padding-left: 40px;
+  flex: 1;
+  width: 50%;
+  ${mq[2]} {
+    width: 100%;
+    flex: 1;
+    border-left: none;
+    padding-left: 0;
+    margin-top: 40px;
+  }
+`;
 
 export const User = styled.div`
   display: flex;
@@ -19,6 +90,7 @@ export const Avatar = styled.img`
   display: flex;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 `;
 export const AvatarInfo = styled.div`
   display: flex;
@@ -146,76 +218,5 @@ export const Button = styled.button`
   }
   ${mq[0]} {
     margin: 0 5px;
-  }
-`;
-export const Wrapper = styled.div`
-  width: 90%;
-  padding: 50px 0 100px;
-`;
-export const MarketWrap = styled.div`
-  display: flex;
-  margin: 0 auto;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  max-width: 1600px;
-  ${mq[2]} {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-export const Top = styled.div`
-  display: flex;
-  flex: 2;
-  width: 50%;
-  ${mq[2]} {
-    width: 100%;
-  }
-  ${mq[1]} {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-export const SideA = styled.div`
-  border-right: 2px solid #000;
-  padding-right: 40px;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  ${mq[2]} {
-    width: 50%;
-  }
-  ${mq[1]} {
-    width: 100%;
-    border-right: none;
-    padding-right: 0;
-  }
-`;
-export const Center = styled.div`
-  overflow: hidden;
-  margin: 0 40px;
-  display: flex;
-  flex: 1;
-  ${mq[2]} {
-    width: 50%;
-    margin-right: 0;
-  }
-  ${mq[1]} {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 40px;
-  }
-`;
-export const SideB = styled.div`
-  border-left: 2px solid #000;
-  padding-left: 40px;
-  flex: 1;
-  width: 50%;
-  ${mq[2]} {
-    width: 100%;
-    flex: 1;
-    border-left: none;
-    padding-left: 0;
-    margin-top: 40px;
   }
 `;

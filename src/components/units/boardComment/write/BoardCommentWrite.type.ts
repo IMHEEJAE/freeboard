@@ -12,6 +12,7 @@ export interface BoardCommentWritePresenterProps {
   setStar: Dispatch<SetStateAction<number>>;
   isEdit?: boolean;
   el?: any;
+  onClickCancel: () => void;
 }
 
 export interface IBoardCommentWriteContainerProps {

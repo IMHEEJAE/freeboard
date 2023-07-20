@@ -14,7 +14,7 @@ import {
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { useRouter } from "next/router";
 
-export default function BoardListContainer() {
+export default function BoardListContainer(): JSX.Element | undefined {
   const router = useRouter();
   const { data: dataBest } = useQuery<Pick<IQuery, "fetchBoardsOfTheBest">>(
     FETCH_BOARDS_OF_THE_BEST

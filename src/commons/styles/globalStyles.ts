@@ -65,7 +65,7 @@ export const globalStyles = css`
 
 // const color = {
 //   primary: "#091E6F",
-//   secondary: " #E8E298",
+//   yellow: " #E8E298",
 //   white: "#E0DCD0",
 //   red: "#BA664C",
 //   gray: '#828282',

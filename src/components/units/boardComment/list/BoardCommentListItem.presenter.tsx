@@ -79,7 +79,13 @@ export default function BoardCommentListItemPresenter(
       {!isEdit && (
         <S.ItemWrapper>
           <S.FlexWrapper>
-            <S.Avatar src="/images/avatar.png" />
+            <S.Avatar
+              src={
+                props.el?.user?.picture
+                  ? `https://storage.googleapis.com/${props.el.user.picture}`
+                  : "/images/avatar.png"
+              }
+            />
             <S.MainWrapper>
               <S.WriterWrapper>
                 <S.Writer>{props.el?.writer}</S.Writer>

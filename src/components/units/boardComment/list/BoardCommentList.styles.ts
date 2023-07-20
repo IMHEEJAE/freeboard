@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { Rate, Modal } from "antd";
+import { mq } from "../../../../commons/styles/globalStyles";
 
 export const ItemWrapper = styled.div`
-  width: 1200px;
-  margin: 0px 100px;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  width: 100%;
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #000;
 `;
 
 export const FlexWrapper = styled.div`
@@ -57,6 +57,10 @@ export const DateString = styled.div`
 `;
 export const Star = styled(Rate)`
   padding-left: 20px;
+  color: #ba664c;
+  ${mq[1]} {
+    font-size: 16px;
+  }
 `;
 export const PasswordModal = styled(Modal)``;
 

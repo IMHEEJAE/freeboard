@@ -8,7 +8,7 @@ export default function Paginations01Presenter(
     <>
       <div>
         <Page onClick={props.onClickPrevPage}>{`<`}</Page>
-        {Array(10)
+        {Array(5)
           .fill(1)
           .map((_, index) => {
             if (props.startPage + index <= props.lastPage) {

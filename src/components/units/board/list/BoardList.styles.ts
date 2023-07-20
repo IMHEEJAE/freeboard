@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { Avatar, Button, Card } from "antd";
+import { Button, Card } from "antd";
 import { IMatched } from "./BoardList.types";
-import { LikeOutlined, UserOutlined } from "@ant-design/icons";
+import { LikeOutlined } from "@ant-design/icons";
 import { mq } from "../../../../commons/styles/globalStyles";
 
 export const Wrapper = styled.div`
@@ -34,35 +34,57 @@ export const BoardTable = styled.table`
   border-collapse: collapse;
 `;
 export const Thead = styled.thead``;
-export const Tr = styled.tr``;
+export const Tr = styled.tr`
+  width: 100%;
+  overflow: hidden;
+`;
 export const Td = styled.td``;
 export const Th = styled.th`
   padding: 14px 12px;
-  border-top: 1px solid #bdbdbd;
+  border-top: 1px solid #828282;
   font-weight: 400;
+  word-break: break-all;
+  ${mq[0]} {
+    font-size: 13px;
+  }
 `;
 export const ThTitle = styled.th`
   padding: 14px 12px;
-  border-top: 1px solid #bdbdbd;
+  border-top: 1px solid #828282;
   font-weight: 400;
+  word-break: break-all;
   :hover {
     font-weight: bold;
-    color: red;
     cursor: pointer;
+  }
+  ${mq[0]} {
+    font-size: 13px;
   }
 `;
 export const ThHeaderNum = styled.th`
-  width: 200px;
+  width: 15%;
   padding: 16px 12px;
+  ${mq[0]} {
+    font-size: 13px;
+  }
 `;
 export const ThHeaderTitle = styled.th`
-  width: 600px;
+  width: 40%;
+  ${mq[0]} {
+    font-size: 13px;
+  }
 `;
 export const ThHeaderWriter = styled.th`
-  width: 200px;
+  width: 25%;
+  ${mq[0]} {
+    font-size: 13px;
+  }
 `;
 export const ThHeaderDate = styled.th`
-  width: 200px;
+  width: 20%;
+  ${mq[0]} {
+    font-size: 13px;
+  }
 `;
 export const TBody = styled.tbody``;
 export const BoardFooter = styled.div`
@@ -71,6 +93,9 @@ export const BoardFooter = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  ${mq[0]} {
+    flex-direction: column;
+  }
 `;
 
 export const EditBtn = styled(Button)`
@@ -85,6 +110,9 @@ export const EditBtn = styled(Button)`
   :hover {
     border-color: #ba664c !important;
     color: #ba664c !important;
+  }
+  ${mq[0]} {
+    margin-top: 20px;
   }
 `;
 export const EditIcon = styled.img`

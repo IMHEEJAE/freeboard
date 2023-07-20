@@ -10,13 +10,12 @@ import { FETCH_BOARD_COMMENTS } from "./BoardCommentList.queries";
 export default function BoardCommentListContainer() {
   const router = useRouter();
 
-  if (typeof router.query.boardId !== "string") return;
   const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, {
     variables: {
-      boardId: router.query.boardId,
+      boardId: String(router.query.boardId),
     },
   });
   const onLoadMore = () => {
@@ -25,12 +24,12 @@ export default function BoardCommentListContainer() {
       variables: {
         page: Math.ceil(data?.fetchBoardComments.length / 10) + 1,
       },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (fetchMoreResult.fetchBoardComments === undefined) {
-          return {
-            fetchBoardComments: [...prev.fetchBoardComments],
-          };
-        }
+      updateQuery: (prev: any, { fetchMoreResult }) => {
+        // if (fetchMoreResult.fetchBoardComments === undefined) {
+        //   return {
+        //     fetchBoardComments: [...prev.fetchBoardComments],
+        //   };
+        // }
         return {
           fetchBoardComments: [
             ...prev.fetchBoardComments,

@@ -111,6 +111,9 @@ export default function BoardCommentWriteContainer(
       if (error instanceof Error) alert(error.message);
     }
   };
+  const onClickCancel = () => {
+    props.setIsEdit?.(false);
+  };
   return (
     <>
       <BoardCommentWritePresenter
@@ -125,6 +128,7 @@ export default function BoardCommentWriteContainer(
         setStar={setStar}
         isEdit={props.isEdit}
         el={props.el}
+        onClickCancel={onClickCancel}
       />
     </>
   );

@@ -17,6 +17,9 @@ export const FETCH_BOARD = gql`
       }
       createdAt
       images
+      user {
+        picture
+      }
     }
   }
 `;
