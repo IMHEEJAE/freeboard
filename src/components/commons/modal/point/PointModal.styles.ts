@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Button } from "antd";
-import { IIsCheckedProps } from "./PointModal.types";
+import { PointBtnProps } from "./PointModal.types";
 
 export const PointWrap = styled.div`
   display: flex;
@@ -26,18 +26,17 @@ export const PointInput = styled.input`
     outline: none;
   }
 `;
-export const PointBtn = styled(Button)`
+export const PointBtn = styled(Button)<PointBtnProps>`
   width: 100%;
   height: 52px;
   margin-top: 20px;
-  background: #bdbdbd;
+  background: ${({ mypoint }) => (mypoint >= 100 ? "#ba664c" : "#828282")};
   font-weight: bold;
   color: #fff;
   :active,
   :hover {
     color: #fff !important;
-    border-color: #000 !importaznt;
-    background: #000;
+    border-color: #ba664c !important;
+    background: #ba664c;
   }
-  background: ${(props: IIsCheckedProps) => (props.isChecked ? "red" : "blue")};
 `;
